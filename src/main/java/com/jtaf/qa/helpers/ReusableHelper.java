@@ -94,7 +94,7 @@ public class ReusableHelper extends BasePage implements WebPage {
 	public void enterText(WebElement element, String text, String elementName) {
 		try {
 			if (element.isEnabled()) {
-				element.sendKeys(text);
+				typeCharsWithDelay(element, text);
 				log.info("The text " + text + " is entered into an " + elementName + " element");
 			}
 		} catch (Exception ex) {
@@ -116,4 +116,16 @@ public class ReusableHelper extends BasePage implements WebPage {
 		}
 	}
 
+	public void typeCharsWithDelay(WebElement element, String value) {
+		for (int i = 0; i < value.length(); i++) {
+			char ch = value.charAt(i);
+			String valueToType = new StringBuilder().append(ch).toString();
+			element.sendKeys(valueToType);
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
 }

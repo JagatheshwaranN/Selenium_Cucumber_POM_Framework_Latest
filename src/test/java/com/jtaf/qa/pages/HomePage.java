@@ -170,7 +170,8 @@ public class HomePage extends BasePage {
 
 	public void verifyHomePageTitle() {
 		try {
-			//reusableHelper.elementClick(getAppLaunchPopupClose(), "appLaunchPopupClose");
+			Thread.sleep(2000);
+			reusableHelper.elementClick(getAppLaunchPopupClose(), "appLaunchPopupClose");
 			browserHelper.getCurrentPageUrl();
 			Assert.assertEquals(getHomePageTitle(), FileReaderUtility.getTestData("home.page.title"));
 		} catch (Exception ex) {
@@ -193,7 +194,7 @@ public class HomePage extends BasePage {
 			// reusableHelper.elementClick(getDepatureDate(), "depatureDate");
 			selectDate(month, day);
 			// reusableHelper.elementClick(getCalendarDone(), "CalendarDone");
-			// reusableHelper.elementClick(getTravelSelection(), "travelSelection");
+			reusableHelper.elementClick(getTravelSelection(), "travelSelection");
 			// dropDownHelper.selectByValue(getTravelSelectionClass(), travelClass,
 			// "travelSelectionClass");
 			reusableHelper.elementClick(getTravelSelectionPassenger(), "travelSelectionPassenger");
