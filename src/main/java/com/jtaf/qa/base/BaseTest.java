@@ -108,6 +108,14 @@ public class BaseTest extends FileReaderUtility {
 		}
 	}
 
+	public static void setDriver(WebDriver driver) {
+		BaseTest.driver = driver;
+	}
+
+	public static WebDriver getDriver() {
+		return driver;
+	}
+
 	public void launchApplication() {
 		try {
 			getDriver().get(getTestData("app.url"));
@@ -116,14 +124,6 @@ public class BaseTest extends FileReaderUtility {
 		} catch (Exception ex) {
 			log.info("Error occured while launch of application" + "\n" + ex);
 		}
-	}
-
-	public static WebDriver getDriver() {
-		return driver;
-	}
-
-	public static void setDriver(WebDriver driver) {
-		BaseTest.driver = driver;
 	}
 
 }

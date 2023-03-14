@@ -1,9 +1,11 @@
 package com.jtaf.qa.pages;
 
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import com.jtaf.qa.helpers.ReusableHelper;
@@ -18,19 +20,24 @@ public class TicketDetailsPage extends TicketBookingPage {
 
 	private static Logger log = LoggerUtility.getLog(TicketDetailsPage.class);
 
-	private By ticketDetailsHeader = By.xpath("//span[contains(@class,'flex1') and text()='TICKET DETAILS']");
-	private By ticketDetailsFlightName = By.xpath("//div[contains(@class,'common-elementsstyles__Wid13')]//span[1]");
-	private By ticketDetailsTravelClass = By.xpath("//div[contains(@class,'common-elementsstyles__Wid13')]//span[2]");
-	private By ticketDetailsFromPlace = By
-			.xpath("(//div[contains(@class,'common-elementsstyles__Wid31')]//span[contains(@class,'padR5')])[1]");
-	private By ticketDetailsToPlace = By
-			.xpath("(//div[contains(@class,'common-elementsstyles__Wid31')]//span[contains(@class,'padR5')])[2]");
-	private By ticketFareSummary = By.xpath("//div[@class='padL10 padR10 padT10 BrdrBotDsh flexCol']");
-	private By ticketTotalAmount = By.xpath(
-			"//div[contains(@class,'fare-summarystyles__TotalAmount')]//div[@class='dF width100 padB15 justifyBetween']");
+	@FindBy(how = How.XPATH, using = "//span[contains(@class,'flex1') and text()='TICKET DETAILS']")
+	public WebElement ticketDetailsHeader;
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'common-elementsstyles__Wid13')]//span[1]")
+	public WebElement ticketDetailsFlightName;
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'common-elementsstyles__Wid13')]//span[2]")
+	public WebElement ticketDetailsTravelClass;
+	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'common-elementsstyles__Wid31')]//span[contains(@class,'padR5')])[1]")
+	public WebElement ticketDetailsFromPlace;
+	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'common-elementsstyles__Wid31')]//span[contains(@class,'padR5')])[4]")
+	public WebElement ticketDetailsToPlace;
+	@FindBy(how = How.ID, using = "fareSummary")
+	public WebElement ticketFareSummary;
+	@FindBy(how = How.XPATH, using = "//div[@class='price-breakupstyles__BreakupTitle-sc-fjdxc9-14 eovIVn fb go_blue']")
+	public WebElement ticketTotalAmount;
 
 	public TicketDetailsPage(WebDriver driver) {
 		super(driver);
+		PageFactory.initElements(driver, this);
 	}
 
 	public String getTicketDetailsPageTitle() {
@@ -38,32 +45,31 @@ public class TicketDetailsPage extends TicketBookingPage {
 	}
 
 	public String getTicketDetailsHeader() {
-		return null;
-		//return getPageHeader(ticketDetailsHeader);
+		return getPageHeader(ticketDetailsHeader);
 	}
 
 	public WebElement getTicketDetailsFlightName() {
-		return getElement(ticketDetailsFlightName);
+		return ticketDetailsFlightName;
 	}
 
 	public WebElement getTicketDetailsTravelClass() {
-		return getElement(ticketDetailsTravelClass);
+		return ticketDetailsTravelClass;
 	}
 
 	public WebElement getTicketDetailsFromPlace() {
-		return getElement(ticketDetailsFromPlace);
+		return ticketDetailsFromPlace;
 	}
 
 	public WebElement getTicketDetailsToPlace() {
-		return getElement(ticketDetailsToPlace);
+		return ticketDetailsToPlace;
 	}
 
 	public WebElement getTicketFareSummary() {
-		return getElement(ticketFareSummary);
+		return ticketFareSummary;
 	}
 
 	public WebElement getTicketTotalAmount() {
-		return getElement(ticketTotalAmount);
+		return ticketTotalAmount;
 	}
 
 	public void verifyTicketDetailsHeader() {

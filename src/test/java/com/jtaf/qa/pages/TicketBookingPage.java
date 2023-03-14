@@ -8,6 +8,9 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import com.jtaf.qa.helpers.ReusableHelper;
@@ -23,15 +26,20 @@ public class TicketBookingPage extends HomePage {
 
 	private static Logger log = LoggerUtility.getLog(TicketBookingPage.class);
 
-	private By priceSort = By.xpath("//div[@class='SortOptionsstyles__SortOption-tji0t1-3 ivjAsX']");
-	private By priceList = By.xpath("(//div[contains(@class,'srp-card-uistyles__Price-sc-3flq99-17')])[1]");
-	private By viewFaresButton = By.xpath(
-			"(//div[contains(@class,'srp-card-uistyles__CardRight')]//button[contains(@class,'srp-card-uistyles__BookButton') and text()='VIEW FARES'])[1]");
-	private By bookButton = By.xpath("(//input[contains(@class,'srp-card-uistyles__Fltbook-sc-3flq99-35')])[1]");
-	private By flightName = By.xpath("(//div[@class='dF alignItemsCenter']//span[@class='font14 padL5 black'])[1]");
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'NewSortOptionsstyles')]//div[@class='fb txtUpper dF alignItemsCenter']//span[text()='PRICE']")
+	public WebElement priceSort;
+	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'srp-card-uistyles__CardRight')]//button[contains(@class,'srp-card-uistyles__BookButton') and text()='VIEW FARES'])[1]")
+	public WebElement viewFares;
+	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'srp-card-uistyles__Price-sc-3flq99-17')])[1]")
+	public WebElement priceList;
+	@FindBy(how = How.XPATH, using = "(//input[contains(@class,'srp-card-uistyles__Fltbook-sc-3flq99-35')])[1]")
+	public WebElement book;
+	@FindBy(how = How.XPATH, using = "(//div[@class='dF alignItemsCenter']//span[contains(@class,'padL5 black')])[1]")
+	public WebElement flightName;
 
 	public TicketBookingPage(WebDriver driver) {
 		super(driver);
+		PageFactory.initElements(driver, this);
 	}
 
 	public String getTicketBookingPageTitle() {
@@ -39,23 +47,23 @@ public class TicketBookingPage extends HomePage {
 	}
 
 	public WebElement getPriceSort() {
-		return getElement(priceSort);
+		return priceSort;
 	}
 
 	public WebElement getPriceList() {
-		return getElement(priceList);
+		return priceList;
 	}
 
-	public WebElement getViewFaresButton() {
-		return getElement(viewFaresButton);
+	public WebElement getViewFares() {
+		return viewFares;
 	}
 
-	public WebElement getBookButton() {
-		return getElement(bookButton);
+	public WebElement getBook() {
+		return book;
 	}
 
 	public WebElement getFlightName() {
-		return getElement(flightName);
+		return flightName;
 	}
 
 	public void verifyTicketBookingTitle() {
@@ -63,6 +71,8 @@ public class TicketBookingPage extends HomePage {
 			browserHelper.getCurrentPageUrl();
 			Assert.assertEquals(getTicketBookingPageTitle(),
 					FileReaderUtility.getTestData("ticket.booking.page.title"));
+			//Trail and Error
+			Thread.sleep(120000);
 		} catch (Exception ex) {
 			log.info("Error occured while check ticket booking page title" + "\n" + ex);
 			Assert.fail();
@@ -79,9 +89,9 @@ public class TicketBookingPage extends HomePage {
 			if (price == lowestPrice) {
 				ReusableHelper.setAnyElement("flightName",
 						verificationHelper.readTextValueFromElement(getFlightName(), "flightName"));
-				reusableHelper.elementClick(getViewFaresButton(), "viewFaresButton");
-				verificationHelper.verifyElementPresent(getBookButton(), "bookButton");
-				reusableHelper.elementClick(getBookButton(), "bookButton");
+				reusableHelper.elementClick(getViewFares(), "viewFaresButton");
+				verificationHelper.verifyElementPresent(getBook(), "bookButton");
+				reusableHelper.elementClick(getBook(), "bookButton");
 			}
 		} catch (Exception ex) {
 			log.info("Error occured while book the ticket" + "\n" + ex);
