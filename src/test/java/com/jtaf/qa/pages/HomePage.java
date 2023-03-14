@@ -29,25 +29,25 @@ public class HomePage extends BasePage {
 
 	private static Logger log = LoggerUtility.getLog(HomePage.class);
 
-	@FindBy(how = How.CSS, using = ".logSprite.icClose")
+	@FindBy(how = How.CSS, using = ".ic_circularclose_grey")
 	public WebElement appLaunchPopupClose;
-	@FindBy(how = How.XPATH, using = "//h2[text()='Domestic and International Flights']")
+	@FindBy(how = How.XPATH, using = "(//span[text()='Flights'])[1]")
 	public WebElement homePageHeader;
 	@FindBy(how = How.XPATH, using = "//span[contains(@class,'sc-eGRUor jFqzBD')]//..//span[@class='sc-ctqQKy jgGUHT']")
 	public WebElement oneWayTrip;
-	@FindBy(how = How.XPATH, using = "//span[contains(@class,'fswWidgetLabel') and text()='From']")
+	@FindBy(how = How.XPATH, using = "//label[@for='fromCity']")
 	public WebElement fromLocationSection;
-	@FindBy(how = How.XPATH, using = "//div[@class='sc-iUKqMP kjxDYN']//input")
+	@FindBy(how = How.XPATH, using = "//input[@placeholder='From']")
 	public WebElement fromLocation;
-	@FindBy(how = How.XPATH, using = "//ul[@id='autoSuggest-list']//li//div[@class='sc-jObWnj bRMwkb']//span[text()='@1@']")
+	@FindBy(how = How.XPATH, using = "//ul[@role='listbox']//li[@role='option']//p[text()='@1@']")
 	public WebElement fromLocationSuggestion;
-	@FindBy(how = How.XPATH, using = "//span[contains(@class,'fswWidgetLabel') and text()='To']")
+	@FindBy(how = How.XPATH, using = "//label[@for='toCity']")
 	public WebElement toLocationSection;
-	@FindBy(how = How.XPATH, using = "//div[@class='sc-iUKqMP kjxDYN']//input")
+	@FindBy(how = How.XPATH, using = "//input[@placeholder='To']")
 	public WebElement toLocation;
-	@FindBy(how = How.XPATH, using = "//ul[@id='autoSuggest-list']//li//div[@class='sc-jObWnj bRMwkb']//span[text()='@1@']")
+	@FindBy(how = How.XPATH, using = "//ul[@role='listbox']//li[@role='option']//p[text()='@1@']")
 	public WebElement toLocationSuggestion;
-	@FindBy(how = How.XPATH, using = "//span[contains(@class,'fswWidgetLabel') and text()='Departure']")
+	@FindBy(how = How.XPATH, using = "//label[@for='departure']")
 	public WebElement depatureSection;
 	@FindBy(how = How.XPATH, using = "(//div[@class='DayPicker-Caption' and @role='heading'])[2]")
 	public WebElement monthTextInDatePicker;
@@ -55,23 +55,23 @@ public class HomePage extends BasePage {
 	public WebElement monthNavigatorInDatePicker;
 	@FindBy(how = How.XPATH, using = "//div[@class='DayPicker-Week']/div[@class='DayPicker-Day']//p[text()='@1@']")
 	public WebElement dateInCalendar;
-	@FindBy(how = How.XPATH, using = "//span[@class='fswTrvl__done']")
-	public WebElement calendarDone;
-	@FindBy(how = How.XPATH, using = "//span[contains(@class,'fswWidgetLabel') and text()='Travellers & Class']")
+//	@FindBy(how = How.XPATH, using = "//span[@class='fswTrvl__done']")
+//	public WebElement calendarDone;
+	@FindBy(how = How.XPATH, using = "//label[@for='travellers']")
 	public WebElement travelSelection;
-	@FindBy(how = How.XPATH, using = "(//div[@class='sc-fWCJzd eRvjBC']//span[@class='sc-dvQaRk ghZzRT'])[2]")
+	@FindBy(how = How.XPATH, using = "//ul[contains(@class,'guestCounter')]//li[@data-cy='adults-2']")
 	public WebElement travelSelectionPassenger;
-	@FindBy(how = How.XPATH, using = "//li[text()='premium economy']")
+	@FindBy(how = How.XPATH, using = "//ul[contains(@class,'guestCounter')]//li[@data-cy='travelClass-1']")
 	public WebElement travelSelectionClass;
-	@FindBy(how = How.XPATH, using = "//a[@class='sc-jQrDum gMuQGX']")
-	public WebElement travelSelectionDone;
-	@FindBy(how = How.XPATH, using = "//span[@class='sc-XxNYO hiLeUc']")
+	@FindBy(how = How.XPATH, using = "//button[contains(@class,'primaryBtn btnApply pushRight')]")
+	public WebElement travelSelectionApply;
+	@FindBy(how = How.XPATH, using = "//a[contains(@class,'primaryBtn font24 latoBold widgetSearchBtn')]")
 	public WebElement searchFlights;
 
 	private By fromLocationSuggestion1 = By
-			.xpath("//ul[@id='autoSuggest-list']//li//div[@class='sc-jObWnj bRMwkb']//span[text()='@1@']");
+			.xpath("//ul[@role='listbox']//li[@role='option']//p[text()='@1@']");
 	private By toLocationSuggestion1 = By
-			.xpath("//ul[@id='autoSuggest-list']//li//div[@class='sc-jObWnj bRMwkb']//span[text()='@1@']");
+			.xpath("//ul[@role='listbox']//li[@role='option']//p[text()='@1@']");
 	private By dateInCalendar1 = By
 			.xpath("//div[@class='DayPicker-Week']/div[@class='DayPicker-Day']//p[text()='@1@']");
 
@@ -110,6 +110,10 @@ public class HomePage extends BasePage {
 
 	public WebElement getFromLocation() {
 		return fromLocation;
+	}
+
+	public WebElement getToLocationSection() {
+		return toLocationSection;
 	}
 
 	public WebElement getToLocation() {
@@ -156,17 +160,17 @@ public class HomePage extends BasePage {
 		return dateInCalendar1;
 	}
 
-	public WebElement getCalendarDone() {
-		return calendarDone;
-	}
+//	public WebElement getCalendarDone() {
+//		return calendarDone;
+//	}
 
-	public WebElement getTravelSelectionDone() {
-		return travelSelectionDone;
+	public WebElement getTravelSelectionApply() {
+		return travelSelectionApply;
 	}
 
 	public void verifyHomePageTitle() {
 		try {
-			reusableHelper.elementClick(getAppLaunchPopupClose(), "appLaunchPopupClose");
+			//reusableHelper.elementClick(getAppLaunchPopupClose(), "appLaunchPopupClose");
 			browserHelper.getCurrentPageUrl();
 			Assert.assertEquals(getHomePageTitle(), FileReaderUtility.getTestData("home.page.title"));
 		} catch (Exception ex) {
@@ -182,17 +186,19 @@ public class HomePage extends BasePage {
 			reusableHelper.enterText(getFromLocation(), fromLocation, "fromLocation");
 			reusableHelper.elementClick(getFromLocationSuggestion1(),
 					FileReaderUtility.getTestData("from.location.suggestion"), "fromLocationSuggestion1");
+			reusableHelper.elementClick(getToLocationSection(), "toLocationSection");
 			reusableHelper.enterText(getToLocation(), toLocation, "toLocation");
 			reusableHelper.elementClick(getToLocationSuggestion1(),
 					FileReaderUtility.getTestData("to.location.suggestion"), "toLocationSuggestion");
 			// reusableHelper.elementClick(getDepatureDate(), "depatureDate");
 			selectDate(month, day);
-			reusableHelper.elementClick(getCalendarDone(), "CalendarDone");
+			// reusableHelper.elementClick(getCalendarDone(), "CalendarDone");
 			// reusableHelper.elementClick(getTravelSelection(), "travelSelection");
 			// dropDownHelper.selectByValue(getTravelSelectionClass(), travelClass,
 			// "travelSelectionClass");
+			reusableHelper.elementClick(getTravelSelectionPassenger(), "travelSelectionPassenger");
 			reusableHelper.elementClick(getTravelSelectionClass(), "travelSelectionClass");
-			reusableHelper.elementClick(getTravelSelectionDone(), "TravelSelectionDone");
+			reusableHelper.elementClick(getTravelSelectionApply(), "TravelSelectionDone");
 //			ReusableHelper.setAnyElement("fromLocation",
 //					verificationHelper.readValueFromInput(getFromLocation(), "fromLocation"));
 //			ReusableHelper.setAnyElement("toLocation",
