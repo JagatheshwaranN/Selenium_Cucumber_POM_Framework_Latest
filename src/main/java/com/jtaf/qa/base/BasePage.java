@@ -1,4 +1,4 @@
-package com.jtaf.qa.pages;
+package com.jtaf.qa.base;
 
 import java.util.List;
 
@@ -9,7 +9,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 
-import com.jtaf.qa.base.Page;
 import com.jtaf.qa.utilities.LoggerUtility;
 
 /**
@@ -47,7 +46,7 @@ public class BasePage extends Page {
 		}
 		return element;
 	}
-	
+
 	@Override
 	public WebElement getElement(String locator) {
 		WebElement element = null;
@@ -83,7 +82,7 @@ public class BasePage extends Page {
 			Assert.fail();
 		}
 	}
-	
+
 	@Override
 	public void waitForElementPresent(String locator) {
 		try {

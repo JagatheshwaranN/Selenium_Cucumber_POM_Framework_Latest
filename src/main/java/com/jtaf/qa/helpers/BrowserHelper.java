@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import com.jtaf.qa.pages.BasePage;
+import com.jtaf.qa.base.BasePage;
 import com.jtaf.qa.utilities.LoggerUtility;
 
 /**

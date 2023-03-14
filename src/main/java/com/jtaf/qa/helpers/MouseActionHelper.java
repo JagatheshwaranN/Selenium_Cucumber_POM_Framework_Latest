@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
-import com.jtaf.qa.pages.BasePage;
+import com.jtaf.qa.base.BasePage;
 import com.jtaf.qa.utilities.LoggerUtility;
 
 /**

@@ -6,7 +6,7 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
-import com.jtaf.qa.pages.BasePage;
+import com.jtaf.qa.base.BasePage;
 import com.jtaf.qa.utilities.LoggerUtility;
 
 /**

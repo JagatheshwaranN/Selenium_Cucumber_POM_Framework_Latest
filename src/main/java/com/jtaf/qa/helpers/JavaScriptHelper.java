@@ -9,7 +9,7 @@ import org.testng.Assert;
 
 import com.jtaf.qa.utilities.LoggerUtility;
 import com.jtaf.qa.base.WebPage;
-import com.jtaf.qa.pages.BasePage;
+import com.jtaf.qa.base.BasePage;
 
 /**
  * 

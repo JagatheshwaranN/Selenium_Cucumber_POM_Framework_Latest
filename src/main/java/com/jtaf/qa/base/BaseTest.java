@@ -13,7 +13,7 @@ import org.testng.Assert;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.jtaf.qa.pages.BasePage;
+
 import com.jtaf.qa.utilities.FileReaderUtility;
 import com.jtaf.qa.utilities.LoggerUtility;
 
@@ -53,7 +53,7 @@ public class BaseTest extends FileReaderUtility {
 		try {
 			if (System.getProperty("os.name").contains(getTestData("operating.system"))) {
 				if (browser.equalsIgnoreCase("Chrome")) {
-					//System.setProperty("webdriver.chrome.driver", getTestData("chrome.driver"));
+					// System.setProperty("webdriver.chrome.driver", getTestData("chrome.driver"));
 					log.info("======================== [ Launching " + browser
 							+ " Browser] ==============================");
 					options = new ChromeOptions();

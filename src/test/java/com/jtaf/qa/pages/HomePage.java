@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
+import com.jtaf.qa.base.BasePage;
 import com.jtaf.qa.helpers.AlertHelper;
 import com.jtaf.qa.helpers.BrowserHelper;
 import com.jtaf.qa.helpers.DropDownHelper;
