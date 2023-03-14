@@ -24,7 +24,7 @@ public abstract class Page {
 
 	public abstract String getPageTitle();
 
-	public abstract String getPageHeader(By locator);
+	public abstract String getPageHeader(WebElement element);
 
 	public abstract WebElement getElement(By locator);
 

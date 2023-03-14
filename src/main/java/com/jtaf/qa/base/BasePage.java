@@ -29,8 +29,9 @@ public class BasePage extends Page {
 	}
 
 	@Override
-	public String getPageHeader(By locator) {
-		return getElement(locator).getText();
+	public String getPageHeader(WebElement element) {
+		// return getElement(locator).getText();
+		return element.getText();
 
 	}
 

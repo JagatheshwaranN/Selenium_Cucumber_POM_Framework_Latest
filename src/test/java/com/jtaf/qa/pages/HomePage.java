@@ -4,6 +4,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.testng.Assert;
 
 import com.jtaf.qa.base.BasePage;
@@ -26,33 +28,51 @@ public class HomePage extends BasePage {
 
 	private static Logger log = LoggerUtility.getLog(HomePage.class);
 
-	private By homePageHeader = By.xpath("//h1[text()='Domestic and International Flights']");
-	private By oneWayTrip = By
-			.xpath("//div[contains(@class,'fltSwitchOpt')]//span[@id='oneway' and @class='curPointFlt switchAct']");
-	private By fromLocation = By.xpath("//input[@id='gosuggest_inputSrc']");
-	// private By fromLocationSuggestion = By.xpath(
-	// "//ul[@id='react-autosuggest-1']//li//div[@class='mainTxt
-	// clearfix']//span[text()='Chennai, India']");
+	@FindBy(how = How.CSS, using = ".logSprite.icClose")
+	public WebElement appLaunchPopupClose;
+	@FindBy(how = How.XPATH, using = "//h2[text()='Domestic and International Flights']")
+	public WebElement homePageHeader;
+	@FindBy(how = How.XPATH, using = "//span[contains(@class,'sc-eGRUor jFqzBD')]//..//span[@class='sc-ctqQKy jgGUHT']")
+	public WebElement oneWayTrip;
+	@FindBy(how = How.XPATH, using = "//span[contains(@class,'fswWidgetLabel') and text()='From']")
+	public WebElement fromLocationSection;
+	@FindBy(how = How.XPATH, using = "//div[@class='sc-iUKqMP kjxDYN']//input")
+	public WebElement fromLocation;
+	@FindBy(how = How.XPATH, using = "//ul[@id='autoSuggest-list']//li//div[@class='sc-jObWnj bRMwkb']//span[text()='@1@']")
+	public WebElement fromLocationSuggestion;
+	@FindBy(how = How.XPATH, using = "//span[contains(@class,'fswWidgetLabel') and text()='To']")
+	public WebElement toLocationSection;
+	@FindBy(how = How.XPATH, using = "//div[@class='sc-iUKqMP kjxDYN']//input")
+	public WebElement toLocation;
+	@FindBy(how = How.XPATH, using = "//ul[@id='autoSuggest-list']//li//div[@class='sc-jObWnj bRMwkb']//span[text()='@1@']")
+	public WebElement toLocationSuggestion;
+	@FindBy(how = How.XPATH, using = "//span[contains(@class,'fswWidgetLabel') and text()='Departure']")
+	public WebElement depatureSection;
+	@FindBy(how = How.XPATH, using = "//div[@class='DayPicker-Caption' and @role='heading']")
+	public WebElement monthTextInDatePicker;
+	@FindBy(how = How.XPATH, using = "//span[@role='button' and @class='DayPicker-NavButton DayPicker-NavButton--next']")
+	public WebElement monthNavigatorInDatePicker;
+	@FindBy(how = How.XPATH, using = "//div[@class='DayPicker-Week']/div[@class='DayPicker-Day']//p[text()='@1@']")
+	public WebElement dateInCalendar;
+	@FindBy(how = How.XPATH, using = "//span[@class='fswTrvl__done']")
+	public WebElement calendarDone;
+	@FindBy(how = How.XPATH, using = "//span[contains(@class,'fswWidgetLabel') and text()='Travellers & Class']")
+	public WebElement travelSelection;
+	@FindBy(how = How.XPATH, using = "(//div[@class='sc-fWCJzd eRvjBC']//span[@class='sc-dvQaRk ghZzRT'])[2]")
+	public WebElement travelSelectionPassenger;
+	@FindBy(how = How.XPATH, using = "//li[text()='premium economy']")
+	public WebElement travelSelectionClass;
+	@FindBy(how = How.XPATH, using = "//a[@class='sc-jQrDum gMuQGX']")
+	public WebElement travelSelectionDone;
+	@FindBy(how = How.XPATH, using = "//span[@class='sc-XxNYO hiLeUc']")
+	public WebElement searchFlights;
+
 	private By fromLocationSuggestion1 = By
-			.xpath("//ul[@id='react-autosuggest-1']//li//div[@class='mainTxt clearfix']//span[text()='@1@']");
-	private By toLocation = By.xpath("//input[@id='gosuggest_inputDest']");
-	// private By toLocationSuggestion = By.xpath(
-	// "//ul[@id='react-autosuggest-1']//li//div[@class='mainTxt
-	// clearfix']//span[text()='Bengaluru, India']");
+			.xpath("//ul[@id='autoSuggest-list']//li//div[@class='sc-jObWnj bRMwkb']//span[text()='@1@']");
 	private By toLocationSuggestion1 = By
-			.xpath("//ul[@id='react-autosuggest-1']//li//div[@class='mainTxt clearfix']//span[text()='@1@']");
-	private By depatureDate = By.xpath("//input[@id='departureCalendar']");
-	private By monthTextInDatePicker = By.xpath("//div[@class='DayPicker-Caption' and @role='heading']");
-	private By monthNavigatorInDatePicker = By
-			.xpath("//span[@role='button' and @class='DayPicker-NavButton DayPicker-NavButton--next']");
-	private By dateInCalendar = By
-			.xpath("//div[@class='DayPicker-Week']/div[@class='DayPicker-Day']/div[text()='@1@']");
-	private By travelSelection = By.xpath("//div[@id='pax_link_common']");
-	private By travelSelectionPassenger = By.xpath("//button[@id='adultPaxPlus']");
-	private By travelSelectionClass = By.xpath("//select[@class='custSelect width100 whiteBg padTB5 padLR10']");
-	private By travelclass = By.xpath(
-			"(//span[@class='dF alignItemsCenter ico14 textOverflow blueGrey trvlr-box']//span[@class='blueGrey textOverflow'])[2]");
-	private By searchButton = By.xpath("//button[contains(@class,'orange') and @value='Search']");
+			.xpath("//ul[@id='autoSuggest-list']//li//div[@class='sc-jObWnj bRMwkb']//span[text()='@1@']");
+	private By dateInCalendar1 = By
+			.xpath("//div[@class='DayPicker-Week']/div[@class='DayPicker-Day']//p[text()='@1@']");
 
 	AlertHelper alertHelper = new AlertHelper(getDriver());
 	BrowserHelper browserHelper = new BrowserHelper(getDriver());
@@ -75,61 +95,43 @@ public class HomePage extends BasePage {
 	}
 
 	public WebElement getOneWayTrip() {
-		return getElement(oneWayTrip);
+		return oneWayTrip;
 	}
 
 	public WebElement getFromLocation() {
-		return getElement(fromLocation);
+		return fromLocation;
 	}
-
-	/*
-	 * public WebElement getFromLocationSuggestion() { return
-	 * getElement(fromLocationSuggestion); }
-	 */
 
 	public WebElement getToLocation() {
-		return getElement(toLocation);
+		return toLocation;
 	}
 
-	/*
-	 * public WebElement getToLocationSuggestion() { return
-	 * getElement(toLocationSuggestion); }
-	 */
-
 	public WebElement getDepatureDate() {
-		return getElement(depatureDate);
+		return depatureSection;
 	}
 
 	public WebElement getMonthTextInDatePicker() {
-		return getElement(monthTextInDatePicker);
+		return monthTextInDatePicker;
 	}
 
 	public WebElement getMonthNavigatorInDatePicker() {
-		return getElement(monthNavigatorInDatePicker);
-	}
-
-	public By getDateInCalendar() {
-		return dateInCalendar;
+		return monthNavigatorInDatePicker;
 	}
 
 	public WebElement getTravelSelection() {
-		return getElement(travelSelection);
+		return travelSelection;
 	}
 
 	public WebElement getTravelSelectionPassenger() {
-		return getElement(travelSelectionPassenger);
+		return travelSelectionPassenger;
 	}
 
 	public WebElement getTravelSelectionClass() {
-		return getElement(travelSelectionClass);
+		return travelSelectionClass;
 	}
 
-	public WebElement getTravelClass() {
-		return getElement(travelclass);
-	}
-
-	public WebElement getSearchButton() {
-		return getElement(searchButton);
+	public WebElement getSearchFlights() {
+		return searchFlights;
 	}
 
 	public By getFromLocationSuggestion1() {
@@ -138,6 +140,10 @@ public class HomePage extends BasePage {
 
 	public By getToLocationSuggestion1() {
 		return toLocationSuggestion1;
+	}
+
+	public By getDateInCalendar1() {
+		return dateInCalendar1;
 	}
 
 	public void verifyHomePageTitle() {
@@ -168,8 +174,8 @@ public class HomePage extends BasePage {
 			ReusableHelper.setAnyElement("toLocation",
 					verificationHelper.readValueFromInput(getToLocation(), "toLocation"));
 			ReusableHelper.setAnyElement("travelClass",
-					verificationHelper.readTextValueFromElement(getTravelClass(), "travelClass"));
-			reusableHelper.elementClick(getSearchButton(), "searchButton");
+					verificationHelper.readTextValueFromElement(getTravelSelectionClass(), "travelClass"));
+			reusableHelper.elementClick(getSearchFlights(), "searchButton");
 		} catch (Exception ex) {
 			log.info("Error occured while enter travel details" + "\n" + ex);
 			Assert.fail();
@@ -187,7 +193,7 @@ public class HomePage extends BasePage {
 					getMonthNavigatorInDatePicker().click();
 				}
 			}
-			reusableHelper.elementClick(getDateInCalendar(), day, "dateInCalendar");
+			reusableHelper.elementClick(getDateInCalendar1(), day, "dateInCalendar");
 		} catch (Exception ex) {
 			log.info("Error occured while select date from calendar" + "\n" + ex);
 			Assert.fail();
