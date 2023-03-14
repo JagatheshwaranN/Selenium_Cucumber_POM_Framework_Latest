@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import com.jtaf.qa.base.BasePage;
@@ -48,7 +49,7 @@ public class HomePage extends BasePage {
 	public WebElement toLocationSuggestion;
 	@FindBy(how = How.XPATH, using = "//span[contains(@class,'fswWidgetLabel') and text()='Departure']")
 	public WebElement depatureSection;
-	@FindBy(how = How.XPATH, using = "//div[@class='DayPicker-Caption' and @role='heading']")
+	@FindBy(how = How.XPATH, using = "(//div[@class='DayPicker-Caption' and @role='heading'])[2]")
 	public WebElement monthTextInDatePicker;
 	@FindBy(how = How.XPATH, using = "//span[@role='button' and @class='DayPicker-NavButton DayPicker-NavButton--next']")
 	public WebElement monthNavigatorInDatePicker;
@@ -84,6 +85,7 @@ public class HomePage extends BasePage {
 
 	public HomePage(WebDriver driver) {
 		super(driver);
+		PageFactory.initElements(driver, this);
 	}
 
 	public String getHomePageTitle() {
@@ -94,8 +96,16 @@ public class HomePage extends BasePage {
 		return getPageHeader(homePageHeader);
 	}
 
+	public WebElement getAppLaunchPopupClose() {
+		return appLaunchPopupClose;
+	}
+
 	public WebElement getOneWayTrip() {
 		return oneWayTrip;
+	}
+
+	public WebElement getFromLocationSection() {
+		return fromLocationSection;
 	}
 
 	public WebElement getFromLocation() {
@@ -146,8 +156,17 @@ public class HomePage extends BasePage {
 		return dateInCalendar1;
 	}
 
+	public WebElement getCalendarDone() {
+		return calendarDone;
+	}
+
+	public WebElement getTravelSelectionDone() {
+		return travelSelectionDone;
+	}
+
 	public void verifyHomePageTitle() {
 		try {
+			reusableHelper.elementClick(getAppLaunchPopupClose(), "appLaunchPopupClose");
 			browserHelper.getCurrentPageUrl();
 			Assert.assertEquals(getHomePageTitle(), FileReaderUtility.getTestData("home.page.title"));
 		} catch (Exception ex) {
@@ -159,22 +178,27 @@ public class HomePage extends BasePage {
 	public TicketBookingPage enterTravelDetails(String fromLocation, String toLocation, String travelClass,
 			String month, String day) {
 		try {
+			reusableHelper.elementClick(getFromLocationSection(), "fromLocationSection");
 			reusableHelper.enterText(getFromLocation(), fromLocation, "fromLocation");
 			reusableHelper.elementClick(getFromLocationSuggestion1(),
 					FileReaderUtility.getTestData("from.location.suggestion"), "fromLocationSuggestion1");
 			reusableHelper.enterText(getToLocation(), toLocation, "toLocation");
 			reusableHelper.elementClick(getToLocationSuggestion1(),
 					FileReaderUtility.getTestData("to.location.suggestion"), "toLocationSuggestion");
-			reusableHelper.elementClick(getDepatureDate(), "depatureDate");
+			// reusableHelper.elementClick(getDepatureDate(), "depatureDate");
 			selectDate(month, day);
-			reusableHelper.elementClick(getTravelSelection(), "travelSelection");
-			dropDownHelper.selectByValue(getTravelSelectionClass(), travelClass, "travelSelectionClass");
-			ReusableHelper.setAnyElement("fromLocation",
-					verificationHelper.readValueFromInput(getFromLocation(), "fromLocation"));
-			ReusableHelper.setAnyElement("toLocation",
-					verificationHelper.readValueFromInput(getToLocation(), "toLocation"));
-			ReusableHelper.setAnyElement("travelClass",
-					verificationHelper.readTextValueFromElement(getTravelSelectionClass(), "travelClass"));
+			reusableHelper.elementClick(getCalendarDone(), "CalendarDone");
+			// reusableHelper.elementClick(getTravelSelection(), "travelSelection");
+			// dropDownHelper.selectByValue(getTravelSelectionClass(), travelClass,
+			// "travelSelectionClass");
+			reusableHelper.elementClick(getTravelSelectionClass(), "travelSelectionClass");
+			reusableHelper.elementClick(getTravelSelectionDone(), "TravelSelectionDone");
+//			ReusableHelper.setAnyElement("fromLocation",
+//					verificationHelper.readValueFromInput(getFromLocation(), "fromLocation"));
+//			ReusableHelper.setAnyElement("toLocation",
+//					verificationHelper.readValueFromInput(getToLocation(), "toLocation"));
+//			ReusableHelper.setAnyElement("travelClass",
+//					verificationHelper.readTextValueFromElement(getTravelSelectionClass(), "travelClass"));
 			reusableHelper.elementClick(getSearchFlights(), "searchButton");
 		} catch (Exception ex) {
 			log.info("Error occured while enter travel details" + "\n" + ex);

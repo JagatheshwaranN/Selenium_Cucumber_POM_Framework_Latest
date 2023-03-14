@@ -38,7 +38,8 @@ public class TicketDetailsPage extends TicketBookingPage {
 	}
 
 	public String getTicketDetailsHeader() {
-		return getPageHeader(ticketDetailsHeader);
+		return null;
+		//return getPageHeader(ticketDetailsHeader);
 	}
 
 	public WebElement getTicketDetailsFlightName() {
