@@ -1,5 +1,6 @@
 package com.jtaf.qa.test;
 
+import org.openqa.selenium.WindowType;
 import org.testng.Assert;
 
 import com.jtaf.qa.base.BaseTest;
@@ -34,6 +35,7 @@ public class MakeMyTripSiteTest {
 
 	public void bookTicket() {
 		TicketDetailsPage ticketDetailsPage = BaseTest.page.getInstance(TicketBookingPage.class).bookTicket();
+		System.out.println("DEBUGGING*******************************");
 		String ticketDetailsPageHeader = ticketDetailsPage.getTicketDetailsHeader();
 		Assert.assertEquals(ticketDetailsPageHeader, FileReaderUtility.getTestData("ticket.details.page.header"));
 	}

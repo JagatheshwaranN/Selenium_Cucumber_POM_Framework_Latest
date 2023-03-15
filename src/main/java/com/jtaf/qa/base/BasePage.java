@@ -30,7 +30,6 @@ public class BasePage extends Page {
 
 	@Override
 	public String getPageHeader(WebElement element) {
-		// return getElement(locator).getText();
 		return element.getText();
 
 	}

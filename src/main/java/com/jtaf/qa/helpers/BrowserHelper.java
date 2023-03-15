@@ -5,6 +5,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WindowType;
 import org.testng.Assert;
 
 import com.jtaf.qa.base.BasePage;
@@ -123,6 +124,16 @@ public class BrowserHelper extends BasePage {
 			Assert.fail();
 		}
 		return url;
+	}
+
+	public void switchToNewTab() {
+		try {
+			getDriver().switchTo().newWindow(WindowType.TAB);
+			log.info("The control switch to new tab");
+		} catch (Exception ex) {
+			log.info("Error occured while the control switch to new tab" + "\n" + ex);
+			Assert.fail();
+		}
 	}
 
 }

@@ -97,8 +97,7 @@ public class TicketBookingPage extends HomePage {
 				reusableHelper.elementClick(getviewPrices(), "viewPricesButton");
 				verificationHelper.verifyElementPresent(getBook(), "bookButton");
 				reusableHelper.elementClick(getBook(), "bookButton");
-				// Trail and Error
-				Thread.sleep(5000);
+				browserHelper.SwitchToWindow(1);
 			}
 		} catch (Exception ex) {
 			log.info("Error occured while book the ticket" + "\n" + ex);
