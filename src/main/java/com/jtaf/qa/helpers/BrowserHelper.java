@@ -125,15 +125,4 @@ public class BrowserHelper extends BasePage {
 		}
 		return url;
 	}
-
-	public void switchToNewTab() {
-		try {
-			getDriver().switchTo().newWindow(WindowType.TAB);
-			log.info("The control switch to new tab");
-		} catch (Exception ex) {
-			log.info("Error occured while the control switch to new tab" + "\n" + ex);
-			Assert.fail();
-		}
-	}
-
 }
