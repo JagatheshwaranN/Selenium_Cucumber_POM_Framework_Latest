@@ -13,7 +13,7 @@ import com.jtaf.qa.utilities.FileReaderUtility;
  * @author Jaga
  *
  */
-public class GoibiboSiteTest {
+public class MakeMyTripSiteTest {
 
 	public void homePageTitle() {
 		BaseTest.page.getInstance(HomePage.class).verifyHomePageTitle();

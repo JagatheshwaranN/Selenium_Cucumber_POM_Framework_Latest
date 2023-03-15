@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
  *
  */
 
-@CucumberOptions(features = "src/test/resources/features/", tags = "@entertraveldetails", glue = { "com/jtaf/qa/steps",
+@CucumberOptions(features = "src/test/resources/features/", tags = "@makeMyTrip", glue = { "com/jtaf/qa/steps",
 		"com/jtaf/qa/test", "com/jtaf/qa/pages", "com/jtaf/qa/base" }, plugin = { "pretty",
 				"json:target/cucumber/report/report.json",
 				"junit:target/cucumber/report/report.xml" }, publish = true, monochrome = true)

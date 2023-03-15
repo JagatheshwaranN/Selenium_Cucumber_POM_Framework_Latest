@@ -1,10 +1,10 @@
-@goibibo
-Feature: Goibibo Enter Ticket Details
+@makeMyTrip
+Feature: MakeMyTrip Flights Search
 
 	@entertraveldetails  @smoke @regression
-  Scenario Outline: Verify user is able to enter travel details
-    Given user is on Goibibo home page
-    Then user verify Goibibo home page title
+  Scenario Outline: Verify user is able to enter travel details and search for flights
+    Given user is on MakeMyTrip home page
+    Then user verify MakeMyTrip home page title
     When user enter travel details "<from>" "<to>" "<month>" "<day>" "<travelclass>" and enter search
     
 
