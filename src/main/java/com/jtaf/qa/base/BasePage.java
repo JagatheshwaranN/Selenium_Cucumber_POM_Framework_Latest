@@ -1,7 +1,5 @@
 package com.jtaf.qa.base;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -35,65 +33,6 @@ public class BasePage extends Page {
 	}
 
 	@Override
-	public WebElement getElement(By locator) {
-		WebElement element = null;
-		try {
-			//waitForElementPresent(locator);
-			element = getDriver().findElement(locator);
-		} catch (Exception ex) {
-			log.info("Error occured while construct of and element : " + locator.toString() + "\n" + ex);
-			Assert.fail();
-		}
-		return element;
-	}
-
-	@Override
-	public WebElement getElement(String locator) {
-		WebElement element = null;
-		try {
-			waitForElementPresent(locator);
-			element = getDriver().findElement(By.xpath(locator));
-		} catch (Exception ex) {
-			log.info("Error occured while construct of and element : " + locator.toString() + "\n" + ex);
-			Assert.fail();
-		}
-		return element;
-	}
-
-	@Override
-	public List<WebElement> getElements(By locator) {
-		List<WebElement> elements = null;
-		try {
-			// waitForElementPresent(locator);
-			elements = getDriver().findElements(locator);
-		} catch (Exception ex) {
-			log.info("Error occured while construct of and element : " + locator.toString() + "\n" + ex);
-			Assert.fail();
-		}
-		return elements;
-	}
-
-	@Override
-	public void waitForElementPresent(WebElement element) {
-//		try {
-//			wait.until(ExpectedConditions.visibilityOfAllElements(element));
-//		} catch (Exception ex) {
-//			log.info("Error occured while wait for an element : " + element.toString() + "\n" + ex);
-//			Assert.fail();
-//		}
-	}
-
-	@Override
-	public void waitForElementPresent(String locator) {
-		try {
-			wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator)));
-		} catch (Exception ex) {
-			log.info("Error occured while wait for an element : " + locator.toString() + "\n" + ex);
-			Assert.fail();
-		}
-	}
-
-	@Override
 	public void waitForElementVisible(WebElement element) {
 		try {
 			wait.until(ExpectedConditions.visibilityOf(element));
@@ -111,6 +50,30 @@ public class BasePage extends Page {
 			log.info("Error occured while wait for the page title : " + title + "\n" + ex);
 			Assert.fail();
 		}
+	}
+
+	@Override
+	public WebElement getElement(By locator) {
+		WebElement element = null;
+		try {
+			element = getDriver().findElement(locator);
+		} catch (Exception ex) {
+			log.info("Error occured while construct of and element : " + locator.toString() + "\n" + ex);
+			Assert.fail();
+		}
+		return element;
+	}
+
+	@Override
+	public WebElement getElement(String locator) {
+		WebElement element = null;
+		try {
+			element = getDriver().findElement(By.xpath(locator));
+		} catch (Exception ex) {
+			log.info("Error occured while construct of and element : " + locator.toString() + "\n" + ex);
+			Assert.fail();
+		}
+		return element;
 	}
 
 }

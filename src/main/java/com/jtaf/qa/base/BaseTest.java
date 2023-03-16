@@ -1,8 +1,6 @@
 package com.jtaf.qa.base;
 
 import java.io.IOException;
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
@@ -62,7 +60,7 @@ public class BaseTest extends FileReaderUtility {
 					options.addArguments("--remote-allow-origins=*");
 					setDriver(new ChromeDriver(options));
 					getDriver().manage().window().maximize();
-					//getDriver().manage().timeouts().scriptTimeout(Duration.ofSeconds(0));
+					// getDriver().manage().timeouts().scriptTimeout(Duration.ofSeconds(0));
 				} else if (browser.equalsIgnoreCase("Firefox")) {
 					System.setProperty("webdriver.gecko.driver", getTestData("firefox.driver"));
 					log.info("======================== [ Launching " + browser

@@ -26,19 +26,13 @@ public abstract class Page {
 
 	public abstract String getPageHeader(WebElement element);
 
-	public abstract WebElement getElement(By locator);
-
-	public abstract WebElement getElement(String locator);
-
-	public abstract List<WebElement> getElements(By locator);
-
-	public abstract void waitForElementPresent(WebElement element);
-
-	public abstract void waitForElementPresent(String locator);
-
 	public abstract void waitForElementVisible(WebElement element);
 
 	public abstract void waitForPageTitle(String title);
+
+	public abstract WebElement getElement(By locator);
+
+	public abstract WebElement getElement(String locator);
 
 	public <TPage extends BasePage> TPage getInstance(Class<TPage> pageClass) {
 		try {
