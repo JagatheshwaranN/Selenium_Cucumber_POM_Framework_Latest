@@ -8,12 +8,11 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import com.jtaf.qa.helpers.ReusableHelper;
+import com.jtaf.qa.pageObjects.TicketBookingPageElements;
 import com.jtaf.qa.utilities.FileReaderUtility;
 import com.jtaf.qa.utilities.LoggerUtility;
 
@@ -25,27 +24,12 @@ import com.jtaf.qa.utilities.LoggerUtility;
 public class TicketBookingPage extends HomePage {
 
 	private static Logger log = LoggerUtility.getLog(TicketBookingPage.class);
-
-	@FindBy(how = How.XPATH, using = "//button[contains(@class,'button buttonSecondry buttonBig')]")
-	public WebElement ticketBookPopupClose;
-
-	@FindBy(how = How.XPATH, using = "//p[contains(@class,'filtersHeading') and text()='One Way Price']")
-	public WebElement ticketBookingSection;
-
-	@FindBy(how = How.XPATH, using = "//div[contains(@class,'price_sorter')]//span[@class='pointer']")
-	public WebElement priceSort;
-	@FindBy(how = How.XPATH, using = "(//button[contains(@class,'ViewFareBtn')]//span[@class='appendRight8'])[1]")
-	public WebElement viewPrices;
-	@FindBy(how = How.XPATH, using = "(//div[@class='priceSection']//p)[1]")
-	public WebElement priceList;
-	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'viewFareBtnCol')]//button[contains(@id,'bookbutton')])[1]")
-	public WebElement book;
-	@FindBy(how = How.XPATH, using = "(//p[contains(@class,'airlineName')])[1]")
-	public WebElement flightName;
+	TicketBookingPageElements ticketBookingPageElements;
 
 	public TicketBookingPage(WebDriver driver) {
 		super(driver);
-		PageFactory.initElements(driver, this);
+		this.ticketBookingPageElements = new TicketBookingPageElements();
+		PageFactory.initElements(driver, this.ticketBookingPageElements);
 	}
 
 	public String getTicketBookingPageTitle() {
@@ -53,31 +37,31 @@ public class TicketBookingPage extends HomePage {
 	}
 
 	public WebElement getTicketBookPopupClose() {
-		return ticketBookPopupClose;
+		return ticketBookingPageElements.ticketBookPopupClose;
 	}
 
 	public WebElement getTicketBookingSection() {
-		return ticketBookingSection;
+		return ticketBookingPageElements.ticketBookingSection;
 	}
 
 	public WebElement getPriceSort() {
-		return priceSort;
+		return ticketBookingPageElements.priceSort;
 	}
 
 	public WebElement getPriceList() {
-		return priceList;
+		return ticketBookingPageElements.priceList;
 	}
 
 	public WebElement getviewPrices() {
-		return viewPrices;
+		return ticketBookingPageElements.viewPrices;
 	}
 
 	public WebElement getBook() {
-		return book;
+		return ticketBookingPageElements.book;
 	}
 
 	public WebElement getFlightName() {
-		return flightName;
+		return ticketBookingPageElements.flightName;
 	}
 
 	public void verifyTicketBookingTitle() {

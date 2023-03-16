@@ -3,12 +3,11 @@ package com.jtaf.qa.pages;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import com.jtaf.qa.helpers.ReusableHelper;
+import com.jtaf.qa.pageObjects.TicketDetailsPageElements;
 import com.jtaf.qa.utilities.FileReaderUtility;
 import com.jtaf.qa.utilities.LoggerUtility;
 
@@ -19,25 +18,12 @@ import com.jtaf.qa.utilities.LoggerUtility;
 public class TicketDetailsPage extends TicketBookingPage {
 
 	private static Logger log = LoggerUtility.getLog(TicketDetailsPage.class);
-
-	@FindBy(how = How.XPATH, using = "//h2[contains(@class,'headerTitle')]")
-	public WebElement ticketDetailsHeader;
-	@FindBy(how = How.XPATH, using = "//div[contains(@class,'flightItenaryHdr')]//p//span[1]")
-	public WebElement ticketDetailsFlightName;
-	@FindBy(how = How.XPATH, using = "//div[contains(@class,'flightItenaryHdr')]//div[@class='makeFlex']//span[1]")
-	public WebElement ticketDetailsTravelClass;
-	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'itenaryLeft')]//div[contains(@class,'makeFlex')]//div//span)[3]")
-	public WebElement ticketDetailsFromPlace;
-	@FindBy(how = How.XPATH, using = "(//div[contains(@class,'itenaryLeft')]//div[contains(@class,'makeFlex')]//div//span)[7]")
-	public WebElement ticketDetailsToPlace;
-	@FindBy(how = How.ID, using = "FARE_SUMMARY")
-	public WebElement ticketFareSummary;
-	@FindBy(how = How.XPATH, using = "//p[@class='fareRow']//span[2]")
-	public WebElement ticketTotalAmount;
+	TicketDetailsPageElements ticketDetailsPageElements;
 
 	public TicketDetailsPage(WebDriver driver) {
 		super(driver);
-		PageFactory.initElements(driver, this);
+		this.ticketDetailsPageElements = new TicketDetailsPageElements();
+		PageFactory.initElements(driver, this.ticketDetailsPageElements);
 	}
 
 	public String getTicketDetailsPageTitle() {
@@ -45,37 +31,32 @@ public class TicketDetailsPage extends TicketBookingPage {
 	}
 
 	public String getTicketDetailsHeader() {
-		try {
-			Thread.sleep(5000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return getPageHeader(ticketDetailsHeader);
+		reusableHelper.waitForElementVisible(ticketDetailsPageElements.ticketDetailsHeader);
+		return getPageHeader(ticketDetailsPageElements.ticketDetailsHeader);
 	}
 
 	public WebElement getTicketDetailsFlightName() {
-		return ticketDetailsFlightName;
+		return ticketDetailsPageElements.ticketDetailsFlightName;
 	}
 
 	public WebElement getTicketDetailsTravelClass() {
-		return ticketDetailsTravelClass;
+		return ticketDetailsPageElements.ticketDetailsTravelClass;
 	}
 
 	public WebElement getTicketDetailsFromPlace() {
-		return ticketDetailsFromPlace;
+		return ticketDetailsPageElements.ticketDetailsFromPlace;
 	}
 
 	public WebElement getTicketDetailsToPlace() {
-		return ticketDetailsToPlace;
+		return ticketDetailsPageElements.ticketDetailsToPlace;
 	}
 
 	public WebElement getTicketFareSummary() {
-		return ticketFareSummary;
+		return ticketDetailsPageElements.ticketFareSummary;
 	}
 
 	public WebElement getTicketTotalAmount() {
-		return ticketTotalAmount;
+		return ticketDetailsPageElements.ticketTotalAmount;
 	}
 
 	public void verifyTicketDetailsHeader() {
