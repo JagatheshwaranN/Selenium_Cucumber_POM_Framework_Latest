@@ -122,10 +122,11 @@ public class ReusableHelper extends BasePage implements WebPage {
 			String valueToType = new StringBuilder().append(ch).toString();
 			element.sendKeys(valueToType);
 			try {
-				Thread.sleep(500);
+				Thread.sleep(800);
 			} catch (InterruptedException ex) {
 				ex.printStackTrace();
 			}
 		}
 	}
+
 }

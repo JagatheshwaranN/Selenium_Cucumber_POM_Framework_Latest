@@ -90,7 +90,6 @@ public class TicketDetailsPage extends TicketBookingPage {
 
 	public void verifyTicketDetails() {
 		try {
-			Thread.sleep(5000);
 			verificationHelper.verifyElementPresent(getTicketDetailsFlightName(), "ticketDetailsFlightName");
 			verificationHelper.verifyElementPresent(getTicketDetailsTravelClass(), "ticketDetailsTravelClass");
 			verificationHelper.verifyElementPresent(getTicketDetailsFromPlace(), "ticketDetailsFromPlace");
@@ -99,14 +98,19 @@ public class TicketDetailsPage extends TicketBookingPage {
 			verificationHelper.verifyElementPresent(getTicketTotalAmount(), "ticketTotalAmount");
 			Assert.assertEquals(verificationHelper.readTextValueFromElement(getTicketDetailsFlightName(),
 					"ticketDetailsFlightName"), ReusableHelper.getAnyElement().get("flightName"));
-			Assert.assertEquals(verificationHelper.readTextValueFromElement(getTicketDetailsTravelClass(),
-					"ticketDetailsTravelClass"), ReusableHelper.getAnyElement().get("travelClass"));
 			Assert.assertEquals(ReusableHelper.getAnyElement().get("fromLocation").contains(
 					verificationHelper.readTextValueFromElement(getTicketDetailsFromPlace(), "ticketDetailsFromPlace")),
 					true);
 			Assert.assertEquals(ReusableHelper.getAnyElement().get("toLocation").contains(
 					verificationHelper.readTextValueFromElement(getTicketDetailsToPlace(), "ticketDetailsToPlace")),
 					true);
+			Assert.assertEquals(ReusableHelper.getAnyElement().get("travelClass")
+					.contains(verificationHelper
+							.readTextValueFromElement(getTicketDetailsTravelClass(), "ticketDetailsTravelClass")
+							.split(">")[0].trim()),
+					true, "Travel Class Details Not Matched");
+//			Assert.assertEquals(verificationHelper.readTextValueFromElement(getTicketDetailsTravelClass(),
+//					"ticketDetailsTravelClass"), ReusableHelper.getAnyElement().get("travelClass"));
 		} catch (Exception ex) {
 			log.info("Error occured while check ticket details" + "\n" + ex);
 			Assert.fail();

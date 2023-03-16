@@ -28,6 +28,10 @@ public class TicketBookingPage extends HomePage {
 
 	@FindBy(how = How.XPATH, using = "//button[contains(@class,'button buttonSecondry buttonBig')]")
 	public WebElement ticketBookPopupClose;
+
+	@FindBy(how = How.XPATH, using = "//p[contains(@class,'filtersHeading') and text()='One Way Price']")
+	public WebElement ticketBookingSection;
+
 	@FindBy(how = How.XPATH, using = "//div[contains(@class,'price_sorter')]//span[@class='pointer']")
 	public WebElement priceSort;
 	@FindBy(how = How.XPATH, using = "(//button[contains(@class,'ViewFareBtn')]//span[@class='appendRight8'])[1]")
@@ -52,6 +56,10 @@ public class TicketBookingPage extends HomePage {
 		return ticketBookPopupClose;
 	}
 
+	public WebElement getTicketBookingSection() {
+		return ticketBookingSection;
+	}
+
 	public WebElement getPriceSort() {
 		return priceSort;
 	}
@@ -74,7 +82,7 @@ public class TicketBookingPage extends HomePage {
 
 	public void verifyTicketBookingTitle() {
 		try {
-			Thread.sleep(10000);
+			waitForElementVisible(getTicketBookPopupClose());
 			reusableHelper.elementClick(getTicketBookPopupClose(), "ticketBookPopupClose");
 			browserHelper.getCurrentPageUrl();
 			Assert.assertEquals(getTicketBookingPageTitle(),
@@ -89,6 +97,7 @@ public class TicketBookingPage extends HomePage {
 		int price = 0;
 		int lowestPrice = 0;
 		try {
+			javaScriptHelper.scrollToElement(getTicketBookingSection());
 			verificationHelper.verifyElementPresent(getPriceList(), "priceList");
 			price = Integer.parseInt(getPriceList().getText().toString().substring(1).replaceAll(",", "").trim());
 			lowestPrice = getLowestPrice();

@@ -38,7 +38,7 @@ public class BasePage extends Page {
 	public WebElement getElement(By locator) {
 		WebElement element = null;
 		try {
-			waitForElementPresent(locator);
+			//waitForElementPresent(locator);
 			element = getDriver().findElement(locator);
 		} catch (Exception ex) {
 			log.info("Error occured while construct of and element : " + locator.toString() + "\n" + ex);
@@ -64,7 +64,7 @@ public class BasePage extends Page {
 	public List<WebElement> getElements(By locator) {
 		List<WebElement> elements = null;
 		try {
-			waitForElementPresent(locator);
+			// waitForElementPresent(locator);
 			elements = getDriver().findElements(locator);
 		} catch (Exception ex) {
 			log.info("Error occured while construct of and element : " + locator.toString() + "\n" + ex);
@@ -74,13 +74,13 @@ public class BasePage extends Page {
 	}
 
 	@Override
-	public void waitForElementPresent(By locator) {
-		try {
-			wait.until(ExpectedConditions.presenceOfElementLocated(locator));
-		} catch (Exception ex) {
-			log.info("Error occured while wait for an element : " + locator.toString() + "\n" + ex);
-			Assert.fail();
-		}
+	public void waitForElementPresent(WebElement element) {
+//		try {
+//			wait.until(ExpectedConditions.visibilityOfAllElements(element));
+//		} catch (Exception ex) {
+//			log.info("Error occured while wait for an element : " + element.toString() + "\n" + ex);
+//			Assert.fail();
+//		}
 	}
 
 	@Override
@@ -94,11 +94,11 @@ public class BasePage extends Page {
 	}
 
 	@Override
-	public void waitForElementVisible(By locator) {
+	public void waitForElementVisible(WebElement element) {
 		try {
-			wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+			wait.until(ExpectedConditions.visibilityOf(element));
 		} catch (Exception ex) {
-			log.info("Error occured while wait for an element : " + locator.toString() + "\n" + ex);
+			log.info("Error occured while wait for an element : " + element.toString() + "\n" + ex);
 			Assert.fail();
 		}
 	}

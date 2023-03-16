@@ -19,7 +19,7 @@ public abstract class Page {
 
 	public Page(WebDriver driver) {
 		this.setDriver(driver);
-		this.wait = new WebDriverWait(this.getDriver(), Duration.ofSeconds(30));
+		this.wait = new WebDriverWait(this.getDriver(), Duration.ofSeconds(15));
 	}
 
 	public abstract String getPageTitle();
@@ -32,11 +32,11 @@ public abstract class Page {
 
 	public abstract List<WebElement> getElements(By locator);
 
-	public abstract void waitForElementPresent(By locator);
+	public abstract void waitForElementPresent(WebElement element);
 
 	public abstract void waitForElementPresent(String locator);
 
-	public abstract void waitForElementVisible(By locator);
+	public abstract void waitForElementVisible(WebElement element);
 
 	public abstract void waitForPageTitle(String title);
 

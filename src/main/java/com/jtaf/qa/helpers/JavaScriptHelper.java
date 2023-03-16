@@ -91,7 +91,7 @@ public class JavaScriptHelper extends BasePage implements WebPage {
 			Assert.fail();
 		}
 		executor = (JavascriptExecutor) getDriver();
-		return executor.executeAsyncScript(script);
+		return executor.executeScript(script);
 
 	}
 
@@ -103,7 +103,7 @@ public class JavaScriptHelper extends BasePage implements WebPage {
 			Assert.fail();
 		}
 		executor = (JavascriptExecutor) getDriver();
-		return executor.executeAsyncScript(script, arguments);
+		return executor.executeScript(script, arguments);
 	}
 
 	public void scrollToElement(WebElement element) {

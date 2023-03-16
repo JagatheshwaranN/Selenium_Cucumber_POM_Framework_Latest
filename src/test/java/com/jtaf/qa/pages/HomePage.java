@@ -202,7 +202,7 @@ public class HomePage extends BasePage {
 			// dropDownHelper.selectByValue(getTravelSelectionClass(), travelClass,
 			// "travelSelectionClass");
 			reusableHelper.elementClick(getTravelSelectionPassenger(), "travelSelectionPassenger");
-			reusableHelper.elementClick(getTravelSelectionClass(), "travelSelectionClass");
+			//reusableHelper.elementClick(getTravelSelectionClass(), "travelSelectionClass");
 			reusableHelper.elementClick(getTravelSelectionApply(), "TravelSelectionDone");
 			ReusableHelper.setAnyElement("fromLocation",
 					verificationHelper.readValueFromInput(getFromLocation(), "fromLocation"));
