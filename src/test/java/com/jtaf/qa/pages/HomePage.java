@@ -15,7 +15,7 @@ import com.jtaf.qa.helpers.JavaScriptHelper;
 import com.jtaf.qa.helpers.MouseActionHelper;
 import com.jtaf.qa.helpers.ReusableHelper;
 import com.jtaf.qa.helpers.VerificationHelper;
-import com.jtaf.qa.pageObjects.HomePageElements;
+import com.jtaf.qa.objects.HomePageElements;
 import com.jtaf.qa.utilities.FileReaderUtility;
 import com.jtaf.qa.utilities.LoggerUtility;
 

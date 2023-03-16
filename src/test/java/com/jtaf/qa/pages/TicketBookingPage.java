@@ -12,7 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
 import com.jtaf.qa.helpers.ReusableHelper;
-import com.jtaf.qa.pageObjects.TicketBookingPageElements;
+import com.jtaf.qa.objects.TicketBookingPageElements;
 import com.jtaf.qa.utilities.FileReaderUtility;
 import com.jtaf.qa.utilities.LoggerUtility;
 

@@ -1,4 +1,4 @@
-package com.jtaf.qa.pageObjects;
+package com.jtaf.qa.objects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
