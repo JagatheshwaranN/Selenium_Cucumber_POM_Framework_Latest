@@ -74,6 +74,7 @@ public class TicketBookingPage extends HomePage {
 
 	public void verifyTicketBookingTitle() {
 		try {
+			Thread.sleep(10000);
 			reusableHelper.elementClick(getTicketBookPopupClose(), "ticketBookPopupClose");
 			browserHelper.getCurrentPageUrl();
 			Assert.assertEquals(getTicketBookingPageTitle(),

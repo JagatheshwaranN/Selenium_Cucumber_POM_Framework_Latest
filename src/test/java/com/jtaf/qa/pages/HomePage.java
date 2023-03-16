@@ -37,13 +37,13 @@ public class HomePage extends BasePage {
 	public WebElement oneWayTrip;
 	@FindBy(how = How.XPATH, using = "//label[@for='fromCity']")
 	public WebElement fromLocationSection;
-	@FindBy(how = How.XPATH, using = "//input[@placeholder='From']")
+	@FindBy(how = How.XPATH, using = "//input[@id='fromCity']")
 	public WebElement fromLocation;
 	@FindBy(how = How.XPATH, using = "//ul[@role='listbox']//li[@role='option']//p[text()='@1@']")
 	public WebElement fromLocationSuggestion;
 	@FindBy(how = How.XPATH, using = "//label[@for='toCity']")
 	public WebElement toLocationSection;
-	@FindBy(how = How.XPATH, using = "//input[@placeholder='To']")
+	@FindBy(how = How.XPATH, using = "//input[@id='toCity']")
 	public WebElement toLocation;
 	@FindBy(how = How.XPATH, using = "//ul[@role='listbox']//li[@role='option']//p[text()='@1@']")
 	public WebElement toLocationSuggestion;
@@ -63,15 +63,15 @@ public class HomePage extends BasePage {
 	public WebElement travelSelectionPassenger;
 	@FindBy(how = How.XPATH, using = "//ul[contains(@class,'guestCounter')]//li[@data-cy='travelClass-1']")
 	public WebElement travelSelectionClass;
+	@FindBy(how = How.XPATH, using = "//label[@for='travellers']//p[2]")
+	public WebElement travelClassDisplay;
 	@FindBy(how = How.XPATH, using = "//button[contains(@class,'primaryBtn btnApply pushRight')]")
 	public WebElement travelSelectionApply;
 	@FindBy(how = How.XPATH, using = "//a[contains(@class,'primaryBtn font24 latoBold widgetSearchBtn')]")
 	public WebElement searchFlights;
 
-	private By fromLocationSuggestion1 = By
-			.xpath("//ul[@role='listbox']//li[@role='option']//p[text()='@1@']");
-	private By toLocationSuggestion1 = By
-			.xpath("//ul[@role='listbox']//li[@role='option']//p[text()='@1@']");
+	private By fromLocationSuggestion1 = By.xpath("//ul[@role='listbox']//li[@role='option']//p[text()='@1@']");
+	private By toLocationSuggestion1 = By.xpath("//ul[@role='listbox']//li[@role='option']//p[text()='@1@']");
 	private By dateInCalendar1 = By
 			.xpath("//div[@class='DayPicker-Week']/div[@class='DayPicker-Day']//p[text()='@1@']");
 
@@ -144,6 +144,10 @@ public class HomePage extends BasePage {
 		return travelSelectionClass;
 	}
 
+	public WebElement getTravelClassDisplay() {
+		return travelClassDisplay;
+	}
+
 	public WebElement getSearchFlights() {
 		return searchFlights;
 	}
@@ -200,12 +204,12 @@ public class HomePage extends BasePage {
 			reusableHelper.elementClick(getTravelSelectionPassenger(), "travelSelectionPassenger");
 			reusableHelper.elementClick(getTravelSelectionClass(), "travelSelectionClass");
 			reusableHelper.elementClick(getTravelSelectionApply(), "TravelSelectionDone");
-//			ReusableHelper.setAnyElement("fromLocation",
-//					verificationHelper.readValueFromInput(getFromLocation(), "fromLocation"));
-//			ReusableHelper.setAnyElement("toLocation",
-//					verificationHelper.readValueFromInput(getToLocation(), "toLocation"));
-//			ReusableHelper.setAnyElement("travelClass",
-//					verificationHelper.readTextValueFromElement(getTravelSelectionClass(), "travelClass"));
+			ReusableHelper.setAnyElement("fromLocation",
+					verificationHelper.readValueFromInput(getFromLocation(), "fromLocation"));
+			ReusableHelper.setAnyElement("toLocation",
+					verificationHelper.readValueFromInput(getToLocation(), "toLocation"));
+			ReusableHelper.setAnyElement("travelClass",
+					verificationHelper.readTextValueFromElement(getTravelSelection(), "travelClass"));
 			reusableHelper.elementClick(getSearchFlights(), "searchButton");
 		} catch (Exception ex) {
 			log.info("Error occured while enter travel details" + "\n" + ex);

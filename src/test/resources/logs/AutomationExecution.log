@@ -1,0 +1,123 @@
+16-03-2023 16:03:532 INFO  BaseTest :44 - ======================== [ Property file is loaded Successfully ] =========================
+16-03-2023 16:03:555 INFO  BaseTest :57 - ======================== [ Launching Chrome Browser] ==============================
+16-03-2023 16:03:519 INFO  BaseTest :74 - The browser is launched successfully
+16-03-2023 16:03:389 INFO  BaseTest :123 - The Goibibo site is launched succesfully
+16-03-2023 16:03:735 INFO  ReusableHelper :65 - The element appLaunchPopupClose is clicked
+16-03-2023 16:03:833 INFO  BrowserHelper :121 - The browser current page url : https://www.makemytrip.com/
+16-03-2023 16:03:230 INFO  ReusableHelper :65 - The element fromLocationSection is clicked
+16-03-2023 16:03:301 INFO  ReusableHelper :98 - The text CJB is entered into an fromLocation element
+16-03-2023 16:03:303 INFO  ReusableHelper :84 - The updated locator string with the value : //ul[@role='listbox']//li[@role='option']//p[text()='Coimbatore, India']
+16-03-2023 16:03:68 INFO  ReusableHelper :65 - The element toLocationSection is clicked
+16-03-2023 16:03:958 INFO  ReusableHelper :98 - The text BLR is entered into an toLocation element
+16-03-2023 16:03:959 INFO  ReusableHelper :84 - The updated locator string with the value : //ul[@role='listbox']//li[@role='option']//p[text()='Bengaluru, India']
+16-03-2023 16:03:932 INFO  ReusableHelper :84 - The updated locator string with the value : //div[@class='DayPicker-Week']/div[@class='DayPicker-Day']//p[text()='12']
+16-03-2023 16:03:485 INFO  ReusableHelper :65 - The element travelSelection is clicked
+16-03-2023 16:03:663 INFO  ReusableHelper :65 - The element travelSelectionPassenger is clicked
+16-03-2023 16:03:830 INFO  ReusableHelper :65 - The element travelSelectionClass is clicked
+16-03-2023 16:03:15 INFO  ReusableHelper :65 - The element TravelSelectionDone is clicked
+16-03-2023 16:03:64 INFO  VerificationHelper :85 - Error occured while check for display of an fromLocation element
+org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='From']"}
+  (Session info: chrome=111.0.5563.65)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.8.1', revision: '8ebccac989'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [be156c77eb2fabc0b90b059fa016fcb4, findElement {using=xpath, value=//input[@placeholder='From']}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 111.0.5563.65, chrome: {chromedriverVersion: 111.0.5563.64 (c710e93d5b63..., userDataDir: C:\Users\JAGATH~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:9747}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:9747/devtool..., se:cdpVersion: 111.0.5563.65, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: be156c77eb2fabc0b90b059fa016fcb4
+16-03-2023 16:03:117 INFO  BaseTest :91 - FAILED ***** : Verify user is able to enter travel details, search filghts, book and view ticket details
+16-03-2023 16:03:198 INFO  ExtentListener :111 - The test failure screenshot is captured to attach in extent and testNG report
+16-03-2023 16:03:324 INFO  BaseTest :44 - ======================== [ Property file is loaded Successfully ] =========================
+16-03-2023 16:03:329 INFO  BaseTest :57 - ======================== [ Launching Chrome Browser] ==============================
+16-03-2023 16:03:859 INFO  BaseTest :74 - The browser is launched successfully
+16-03-2023 16:03:921 INFO  BaseTest :123 - The Goibibo site is launched succesfully
+16-03-2023 16:03:290 INFO  ReusableHelper :65 - The element appLaunchPopupClose is clicked
+16-03-2023 16:03:307 INFO  BrowserHelper :121 - The browser current page url : https://www.makemytrip.com/
+16-03-2023 16:03:647 INFO  ReusableHelper :65 - The element fromLocationSection is clicked
+16-03-2023 16:03:847 INFO  ReusableHelper :98 - The text MAA is entered into an fromLocation element
+16-03-2023 16:03:851 INFO  ReusableHelper :84 - The updated locator string with the value : //ul[@role='listbox']//li[@role='option']//p[text()='Chennai, India']
+16-03-2023 16:03:587 INFO  ReusableHelper :65 - The element toLocationSection is clicked
+16-03-2023 16:03:975 INFO  ReusableHelper :98 - The text BLR is entered into an toLocation element
+16-03-2023 16:03:978 INFO  ReusableHelper :84 - The updated locator string with the value : //ul[@role='listbox']//li[@role='option']//p[text()='Bengaluru, India']
+16-03-2023 16:03:556 INFO  ReusableHelper :84 - The updated locator string with the value : //div[@class='DayPicker-Week']/div[@class='DayPicker-Day']//p[text()='12']
+16-03-2023 16:03:180 INFO  ReusableHelper :65 - The element travelSelection is clicked
+16-03-2023 16:03:442 INFO  ReusableHelper :65 - The element travelSelectionPassenger is clicked
+16-03-2023 16:03:675 INFO  ReusableHelper :65 - The element travelSelectionClass is clicked
+16-03-2023 16:03:911 INFO  ReusableHelper :65 - The element TravelSelectionDone is clicked
+16-03-2023 16:03:01 INFO  VerificationHelper :83 - The element fromLocation is displayed on the page
+16-03-2023 16:03:93 INFO  VerificationHelper :70 - The element fromLocation text is : Chennai
+16-03-2023 16:03:94 INFO  ReusableHelper :42 - The stored object : {fromLocation=Chennai}
+16-03-2023 16:03:153 INFO  VerificationHelper :83 - The element toLocation is displayed on the page
+16-03-2023 16:03:216 INFO  VerificationHelper :70 - The element toLocation text is : Bengaluru
+16-03-2023 16:03:218 INFO  ReusableHelper :42 - The stored object : {fromLocation=Chennai, toLocation=Bengaluru}
+16-03-2023 16:03:273 INFO  VerificationHelper :83 - The element travelClass is displayed on the page
+16-03-2023 16:03:324 INFO  VerificationHelper :56 - The element travelClass text is : TRAVELLERS & CLASS
+2 Travellers
+Premium Economy
+16-03-2023 16:03:325 INFO  ReusableHelper :42 - The stored object : {fromLocation=Chennai, toLocation=Bengaluru, travelClass=TRAVELLERS & CLASS
+2 Travellers
+Premium Economy}
+16-03-2023 16:03:593 INFO  ReusableHelper :65 - The element searchButton is clicked
+16-03-2023 16:03:712 INFO  ReusableHelper :68 - Error occured while click on an ticketBookPopupClose element
+org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"//button[contains(@class,'button buttonSecondry buttonBig')]"}
+  (Session info: chrome=111.0.5563.65)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.8.1', revision: '8ebccac989'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [c1ed55109807de8490c4e4a108e2e89c, findElement {using=xpath, value=//button[contains(@class,'button buttonSecondry buttonBig')]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 111.0.5563.65, chrome: {chromedriverVersion: 111.0.5563.64 (c710e93d5b63..., userDataDir: C:\Users\JAGATH~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:10295}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:10295/devtoo..., se:cdpVersion: 111.0.5563.65, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: c1ed55109807de8490c4e4a108e2e89c
+16-03-2023 16:03:844 INFO  BaseTest :91 - FAILED ***** : Verify user is able to enter travel details, search filghts, book and view ticket details
+16-03-2023 16:03:853 INFO  ExtentListener :111 - The test failure screenshot is captured to attach in extent and testNG report
+16-03-2023 16:03:212 INFO  BaseTest :44 - ======================== [ Property file is loaded Successfully ] =========================
+16-03-2023 16:03:216 INFO  BaseTest :57 - ======================== [ Launching Chrome Browser] ==============================
+16-03-2023 16:03:938 INFO  BaseTest :74 - The browser is launched successfully
+16-03-2023 16:03:207 INFO  BaseTest :123 - The Goibibo site is launched succesfully
+16-03-2023 16:03:698 INFO  ReusableHelper :65 - The element appLaunchPopupClose is clicked
+16-03-2023 16:03:708 INFO  BrowserHelper :121 - The browser current page url : https://www.makemytrip.com/
+16-03-2023 16:03:77 INFO  ReusableHelper :65 - The element fromLocationSection is clicked
+16-03-2023 16:03:115 INFO  ReusableHelper :98 - The text MAA is entered into an fromLocation element
+16-03-2023 16:03:119 INFO  ReusableHelper :84 - The updated locator string with the value : //ul[@role='listbox']//li[@role='option']//p[text()='Chennai, India']
+16-03-2023 16:03:944 INFO  ReusableHelper :65 - The element toLocationSection is clicked
+16-03-2023 16:03:317 INFO  ReusableHelper :98 - The text BLR is entered into an toLocation element
+16-03-2023 16:03:319 INFO  ReusableHelper :84 - The updated locator string with the value : //ul[@role='listbox']//li[@role='option']//p[text()='Bengaluru, India']
+16-03-2023 16:03:651 INFO  ReusableHelper :84 - The updated locator string with the value : //div[@class='DayPicker-Week']/div[@class='DayPicker-Day']//p[text()='12']
+16-03-2023 16:03:325 INFO  ReusableHelper :65 - The element travelSelection is clicked
+16-03-2023 16:03:510 INFO  ReusableHelper :65 - The element travelSelectionPassenger is clicked
+16-03-2023 16:03:677 INFO  ReusableHelper :65 - The element travelSelectionClass is clicked
+16-03-2023 16:03:841 INFO  ReusableHelper :65 - The element TravelSelectionDone is clicked
+16-03-2023 16:03:923 INFO  VerificationHelper :83 - The element fromLocation is displayed on the page
+16-03-2023 16:03:04 INFO  VerificationHelper :70 - The element fromLocation text is : Chennai
+16-03-2023 16:03:04 INFO  ReusableHelper :42 - The stored object : {fromLocation=Chennai}
+16-03-2023 16:03:69 INFO  VerificationHelper :83 - The element toLocation is displayed on the page
+16-03-2023 16:03:126 INFO  VerificationHelper :70 - The element toLocation text is : Bengaluru
+16-03-2023 16:03:127 INFO  ReusableHelper :42 - The stored object : {fromLocation=Chennai, toLocation=Bengaluru}
+16-03-2023 16:03:178 INFO  VerificationHelper :83 - The element travelClass is displayed on the page
+16-03-2023 16:03:242 INFO  VerificationHelper :56 - The element travelClass text is : TRAVELLERS & CLASS
+2 Travellers
+Premium Economy
+16-03-2023 16:03:243 INFO  ReusableHelper :42 - The stored object : {fromLocation=Chennai, toLocation=Bengaluru, travelClass=TRAVELLERS & CLASS
+2 Travellers
+Premium Economy}
+16-03-2023 16:03:160 INFO  ReusableHelper :65 - The element searchButton is clicked
+16-03-2023 16:03:562 INFO  ReusableHelper :65 - The element ticketBookPopupClose is clicked
+16-03-2023 16:03:587 INFO  BrowserHelper :121 - The browser current page url : https://www.makemytrip.com/flight/search?itinerary=MAA-BLR-12/04/2023&tripType=O&paxType=A-2_C-0_I-0&intl=false&cabinClass=PE&ccde=IN&lang=eng
+16-03-2023 16:03:686 INFO  VerificationHelper :23 - The element priceList is present on the page
+16-03-2023 16:03:982 INFO  VerificationHelper :83 - The element flightName is displayed on the page
+16-03-2023 16:03:21 INFO  VerificationHelper :56 - The element flightName text is : Vistara
+16-03-2023 16:03:22 INFO  ReusableHelper :42 - The stored object : {flightName=Vistara, fromLocation=Chennai, toLocation=Bengaluru, travelClass=TRAVELLERS & CLASS
+2 Travellers
+Premium Economy}
+16-03-2023 16:03:61 INFO  ReusableHelper :68 - Error occured while click on an viewPricesButton element
+org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"xpath","selector":"(//button[contains(@class,'ViewFareBtn')]//span[@class='appendRight8'])[1]"}
+  (Session info: chrome=111.0.5563.65)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.8.1', revision: '8ebccac989'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '17.0.3.1'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [2353425b0849f73b3c620ff5b7f75606, findElement {using=xpath, value=(//button[contains(@class,'ViewFareBtn')]//span[@class='appendRight8'])[1]}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 111.0.5563.65, chrome: {chromedriverVersion: 111.0.5563.64 (c710e93d5b63..., userDataDir: C:\Users\JAGATH~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:10530}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:10530/devtoo..., se:cdpVersion: 111.0.5563.65, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: 2353425b0849f73b3c620ff5b7f75606
+16-03-2023 16:03:83 INFO  BaseTest :91 - FAILED ***** : Verify user is able to enter travel details, search filghts, book and view ticket details
+16-03-2023 16:03:719 INFO  ExtentListener :111 - The test failure screenshot is captured to attach in extent and testNG report
