@@ -33,22 +33,23 @@ public class HomePageElements {
 	public WebElement monthNavigatorInDatePicker;
 	@FindBy(how = How.XPATH, using = "//div[@class='DayPicker-Week']/div[@class='DayPicker-Day']//p[text()='@1@']")
 	public WebElement dateInCalendar;
-//	@FindBy(how = How.XPATH, using = "//span[@class='fswTrvl__done']")
-//	public WebElement calendarDone;
 	@FindBy(how = How.XPATH, using = "//label[@for='travellers']")
 	public WebElement travelSelection;
 	@FindBy(how = How.XPATH, using = "//ul[contains(@class,'guestCounter')]//li[@data-cy='adults-2']")
 	public WebElement travelSelectionPassenger;
 	@FindBy(how = How.XPATH, using = "//ul[contains(@class,'guestCounter')]//li[@data-cy='travelClass-1']")
 	public WebElement travelSelectionClass;
-	@FindBy(how = How.XPATH, using = "//label[@for='travellers']//p[2]")
-	public WebElement travelClassDisplay;
 	@FindBy(how = How.XPATH, using = "//button[contains(@class,'primaryBtn btnApply pushRight')]")
 	public WebElement travelSelectionApply;
+	@FindBy(how = How.XPATH, using = "//label[@for='travellers']//p[2]")
+	public WebElement travelClassDisplay;
 	@FindBy(how = How.XPATH, using = "//a[contains(@class,'primaryBtn font24 latoBold widgetSearchBtn')]")
 	public WebElement searchFlights;
 
 	public By fromLocationSuggestion1 = By.xpath("//ul[@role='listbox']//li[@role='option']//p[text()='@1@']");
 	public By toLocationSuggestion1 = By.xpath("//ul[@role='listbox']//li[@role='option']//p[text()='@1@']");
 	public By dateInCalendar1 = By.xpath("//div[@class='DayPicker-Week']/div[@class='DayPicker-Day']//p[text()='@1@']");
+	public By travelSelectionPassenger1 = By.xpath("//ul[contains(@class,'guestCounter')]//li[@data-cy='adults-@1@']");
+	public By travelSelectionClass1 = By.xpath("//ul[contains(@class,'guestCounter')]//li[@data-cy='travelClass-@1@']");
+	
 }

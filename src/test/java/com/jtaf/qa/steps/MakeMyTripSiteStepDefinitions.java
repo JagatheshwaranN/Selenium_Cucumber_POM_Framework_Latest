@@ -27,9 +27,9 @@ public class MakeMyTripSiteStepDefinitions {
 		makeMyTripSiteTest.homePageTitle();
 	}
 
-	@When("^user enter travel details \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" and enter search$")
+	@When("^user enter travel details \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\\\"]*)\" \"([^\"]*)\" and enter search$")
 	public void user_enter_travel_details_and_enter_search(String form, String to, String month, String day,
-			String travelClass) throws Exception {
+			String travelPassengers, String travelClass) throws Exception {
 		makeMyTripSiteTest.enterBookingDetails(form, to, month, day, travelClass);
 	}
 

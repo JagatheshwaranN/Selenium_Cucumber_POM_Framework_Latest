@@ -99,6 +99,10 @@ public class HomePage extends BasePage {
 		return homePageElements.travelSelectionClass;
 	}
 
+	public WebElement getTravelSelectionApply() {
+		return homePageElements.travelSelectionApply;
+	}
+
 	public WebElement getTravelClassDisplay() {
 		return homePageElements.travelClassDisplay;
 	}
@@ -119,13 +123,18 @@ public class HomePage extends BasePage {
 		return homePageElements.dateInCalendar1;
 	}
 
-	public WebElement getTravelSelectionApply() {
-		return homePageElements.travelSelectionApply;
+	public By getTravelSelectionPassenger1() {
+		return homePageElements.travelSelectionPassenger1;
+	}
+
+	public By getTravelSelectionClass1() {
+		return homePageElements.travelSelectionClass1;
 	}
 
 	public void verifyHomePageTitle() {
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(7000);
+			reusableHelper.waitForElementVisible(getAppLaunchPopupClose());
 			reusableHelper.elementClick(getAppLaunchPopupClose(), "appLaunchPopupClose");
 			browserHelper.getCurrentPageUrl();
 			Assert.assertEquals(getHomePageTitle(), FileReaderUtility.getTestData("home.page.title"));
@@ -146,15 +155,20 @@ public class HomePage extends BasePage {
 			reusableHelper.enterText(getToLocation(), toLocation, "toLocation");
 			reusableHelper.elementClick(getToLocationSuggestion1(),
 					FileReaderUtility.getTestData("to.location.suggestion"), "toLocationSuggestion");
+			// Functionality Updated
 			// reusableHelper.elementClick(getDepatureDate(), "depatureDate");
 			selectDate(month, day);
-			// reusableHelper.elementClick(getCalendarDone(), "CalendarDone");
 			reusableHelper.elementClick(getTravelSelection(), "travelSelection");
-			// dropDownHelper.selectByValue(getTravelSelectionClass(), travelClass,
-			// "travelSelectionClass");
-			reusableHelper.elementClick(getTravelSelectionPassenger(), "travelSelectionPassenger");
+			// reusableHelper.elementClick(getTravelSelectionPassenger(),
+			// "travelSelectionPassenger");
+			reusableHelper.elementClick(getTravelSelectionPassenger1(),
+					FileReaderUtility.getTestData("from.location.suggestion"), "getTravelSelectionPassenger1");
+
 			// reusableHelper.elementClick(getTravelSelectionClass(),
 			// "travelSelectionClass");
+			reusableHelper.elementClick(getTravelSelectionClass1(),
+					FileReaderUtility.getTestData("from.location.suggestion"), "getTravelSelectionClass1");
+
 			reusableHelper.elementClick(getTravelSelectionApply(), "TravelSelectionDone");
 			ReusableHelper.setAnyElement("fromLocation",
 					verificationHelper.readValueFromInput(getFromLocation(), "fromLocation"));
