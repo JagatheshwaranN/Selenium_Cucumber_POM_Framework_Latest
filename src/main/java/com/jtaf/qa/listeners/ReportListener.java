@@ -92,7 +92,7 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 	public void onTestFailure(ITestResult result) {
 		try {
 			if (!result.isSuccess()) {
-				// report Report Code
+				// Extent Report Code
 				System.setProperty("org.uncommons.reportng.escape-output", "false");
 				ReusableHelper.waitForSomeTime();
 				String failTestCaseBase64Snapshot = ((TakesScreenshot) BaseTest.getDriver())
@@ -101,7 +101,7 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 						MediaEntityBuilder.createScreenCaptureFromBase64String(failTestCaseBase64Snapshot).build());
 				test.log(Status.FAIL, result.getThrowable());
 				// ReportNG Report Code
-				String screenToAttach = captureSnapShot();
+				String screenToAttach = captureSnapShot("failure");
 				Reporter.log("<br>");
 				Reporter.log("The " + result.getMethod().getMethodName() + " Test Failed..!!" + "\n"
 						+ result.getThrowable());
@@ -126,7 +126,7 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 		try {
 
 			if (result.isSuccess()) {
-				// report Report Code
+				// Extent Report Code
 				System.setProperty("org.uncommons.reportng.escape-output", "false");
 				ReusableHelper.waitForSomeTime();
 				String passTestCaseBase64Snapshot = ((TakesScreenshot) BaseTest.getDriver())
@@ -134,7 +134,7 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 				test.pass("The " + result.getName().toUpperCase() + " Test Passed",
 						MediaEntityBuilder.createScreenCaptureFromBase64String(passTestCaseBase64Snapshot).build());
 				// ReportNG Report Code
-				String screenToAttach = captureSnapShot();
+				String screenToAttach = captureSnapShot("success");
 				Reporter.log("<br>");
 				Reporter.log("The " + result.getMethod().getMethodName() + " Test Passed..!!");
 				Reporter.log("<br>");
@@ -170,11 +170,11 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 //		}
 	}
 
-	public String captureSnapShot() {
+	public String captureSnapShot(String path) {
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd_MM_YYYY_hh_mm_ss");
 		File source = ((TakesScreenshot) BaseTest.getDriver()).getScreenshotAs(OutputType.FILE);
-		File destination = new File(System.getProperty("user.dir") + "/src/test/resources/screenshots/"
+		File destination = new File(System.getProperty("user.dir") + "/src/test/resources/screenshots/" + path
 				+ simpleDateFormat.format(calendar.getTime()) + ".png");
 		try {
 			FileUtils.copyFile(source, destination);
