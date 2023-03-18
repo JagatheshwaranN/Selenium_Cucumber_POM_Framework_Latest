@@ -12,5 +12,5 @@ Feature: MakeMyTrip Ticket Booking
     And user checks ticket details
 
     Examples: 
-      | from          | to          | month        | day          | passengers        | travelclass |
-      | from.location | to.location | travel.class | travel.month | travel.passengers | travel.day  |
+      | from          | to          | month        | day        | passengers        | travelclass  |
+      | from.location | to.location | travel.month | travel.day | travel.passengers | travel.class |

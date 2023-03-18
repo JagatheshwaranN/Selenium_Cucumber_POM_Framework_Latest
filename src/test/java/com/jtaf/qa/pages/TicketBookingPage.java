@@ -11,6 +11,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import com.jtaf.qa.helpers.BrowserHelper;
 import com.jtaf.qa.helpers.ReusableHelper;
 import com.jtaf.qa.objects.TicketBookingPageElements;
 import com.jtaf.qa.utilities.FileReaderUtility;
@@ -40,8 +41,8 @@ public class TicketBookingPage extends HomePage {
 		return ticketBookingPageElements.ticketBookPopupClose;
 	}
 
-	public WebElement getTicketBookingSection() {
-		return ticketBookingPageElements.ticketBookingSection;
+	public WebElement getOneWayPriceSlider() {
+		return ticketBookingPageElements.oneWayPriceSlider;
 	}
 
 	public WebElement getPriceSort() {
@@ -81,7 +82,7 @@ public class TicketBookingPage extends HomePage {
 		int price = 0;
 		int lowestPrice = 0;
 		try {
-			javaScriptHelper.scrollToElement(getTicketBookingSection());
+			javaScriptHelper.scrollToElement(getOneWayPriceSlider());
 			verificationHelper.verifyElementPresent(getPriceList(), "priceList");
 			price = Integer.parseInt(getPriceList().getText().toString().substring(1).replaceAll(",", "").trim());
 			lowestPrice = getLowestPrice();
@@ -91,7 +92,7 @@ public class TicketBookingPage extends HomePage {
 				reusableHelper.elementClick(getviewPrices(), "viewPricesButton");
 				verificationHelper.verifyElementPresent(getBook(), "bookButton");
 				reusableHelper.elementClick(getBook(), "bookButton");
-				browserHelper.SwitchToWindow(1);
+				browserHelper.SwitchToWindow(BrowserHelper.CHILD_PAGE1);
 			}
 		} catch (Exception ex) {
 			log.info("Error occured while book the ticket" + "\n" + ex);
@@ -114,12 +115,11 @@ public class TicketBookingPage extends HomePage {
 				priceBucket.add(priceInNum);
 			}
 		} catch (Exception ex) {
-			log.info("Error occured while get the price list" + "\n" + ex);
+			log.info("Error occured while get the lowest price list" + "\n" + ex);
 			Assert.fail();
 		}
 		Collections.sort(priceBucket);
 		int lowestPrice = priceBucket.get(0);
 		return lowestPrice;
 	}
-
 }

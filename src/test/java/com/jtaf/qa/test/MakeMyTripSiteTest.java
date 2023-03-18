@@ -19,11 +19,12 @@ public class MakeMyTripSiteTest {
 		BaseTest.page.getInstance(HomePage.class).verifyHomePageTitle();
 	}
 
-	public void enterBookingDetails(String form, String to, String month, String day, String travelClass) {
+	public void enterBookingDetails(String form, String to, String month, String day, String passengers,
+			String travelClass) {
 		TicketBookingPage ticketBookingPage = BaseTest.page.getInstance(HomePage.class).enterTravelDetails(
 				FileReaderUtility.getTestData(form), FileReaderUtility.getTestData(to),
 				FileReaderUtility.getTestData(month), FileReaderUtility.getTestData(day),
-				FileReaderUtility.getTestData(travelClass));
+				FileReaderUtility.getTestData(passengers), FileReaderUtility.getTestData(travelClass));
 		String ticketBookingPageTitle = ticketBookingPage.getTicketBookingPageTitle();
 		Assert.assertEquals(ticketBookingPageTitle, FileReaderUtility.getTestData("ticket.booking.page.title"));
 	}

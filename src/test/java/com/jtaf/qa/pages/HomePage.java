@@ -133,7 +133,8 @@ public class HomePage extends BasePage {
 
 	public void verifyHomePageTitle() {
 		try {
-			Thread.sleep(7000);
+			// Temporary Fix
+			Thread.sleep(10000);
 			reusableHelper.waitForElementVisible(getAppLaunchPopupClose());
 			reusableHelper.elementClick(getAppLaunchPopupClose(), "appLaunchPopupClose");
 			browserHelper.getCurrentPageUrl();
@@ -144,8 +145,8 @@ public class HomePage extends BasePage {
 		}
 	}
 
-	public TicketBookingPage enterTravelDetails(String fromLocation, String toLocation, String travelClass,
-			String month, String day) {
+	public TicketBookingPage enterTravelDetails(String fromLocation, String toLocation, String month, String day,
+			String passengers, String travelClass) {
 		try {
 			reusableHelper.elementClick(getFromLocationSection(), "fromLocationSection");
 			reusableHelper.enterText(getFromLocation(), fromLocation, "fromLocation");
@@ -155,20 +156,10 @@ public class HomePage extends BasePage {
 			reusableHelper.enterText(getToLocation(), toLocation, "toLocation");
 			reusableHelper.elementClick(getToLocationSuggestion1(),
 					FileReaderUtility.getTestData("to.location.suggestion"), "toLocationSuggestion");
-			// Functionality Updated
-			// reusableHelper.elementClick(getDepatureDate(), "depatureDate");
-			selectDate(month, day);
+			selectDepartureDate(month, day);
 			reusableHelper.elementClick(getTravelSelection(), "travelSelection");
-			// reusableHelper.elementClick(getTravelSelectionPassenger(),
-			// "travelSelectionPassenger");
-			reusableHelper.elementClick(getTravelSelectionPassenger1(),
-					FileReaderUtility.getTestData("from.location.suggestion"), "getTravelSelectionPassenger1");
-
-			// reusableHelper.elementClick(getTravelSelectionClass(),
-			// "travelSelectionClass");
-			reusableHelper.elementClick(getTravelSelectionClass1(),
-					FileReaderUtility.getTestData("from.location.suggestion"), "getTravelSelectionClass1");
-
+			reusableHelper.elementClick(getTravelSelectionPassenger1(), passengers, "getTravelSelectionPassenger1");
+			reusableHelper.elementClick(getTravelSelectionClass1(), travelClass, "getTravelSelectionClass1");
 			reusableHelper.elementClick(getTravelSelectionApply(), "TravelSelectionDone");
 			ReusableHelper.setAnyElement("fromLocation",
 					verificationHelper.readValueFromInput(getFromLocation(), "fromLocation"));
@@ -184,7 +175,7 @@ public class HomePage extends BasePage {
 		return getInstance(TicketBookingPage.class);
 	}
 
-	public void selectDate(String month, String day) {
+	public void selectDepartureDate(String month, String day) {
 		try {
 			while (true) {
 				String monthInDatePicker = getMonthTextInDatePicker().getText();
@@ -196,9 +187,8 @@ public class HomePage extends BasePage {
 			}
 			reusableHelper.elementClick(getDateInCalendar1(), day, "dateInCalendar");
 		} catch (Exception ex) {
-			log.info("Error occured while select date from calendar" + "\n" + ex);
+			log.info("Error occured while select departure date from calendar" + "\n" + ex);
 			Assert.fail();
 		}
 	}
-
 }

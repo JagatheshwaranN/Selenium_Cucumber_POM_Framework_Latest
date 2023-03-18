@@ -39,16 +39,16 @@ public class TicketDetailsPage extends TicketBookingPage {
 		return ticketDetailsPageElements.ticketDetailsFlightName;
 	}
 
-	public WebElement getTicketDetailsTravelClass() {
-		return ticketDetailsPageElements.ticketDetailsTravelClass;
-	}
-
 	public WebElement getTicketDetailsFromPlace() {
 		return ticketDetailsPageElements.ticketDetailsFromPlace;
 	}
 
 	public WebElement getTicketDetailsToPlace() {
 		return ticketDetailsPageElements.ticketDetailsToPlace;
+	}
+
+	public WebElement getTicketDetailsTravelClass() {
+		return ticketDetailsPageElements.ticketDetailsTravelClass;
 	}
 
 	public WebElement getTicketFareSummary() {
@@ -90,12 +90,9 @@ public class TicketDetailsPage extends TicketBookingPage {
 							.readTextValueFromElement(getTicketDetailsTravelClass(), "ticketDetailsTravelClass")
 							.split(">")[0].trim()),
 					true, "Travel Class Details Not Matched");
-//			Assert.assertEquals(verificationHelper.readTextValueFromElement(getTicketDetailsTravelClass(),
-//					"ticketDetailsTravelClass"), ReusableHelper.getAnyElement().get("travelClass"));
 		} catch (Exception ex) {
 			log.info("Error occured while check ticket details" + "\n" + ex);
 			Assert.fail();
 		}
 	}
-
 }

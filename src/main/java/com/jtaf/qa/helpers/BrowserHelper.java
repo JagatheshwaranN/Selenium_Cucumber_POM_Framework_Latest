@@ -5,7 +5,6 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WindowType;
 import org.testng.Assert;
 
 import com.jtaf.qa.base.BasePage;
@@ -19,6 +18,8 @@ import com.jtaf.qa.utilities.LoggerUtility;
 public class BrowserHelper extends BasePage {
 
 	private static Logger log = LoggerUtility.getLog(BrowserHelper.class);
+	public static final int CHILD_PAGE1 = 1;
+	public static final int CHILD_PAGE2 = 2;
 
 	public BrowserHelper(WebDriver driver) {
 		super(driver);
