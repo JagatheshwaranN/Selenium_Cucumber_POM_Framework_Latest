@@ -53,14 +53,12 @@ public class BaseTest extends FileReaderUtility {
 		try {
 			if (System.getProperty("os.name").contains(getTestData("operating.system"))) {
 				if (browser.equalsIgnoreCase("Chrome")) {
-					// System.setProperty("webdriver.chrome.driver", getTestData("chrome.driver"));
 					log.info("======================== [ Launching " + browser
 							+ " Browser] ==============================");
 					options = new ChromeOptions();
 					options.addArguments("--remote-allow-origins=*");
 					setDriver(new ChromeDriver(options));
 					getDriver().manage().window().maximize();
-					// getDriver().manage().timeouts().scriptTimeout(Duration.ofSeconds(0));
 				} else if (browser.equalsIgnoreCase("Firefox")) {
 					System.setProperty("webdriver.gecko.driver", getTestData("firefox.driver"));
 					log.info("======================== [ Launching " + browser
@@ -89,7 +87,7 @@ public class BaseTest extends FileReaderUtility {
 		try {
 			if (scenario.isFailed()) {
 				try {
-					log.info("FAILED ***** : " + scenario.getName());
+					log.info("FAILED =====>> " + scenario.getName());
 					final byte[] screenshot = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
 					scenario.attach(screenshot, "image/jpeg", scenario.getName());
 				} catch (Exception ex) {
@@ -97,7 +95,7 @@ public class BaseTest extends FileReaderUtility {
 				}
 			} else {
 				try {
-					log.info("PASSED ***** : " + scenario.getName());
+					log.info("PASSED =====>> " + scenario.getName());
 					final byte[] screenshot = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.BYTES);
 					scenario.attach(screenshot, "image/jpeg", scenario.getName());
 				} catch (Exception ex) {
@@ -105,7 +103,7 @@ public class BaseTest extends FileReaderUtility {
 				}
 			}
 		} catch (Exception ex) {
-			log.info("Error occured while close of the TEST" + "\n" + ex);
+			log.info("Error occured while TEST close" + "\n" + ex);
 		}
 	}
 
@@ -121,9 +119,10 @@ public class BaseTest extends FileReaderUtility {
 		try {
 			getDriver().get(getTestData("app.url"));
 			page = new BasePage(getDriver());
-			log.info("The Goibibo site is launched succesfully");
+			log.info("The MakeMyTrip site is launched succesfully");
 		} catch (Exception ex) {
 			log.info("Error occured while launch of application" + "\n" + ex);
+			Assert.fail();
 		}
 	}
 

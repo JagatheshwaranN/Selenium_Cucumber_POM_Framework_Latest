@@ -129,4 +129,11 @@ public class ReusableHelper extends BasePage implements WebPage {
 		}
 	}
 
+	public static void waitForSomeTime() {
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException ex) {
+			ex.printStackTrace();
+		}
+	}
 }
