@@ -41,10 +41,11 @@ public class ReportListener implements ITestListener, ISuiteListener {
 	private static Logger log = LoggerUtility.getLog(ReportListener.class);
 
 	@Override
-	public void onFinish(ITestContext testContext) {
+	public void onFinish(ITestContext context) {
 		try {
+			test.log(Status.INFO, "The " + context.getName() + " Execution Finished");
+			Reporter.log("The " + context.getName() + " Execution Finished");
 			extent.flush();
-			Reporter.log("The " + testContext.getName() + " test is finished");
 		} catch (Exception ex) {
 			log.info("Exception occured while finish of the TEST" + "\n" + ex);
 			Assert.fail();
@@ -52,11 +53,12 @@ public class ReportListener implements ITestListener, ISuiteListener {
 	}
 
 	@Override
-	public void onStart(ITestContext testContext) {
+	public void onStart(ITestContext context) {
 		try {
 			extent = ExtentUtility.getInstance();
-			test = extent.createTest(testContext.getName());
-			Reporter.log("The " + testContext.getName() + " test is started");
+			test = extent.createTest(context.getName());
+			test.log(Status.INFO, "The " + context.getName() + " Execution Started");
+			Reporter.log("The " + context.getName() + " Execution started");
 		} catch (Exception ex) {
 			log.info("Exception occured while start of the TEST" + "\n" + ex);
 			Assert.fail();
@@ -64,11 +66,11 @@ public class ReportListener implements ITestListener, ISuiteListener {
 	}
 
 	@Override
-	public void onTestSkipped(ITestResult testResult) {
+	public void onTestSkipped(ITestResult result) {
 		try {
-			test.log(Status.SKIP, "The " + testResult.getThrowable() + " execution is skipped");
-			Reporter.log(
-					"The " + testResult.getMethod().getMethodName() + " test skipped " + testResult.getThrowable());
+			test.log(Status.SKIP,
+					"The " + result.getMethod().getMethodName() + " Test Skipped" + "\n" + result.getThrowable());
+			Reporter.log("The " + result.getMethod().getMethodName() + " Test Skipped" + "\n" + result.getThrowable());
 		} catch (Exception ex) {
 			log.info("Exception occured while test skip of the test" + "\n" + ex);
 			Assert.fail();
@@ -78,8 +80,8 @@ public class ReportListener implements ITestListener, ISuiteListener {
 	@Override
 	public void onTestStart(ITestResult testResult) {
 		try {
-			test.log(Status.INFO, "The " + testResult.getName() + " test is started");
-			Reporter.log("The " + testResult.getMethod().getMethodName() + " test is started");
+			test.log(Status.INFO, "The " + testResult.getName() + " Test Started");
+			Reporter.log("The " + testResult.getMethod().getMethodName() + " Test Started");
 		} catch (Exception ex) {
 			log.info("Exception occured while test start" + "\n" + ex);
 			Assert.fail();

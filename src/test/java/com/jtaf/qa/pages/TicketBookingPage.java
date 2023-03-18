@@ -89,6 +89,7 @@ public class TicketBookingPage extends HomePage {
 			if (price == lowestPrice) {
 				ReusableHelper.setAnyElement("flightName",
 						verificationHelper.readTextValueFromElement(getFlightName(), "flightName"));
+				verificationHelper.verifyElementPresent(getviewPrices(), "viewPricesButton");
 				reusableHelper.elementClick(getviewPrices(), "viewPricesButton");
 				verificationHelper.verifyElementPresent(getBook(), "bookButton");
 				reusableHelper.elementClick(getBook(), "bookButton");
