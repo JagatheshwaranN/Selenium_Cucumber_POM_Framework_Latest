@@ -31,7 +31,7 @@ public class BaseTest extends FileReaderUtility {
 	private static WebDriver driver;
 	private static ChromeOptions options;
 	public static Page page;
-	public static ExtentReports extent;
+	public static ExtentReports report;
 	public static ExtentTest test;
 
 	private static Logger log = LoggerUtility.getLog(BaseTest.class);

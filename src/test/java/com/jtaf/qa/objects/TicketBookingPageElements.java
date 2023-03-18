@@ -8,8 +8,8 @@ public class TicketBookingPageElements {
 
 	@FindBy(how = How.XPATH, using = "//button[contains(@class,'button buttonSecondry buttonBig')]")
 	public WebElement ticketBookPopupClose;
-	@FindBy(how = How.XPATH, using = "//p[contains(@class,'filtersHeading') and text()='One Way Price']")
-	public WebElement oneWayPriceSlider;
+	@FindBy(how = How.XPATH, using = "//section[@class='listingBannerSec in-cards']")
+	public WebElement ticketBookingBanner;
 	@FindBy(how = How.XPATH, using = "//div[contains(@class,'price_sorter')]//span[@class='pointer']")
 	public WebElement priceSort;
 	@FindBy(how = How.XPATH, using = "(//button[contains(@class,'ViewFareBtn')]//span[@class='appendRight8'])[1]")

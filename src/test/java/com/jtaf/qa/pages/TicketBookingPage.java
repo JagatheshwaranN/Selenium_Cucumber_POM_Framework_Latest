@@ -41,8 +41,8 @@ public class TicketBookingPage extends HomePage {
 		return ticketBookingPageElements.ticketBookPopupClose;
 	}
 
-	public WebElement getOneWayPriceSlider() {
-		return ticketBookingPageElements.oneWayPriceSlider;
+	public WebElement getTicketBookingBanner() {
+		return ticketBookingPageElements.ticketBookingBanner;
 	}
 
 	public WebElement getPriceSort() {
@@ -82,7 +82,7 @@ public class TicketBookingPage extends HomePage {
 		int price = 0;
 		int lowestPrice = 0;
 		try {
-			javaScriptHelper.scrollToElement(getOneWayPriceSlider());
+			javaScriptHelper.scrollToElement(getTicketBookingBanner());
 			verificationHelper.verifyElementPresent(getPriceList(), "priceList");
 			price = Integer.parseInt(getPriceList().getText().toString().substring(1).replaceAll(",", "").trim());
 			lowestPrice = getLowestPrice();

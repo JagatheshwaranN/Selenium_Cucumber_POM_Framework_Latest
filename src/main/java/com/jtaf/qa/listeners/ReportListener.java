@@ -18,8 +18,6 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
 
@@ -33,10 +31,7 @@ import com.jtaf.qa.utilities.LoggerUtility;
  * @author Jaga
  *
  */
-public class ReportListener implements ITestListener, ISuiteListener {
-
-	public static ExtentReports extent;
-	public static ExtentTest test;
+public class ReportListener extends BaseTest implements ITestListener, ISuiteListener {
 
 	private static Logger log = LoggerUtility.getLog(ReportListener.class);
 
@@ -45,7 +40,7 @@ public class ReportListener implements ITestListener, ISuiteListener {
 		try {
 			test.log(Status.INFO, "The " + context.getName() + " Execution Finished");
 			Reporter.log("The " + context.getName() + " Execution Finished");
-			extent.flush();
+			report.flush();
 		} catch (Exception ex) {
 			log.info("Exception occured while finish of the TEST" + "\n" + ex);
 			Assert.fail();
@@ -55,8 +50,8 @@ public class ReportListener implements ITestListener, ISuiteListener {
 	@Override
 	public void onStart(ITestContext context) {
 		try {
-			extent = ExtentUtility.getInstance();
-			test = extent.createTest(context.getName());
+			report = ExtentUtility.getInstance();
+			test = report.createTest(context.getName());
 			test.log(Status.INFO, "The " + context.getName() + " Execution Started");
 			Reporter.log("The " + context.getName() + " Execution started");
 		} catch (Exception ex) {
@@ -97,7 +92,7 @@ public class ReportListener implements ITestListener, ISuiteListener {
 	public void onTestFailure(ITestResult result) {
 		try {
 			if (!result.isSuccess()) {
-				// Extent Report Code
+				// report Report Code
 				System.setProperty("org.uncommons.reportng.escape-output", "false");
 				ReusableHelper.waitForSomeTime();
 				String failTestCaseBase64Snapshot = ((TakesScreenshot) BaseTest.getDriver())
@@ -113,7 +108,7 @@ public class ReportListener implements ITestListener, ISuiteListener {
 				Reporter.log("<br>");
 				Reporter.log("<a target='_blank' href='" + screenToAttach + "'><img src= '" + screenToAttach
 						+ "' height='100' width='100' /></a>");
-				log.info("The test failure screenshot is captured to attach in extent and testNG report");
+				log.info("The test failure screenshot is captured to attach in report and testNG report");
 			}
 		} catch (Exception ex) {
 			log.info("Exception occured while capture screenshot on test failure" + "\n" + ex);
@@ -131,7 +126,7 @@ public class ReportListener implements ITestListener, ISuiteListener {
 		try {
 
 			if (result.isSuccess()) {
-				// Extent Report Code
+				// report Report Code
 				System.setProperty("org.uncommons.reportng.escape-output", "false");
 				ReusableHelper.waitForSomeTime();
 				String passTestCaseBase64Snapshot = ((TakesScreenshot) BaseTest.getDriver())
@@ -145,7 +140,7 @@ public class ReportListener implements ITestListener, ISuiteListener {
 				Reporter.log("<br>");
 				Reporter.log("<a target='_blank' href='" + screenToAttach + "'><img src= '" + screenToAttach
 						+ "' height='100' width='100' /></a>");
-				log.info("The test success screenshot is captured to attach in extent and testNG report");
+				log.info("The test success screenshot is captured to attach in report and testNG report");
 			}
 		} catch (Exception ex) {
 			log.info("Exception occured while capture screenshot on test success" + "\n" + ex);
