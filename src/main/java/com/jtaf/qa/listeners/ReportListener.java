@@ -174,7 +174,7 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd_MM_YYYY_hh_mm_ss");
 		File source = ((TakesScreenshot) BaseTest.getDriver()).getScreenshotAs(OutputType.FILE);
-		File destination = new File(System.getProperty("user.dir") + "/src/test/resources/screenshots/" + path
+		File destination = new File(System.getProperty("user.dir") + "/src/test/resources/container/screenshots/" + path
 				+ simpleDateFormat.format(calendar.getTime()) + ".png");
 		try {
 			FileUtils.copyFile(source, destination);

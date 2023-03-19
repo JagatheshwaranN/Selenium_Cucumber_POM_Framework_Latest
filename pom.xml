@@ -18,7 +18,7 @@
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
-			<version>7.7.0</version>
+			<version>7.7.1</version>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
@@ -85,13 +85,11 @@
 			<artifactId>reportng</artifactId>
 			<version>1.1.4</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.google.inject/guice -->
 		<dependency>
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
 			<version>5.1.0</version>
 		</dependency>
-		<!-- This dependency is added to fix the above dependency error -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
@@ -120,7 +118,7 @@
 				<version>3.0.0-M9</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>src/test/resources/runner/${suiteXmlFile}</suiteXmlFile>
+						<suiteXmlFile>src/test/resources/container/runner/${suiteXmlFile}</suiteXmlFile>
 					</suiteXmlFiles>
 				</configuration>
 			</plugin>
