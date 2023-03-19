@@ -71,6 +71,11 @@
 			<version>5.0.9</version>
 		</dependency>
 		<dependency>
+			<groupId>tech.grasshopper</groupId>
+			<artifactId>extentreports-cucumber7-adapter</artifactId>
+			<version>1.10.1</version>
+		</dependency>
+		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
 			<version>5.2.3</version>
@@ -96,10 +101,10 @@
 			<version>31.1-jre</version>
 		</dependency>
 		<dependency>
-		<groupId>org.projectlombok</groupId>
-		<artifactId>lombok</artifactId>
-		<version>1.18.26</version>
-	</dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.26</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -120,6 +125,10 @@
 					<suiteXmlFiles>
 						<suiteXmlFile>src/test/resources/container/runner/${suiteXmlFile}</suiteXmlFile>
 					</suiteXmlFiles>
+					<!--<systemPropertyVariables>
+						<extent.reporter.spark.start>true</extent.reporter.spark.start>
+						<extent.reporter.spark.out>test-output/SparkReport/Spark.html</extent.reporter.spark.out>
+					</systemPropertyVariables>-->
 				</configuration>
 			</plugin>
 			<plugin>

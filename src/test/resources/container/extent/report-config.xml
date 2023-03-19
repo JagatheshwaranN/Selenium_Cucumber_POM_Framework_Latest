@@ -3,7 +3,7 @@
 	<configuration>
 		<!-- report theme -->
 		<!-- standard, dark -->
-		<theme>standard</theme>
+		<theme>dark</theme>
 
 		<!-- document encoding -->
 		<!-- defaults to UTF-8 -->
@@ -14,13 +14,16 @@
 		<protocol>https</protocol>
 
 		<!-- title of the document -->
-		<documentTitle>MakeMyTrip Automation Reports</documentTitle>
+		<documentTitle>Extent Spark Report</documentTitle>
 
 		<!-- report name - displayed at top-nav -->
-		<reportName>Automation Report for BDD Framework</reportName>
+		<reportName>MakeMyTrip Automation Report</reportName>
 
 		<!-- report headline - displayed at top-nav, after reportHeadline -->
 		<reportHeadline>Cucumber BDD Framework</reportHeadline>
+
+		<!-- view report without internet -->
+		<offlineMode>false</offlineMode>
 
 		<!-- global date format override -->
 		<!-- defaults to yyyy-MM-dd -->
@@ -30,7 +33,16 @@
 		<!-- defaults to HH:mm:ss -->
 		<timeFormat>HH:mm:ss</timeFormat>
 
+		<!-- Screenshot Base64 Format -->
+		<thumbnailForBase64>true</thumbnailForBase64>
+
 		<!-- custom javascript -->
+		<js></js>
+
+		<!-- custom styles -->
+		<css></css>
+		<!-- custom javascript -->
+
 		<scripts>
             <![CDATA[
                 $(document).ready(function() {

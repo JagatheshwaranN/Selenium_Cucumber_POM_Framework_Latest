@@ -18,14 +18,14 @@ import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 
-import com.aventstack.extentreports.MediaEntityBuilder;
-import com.aventstack.extentreports.Status;
-
 import com.jtaf.qa.base.BaseTest;
-import com.jtaf.qa.helpers.ReusableHelper;
 import com.jtaf.qa.utilities.Constants;
-import com.jtaf.qa.utilities.ExtentUtility;
 import com.jtaf.qa.utilities.LoggerUtility;
+
+//import com.jtaf.qa.helpers.ReusableHelper;
+//import com.jtaf.qa.utilities.ExtentUtility;
+//import com.aventstack.extentreports.MediaEntityBuilder;
+//import com.aventstack.extentreports.Status;
 
 /**
  * 
@@ -40,9 +40,11 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 	@Override
 	public void onFinish(ITestContext context) {
 		try {
-			test.log(Status.INFO, "The " + context.getName() + " Execution Finished");
+			// OutDated
+			// test.log(Status.INFO, "The " + context.getName() + " Execution Finished");
+			// report.flush();
 			Reporter.log("The " + context.getName() + " Execution Finished");
-			report.flush();
+
 		} catch (Exception ex) {
 			log.info("Exception occured while finish of the TEST" + "\n" + ex);
 			Assert.fail();
@@ -52,9 +54,10 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 	@Override
 	public void onStart(ITestContext context) {
 		try {
-			report = ExtentUtility.getInstance();
-			test = report.createTest(context.getName());
-			test.log(Status.INFO, "The " + context.getName() + " Execution Started");
+			// OutDated
+			// report = ExtentUtility.getInstance();
+			// test = report.createTest(context.getName());
+			// test.log(Status.INFO, "The " + context.getName() + " Execution Started");
 			Reporter.log("The " + context.getName() + " Execution started");
 		} catch (Exception ex) {
 			log.info("Exception occured while start of the TEST" + "\n" + ex);
@@ -65,8 +68,10 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 	@Override
 	public void onTestSkipped(ITestResult result) {
 		try {
-			test.log(Status.SKIP,
-					"The " + result.getMethod().getMethodName() + " Test Skipped" + "\n" + result.getThrowable());
+			// OutDated
+			// test.log(Status.SKIP,
+			// "The " + result.getMethod().getMethodName() + " Test Skipped" + "\n" +
+			// result.getThrowable());
 			Reporter.log("The " + result.getMethod().getMethodName() + " Test Skipped" + "\n" + result.getThrowable());
 		} catch (Exception ex) {
 			log.info("Exception occured while test skip of the test" + "\n" + ex);
@@ -77,7 +82,8 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 	@Override
 	public void onTestStart(ITestResult testResult) {
 		try {
-			test.log(Status.INFO, "The " + testResult.getName() + " Test Started");
+			// OutDated
+			// test.log(Status.INFO, "The " + testResult.getName() + " Test Started");
 			Reporter.log("The " + testResult.getMethod().getMethodName() + " Test Started");
 		} catch (Exception ex) {
 			log.info("Exception occured while test start" + "\n" + ex);
@@ -95,14 +101,15 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 		snapshotCategory = "failure/";
 		try {
 			if (!result.isSuccess()) {
-				// Extent Report Code
-				System.setProperty("org.uncommons.reportng.escape-output", "false");
-				ReusableHelper.waitForSomeTime();
-				String failTestCaseBase64Snapshot = ((TakesScreenshot) BaseTest.getDriver())
-						.getScreenshotAs(OutputType.BASE64);
-				test.fail("The " + result.getName().toUpperCase() + " Test Failed",
-						MediaEntityBuilder.createScreenCaptureFromBase64String(failTestCaseBase64Snapshot).build());
-				test.log(Status.FAIL, result.getThrowable());
+				// Extent Report Code - OutDated
+				// System.setProperty("org.uncommons.reportng.escape-output", "false");
+				// ReusableHelper.waitForSomeTime();
+				// String failTestCaseBase64Snapshot = ((TakesScreenshot) BaseTest.getDriver())
+				// .getScreenshotAs(OutputType.BASE64);
+				// test.fail("The " + result.getName().toUpperCase() + " Test Failed",
+				// MediaEntityBuilder.createScreenCaptureFromBase64String(failTestCaseBase64Snapshot).build());
+				// test.log(Status.FAIL, result.getThrowable());
+
 				// ReportNG Report Code - NOT WORKING
 				String screenToAttach = captureSnapShot(snapshotCategory);
 				Reporter.log("<br>");
@@ -129,13 +136,14 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 		snapshotCategory = "success/";
 		try {
 			if (result.isSuccess()) {
-				// Extent Report Code
-				System.setProperty("org.uncommons.reportng.escape-output", "false");
-				ReusableHelper.waitForSomeTime();
-				String passTestCaseBase64Snapshot = ((TakesScreenshot) BaseTest.getDriver())
-						.getScreenshotAs(OutputType.BASE64);
-				test.pass("The " + result.getName().toUpperCase() + " Test Passed",
-						MediaEntityBuilder.createScreenCaptureFromBase64String(passTestCaseBase64Snapshot).build());
+				// Extent Report Code - OutDated
+				// System.setProperty("org.uncommons.reportng.escape-output", "false");
+				// ReusableHelper.waitForSomeTime();
+				// String passTestCaseBase64Snapshot = ((TakesScreenshot) BaseTest.getDriver())
+				// .getScreenshotAs(OutputType.BASE64);
+				// test.pass("The " + result.getName().toUpperCase() + " Test Passed",
+				// MediaEntityBuilder.createScreenCaptureFromBase64String(passTestCaseBase64Snapshot).build());
+
 				// ReportNG Report Code - NOT WORKING
 				String screenToAttach = captureSnapShot(snapshotCategory);
 				Reporter.log("<br>");

@@ -11,9 +11,6 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-
 import com.jtaf.qa.utilities.FileReaderUtility;
 import com.jtaf.qa.utilities.LoggerUtility;
 
@@ -31,8 +28,10 @@ public class BaseTest extends FileReaderUtility {
 	private static WebDriver driver;
 	private static ChromeOptions options;
 	public static Page page;
-	public static ExtentReports report;
-	public static ExtentTest test;
+
+	// OutDated
+	// public static ExtentReports report;
+	// public static ExtentTest test;
 
 	private static Logger log = LoggerUtility.getLog(BaseTest.class);
 
