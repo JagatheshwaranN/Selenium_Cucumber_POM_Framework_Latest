@@ -24,6 +24,7 @@ import com.aventstack.extentreports.Status;
 import com.jtaf.qa.base.BaseTest;
 import com.jtaf.qa.helpers.ReusableHelper;
 import com.jtaf.qa.utilities.ExtentUtility;
+import com.jtaf.qa.utilities.FileReaderUtility;
 import com.jtaf.qa.utilities.LoggerUtility;
 
 /**
@@ -34,6 +35,7 @@ import com.jtaf.qa.utilities.LoggerUtility;
 public class ReportListener extends BaseTest implements ITestListener, ISuiteListener {
 
 	private static Logger log = LoggerUtility.getLog(ReportListener.class);
+	private String snapshotCategory = null;
 
 	@Override
 	public void onFinish(ITestContext context) {
@@ -90,6 +92,7 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 
 	@Override
 	public void onTestFailure(ITestResult result) {
+		snapshotCategory = "failure";
 		try {
 			if (!result.isSuccess()) {
 				// Extent Report Code
@@ -100,8 +103,8 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 				test.fail("The " + result.getName().toUpperCase() + " Test Failed",
 						MediaEntityBuilder.createScreenCaptureFromBase64String(failTestCaseBase64Snapshot).build());
 				test.log(Status.FAIL, result.getThrowable());
-				// ReportNG Report Code
-				String screenToAttach = captureSnapShot("failure");
+				// ReportNG Report Code - NOT WORKING
+				String screenToAttach = captureSnapShot(snapshotCategory);
 				Reporter.log("<br>");
 				Reporter.log("The " + result.getMethod().getMethodName() + " Test Failed..!!" + "\n"
 						+ result.getThrowable());
@@ -123,8 +126,8 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
+		snapshotCategory = "success";
 		try {
-
 			if (result.isSuccess()) {
 				// Extent Report Code
 				System.setProperty("org.uncommons.reportng.escape-output", "false");
@@ -133,8 +136,8 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 						.getScreenshotAs(OutputType.BASE64);
 				test.pass("The " + result.getName().toUpperCase() + " Test Passed",
 						MediaEntityBuilder.createScreenCaptureFromBase64String(passTestCaseBase64Snapshot).build());
-				// ReportNG Report Code
-				String screenToAttach = captureSnapShot("success");
+				// ReportNG Report Code - NOT WORKING
+				String screenToAttach = captureSnapShot(snapshotCategory);
 				Reporter.log("<br>");
 				Reporter.log("The " + result.getMethod().getMethodName() + " Test Passed..!!");
 				Reporter.log("<br>");
@@ -170,12 +173,13 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 //		}
 	}
 
-	public String captureSnapShot(String path) {
+	public String captureSnapShot(String snapshotCategory) {
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd_MM_YYYY_hh_mm_ss");
 		File source = ((TakesScreenshot) BaseTest.getDriver()).getScreenshotAs(OutputType.FILE);
-		File destination = new File(System.getProperty("user.dir") + "/src/test/resources/container/screenshots/" + path
-				+ simpleDateFormat.format(calendar.getTime()) + ".png");
+		File destination = new File(
+				System.getProperty("user.dir") + FileReaderUtility.getTestData("snapshot.path") + snapshotCategory
+						+ simpleDateFormat.format(calendar.getTime()) + FileReaderUtility.getTestData("snapshot.type"));
 		try {
 			FileUtils.copyFile(source, destination);
 		} catch (IOException ex) {

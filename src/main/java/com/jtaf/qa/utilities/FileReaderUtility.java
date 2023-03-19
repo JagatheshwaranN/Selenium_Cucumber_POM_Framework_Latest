@@ -20,8 +20,8 @@ public class FileReaderUtility {
 	private static File file;
 	private static FileInputStream fileInputStream;
 
-	private static String propertyFilePath = "//src//main//resources//configurations//";
-	private static String testConfigFile = "TestConfig.properties";
+	private static final String propertyFilePath = "//src//main//resources//configurations//";
+	private static final String testConfigFile = "TestConfig.properties";
 
 	private static Logger log = LoggerUtility.getLog(FileReaderUtility.class);
 

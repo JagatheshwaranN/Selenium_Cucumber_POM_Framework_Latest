@@ -24,10 +24,10 @@ public class ExtentUtility {
 
 		if (extentSparkReporter == null) {
 			extentSparkReporter = new ExtentSparkReporter(
-					System.getProperty("user.dir") + "//target//report//ExtentSpark.html");
+					System.getProperty("user.dir") + FileReaderUtility.getTestData("extent.report.path"));
 			try {
 				extentSparkReporter.loadXMLConfig(
-						new File(System.getProperty("user.dir") + "//src//test//resources//extent//report-config.xml"));
+						new File(System.getProperty("user.dir") + FileReaderUtility.getTestData("extent.config.path")));
 			} catch (IOException ex) {
 				ex.printStackTrace();
 			}
