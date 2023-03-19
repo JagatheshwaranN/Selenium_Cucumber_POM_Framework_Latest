@@ -20,19 +20,16 @@ public class FileReaderUtility {
 	private static File file;
 	private static FileInputStream fileInputStream;
 
-	private static final String propertyFilePath = "//src//main//resources//configurations//";
-	private static final String testConfigFile = "TestConfig.properties";
-
 	private static Logger log = LoggerUtility.getLog(FileReaderUtility.class);
 
 	public void loadPropertyFile() throws IOException {
 		try {
 			properties = new Properties();
-			file = new File(System.getProperty("user.dir") + propertyFilePath + testConfigFile);
+			file = new File(System.getProperty("user.dir") + Constants.TEST_CONFIG_FILE_PATH);
 			try {
 				fileInputStream = new FileInputStream(file);
 			} catch (FileNotFoundException ex) {
-				log.info("======================== [ Property file " + testConfigFile
+				log.info("======================== [ Property file " + Constants.TEST_CONFIG_FILE_NAME
 						+ " not found ] ========================");
 				ex.printStackTrace();
 			}

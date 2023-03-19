@@ -17,8 +17,7 @@ public class LoggerUtility {
 		if (root) {
 			return Logger.getLogger(getclass);
 		}
-		PropertyConfigurator
-				.configure(System.getProperty("user.dir") + FileReaderUtility.getTestData("log.config.path"));
+		PropertyConfigurator.configure(System.getProperty("user.dir") + Constants.LOG_FILE_PATH);
 		root = true;
 		return Logger.getLogger(getclass);
 

@@ -23,8 +23,8 @@ import com.aventstack.extentreports.Status;
 
 import com.jtaf.qa.base.BaseTest;
 import com.jtaf.qa.helpers.ReusableHelper;
+import com.jtaf.qa.utilities.Constants;
 import com.jtaf.qa.utilities.ExtentUtility;
-import com.jtaf.qa.utilities.FileReaderUtility;
 import com.jtaf.qa.utilities.LoggerUtility;
 
 /**
@@ -92,7 +92,7 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 
 	@Override
 	public void onTestFailure(ITestResult result) {
-		snapshotCategory = "failure";
+		snapshotCategory = "failure/";
 		try {
 			if (!result.isSuccess()) {
 				// Extent Report Code
@@ -126,7 +126,7 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
-		snapshotCategory = "success";
+		snapshotCategory = "success/";
 		try {
 			if (result.isSuccess()) {
 				// Extent Report Code
@@ -177,9 +177,8 @@ public class ReportListener extends BaseTest implements ITestListener, ISuiteLis
 		Calendar calendar = Calendar.getInstance();
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd_MM_YYYY_hh_mm_ss");
 		File source = ((TakesScreenshot) BaseTest.getDriver()).getScreenshotAs(OutputType.FILE);
-		File destination = new File(
-				System.getProperty("user.dir") + FileReaderUtility.getTestData("snapshot.path") + snapshotCategory
-						+ simpleDateFormat.format(calendar.getTime()) + FileReaderUtility.getTestData("snapshot.type"));
+		File destination = new File(System.getProperty("user.dir") + Constants.SNAPSHOT_PATH + snapshotCategory
+				+ simpleDateFormat.format(calendar.getTime()) + Constants.SNAPSHOT_TYPE);
 		try {
 			FileUtils.copyFile(source, destination);
 		} catch (IOException ex) {
