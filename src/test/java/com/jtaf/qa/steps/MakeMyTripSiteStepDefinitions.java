@@ -17,34 +17,33 @@ public class MakeMyTripSiteStepDefinitions implements En {
 
 	public MakeMyTripSiteStepDefinitions() {
 
-		Given("^user is on MakeMyTrip home page$", () -> {
+		Given("user is on MakeMyTrip home page", () -> {
 			baseTest.launchApplication();
 		});
 
-		Then("^user verify MakeMyTrip home page title$", () -> {
+		Then("user verify MakeMyTrip home page title", () -> {
 			makeMyTripSiteTest.homePageTitle();
 		});
 
-		When("^user enter travel details \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\\\"]*)\" \"([^\"]*)\" and enter search$",
+		When("user enter travel details {string} {string} {string} {string} {string} {string} and enter search",
 				(String form, String to, String month, String day, String travelPassengers, String travelClass) -> {
 					makeMyTripSiteTest.enterBookingDetails(form, to, month, day, travelPassengers, travelClass);
 				});
 
-		Then("^travel booking page open and verify title$", () -> {
+		Then("travel booking page open and verify title", () -> {
 			makeMyTripSiteTest.ticketBookingTitle();
 		});
 
-		Then("^user book ticket$", () -> {
+		Then("user book ticket", () -> {
 			makeMyTripSiteTest.bookTicket();
 		});
 
-		Then("^travel details page open and verify header$", () -> {
+		Then("travel details page open and verify header", () -> {
 			makeMyTripSiteTest.ticketDetailsHeader();
 		});
 
-		Then("^user checks ticket details$", () -> {
+		Then("user checks ticket details", () -> {
 			makeMyTripSiteTest.ticketDetails();
 		});
 	}
-
 }

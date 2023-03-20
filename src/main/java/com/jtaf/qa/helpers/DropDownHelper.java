@@ -4,11 +4,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
-import com.jtaf.qa.base.BaseTest;
+import com.jtaf.qa.base.BasePage;
 import com.jtaf.qa.utilities.LoggerUtility;
 
 /**
@@ -16,7 +17,11 @@ import com.jtaf.qa.utilities.LoggerUtility;
  * @author Jaga
  *
  */
-public class DropDownHelper extends BaseTest {
+public class DropDownHelper extends BasePage {
+
+	public DropDownHelper(WebDriver driver) {
+		super(driver);
+	}
 
 	private static Logger log = LoggerUtility.getLog(DropDownHelper.class);
 

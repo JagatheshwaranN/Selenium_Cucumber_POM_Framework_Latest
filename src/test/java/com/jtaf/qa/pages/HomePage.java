@@ -30,10 +30,10 @@ public class HomePage extends BasePage {
 
 	AlertHelper alertHelper = new AlertHelper(getDriver());
 	BrowserHelper browserHelper = new BrowserHelper(getDriver());
-	DropDownHelper dropDownHelper = new DropDownHelper();
+	DropDownHelper dropDownHelper = new DropDownHelper(getDriver());
 	JavaScriptHelper javaScriptHelper = new JavaScriptHelper(getDriver());
 	MouseActionHelper mouseActionHelper = new MouseActionHelper(getDriver());
-	VerificationHelper verificationHelper = new VerificationHelper();
+	VerificationHelper verificationHelper = new VerificationHelper(getDriver());
 	ReusableHelper reusableHelper = new ReusableHelper(getDriver());
 	HomePageElements homePageElements;
 

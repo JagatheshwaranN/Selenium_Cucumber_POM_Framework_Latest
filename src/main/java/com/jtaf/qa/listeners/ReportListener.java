@@ -32,7 +32,7 @@ import com.jtaf.qa.utilities.LoggerUtility;
  * @author Jaga
  *
  */
-public class ReportListener extends BaseTest implements ITestListener, ISuiteListener {
+public class ReportListener implements ITestListener, ISuiteListener {
 
 	private static Logger log = LoggerUtility.getLog(ReportListener.class);
 	private String snapshotCategory = null;
