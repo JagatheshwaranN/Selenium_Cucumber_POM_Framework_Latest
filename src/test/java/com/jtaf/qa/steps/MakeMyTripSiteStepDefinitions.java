@@ -3,54 +3,48 @@ package com.jtaf.qa.steps;
 import com.jtaf.qa.base.BaseTest;
 import com.jtaf.qa.test.MakeMyTripSiteTest;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+import io.cucumber.java8.En;
 
 /**
  * 
  * @author Jaga
  *
  */
-public class MakeMyTripSiteStepDefinitions {
+public class MakeMyTripSiteStepDefinitions implements En {
 
 	BaseTest baseTest = new BaseTest();
 	MakeMyTripSiteTest makeMyTripSiteTest = new MakeMyTripSiteTest();
 
-	@Given("^user is on MakeMyTrip home page$")
-	public void user_is_on_MakeMyTrip_home_page() throws Exception {
-		baseTest.launchApplication();
-	}
+	public MakeMyTripSiteStepDefinitions() {
 
-	@Then("^user verify MakeMyTrip home page title$")
-	public void user_verify_MakeMyTrip_home_page_title() throws Exception {
-		makeMyTripSiteTest.homePageTitle();
-	}
+		Given("^user is on MakeMyTrip home page$", () -> {
+			baseTest.launchApplication();
+		});
 
-	@When("^user enter travel details \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\\\"]*)\" \"([^\"]*)\" and enter search$")
-	public void user_enter_travel_details_and_enter_search(String form, String to, String month, String day,
-			String travelPassengers, String travelClass) throws Exception {
-		makeMyTripSiteTest.enterBookingDetails(form, to, month, day, travelPassengers, travelClass);
-	}
+		Then("^user verify MakeMyTrip home page title$", () -> {
+			makeMyTripSiteTest.homePageTitle();
+		});
 
-	@Then("^travel booking page open and verify title$")
-	public void travel_booking_page_open_and_verify_title() throws Exception {
-		makeMyTripSiteTest.ticketBookingTitle();
-	}
+		When("^user enter travel details \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\"]*)\" \"([^\\\"]*)\" \"([^\"]*)\" and enter search$",
+				(String form, String to, String month, String day, String travelPassengers, String travelClass) -> {
+					makeMyTripSiteTest.enterBookingDetails(form, to, month, day, travelPassengers, travelClass);
+				});
 
-	@Then("^user book ticket$")
-	public void user_book_ticket() throws Exception {
-		makeMyTripSiteTest.bookTicket();
-	}
+		Then("^travel booking page open and verify title$", () -> {
+			makeMyTripSiteTest.ticketBookingTitle();
+		});
 
-	@Then("^travel details page open and verify header$")
-	public void travel_details_page_open_and_verify_header() throws Exception {
-		makeMyTripSiteTest.ticketDetailsHeader();
-	}
+		Then("^user book ticket$", () -> {
+			makeMyTripSiteTest.bookTicket();
+		});
 
-	@Then("^user checks ticket details$")
-	public void user_checks_ticket_details() throws Exception {
-		makeMyTripSiteTest.ticketDetails();
+		Then("^travel details page open and verify header$", () -> {
+			makeMyTripSiteTest.ticketDetailsHeader();
+		});
+
+		Then("^user checks ticket details$", () -> {
+			makeMyTripSiteTest.ticketDetails();
+		});
 	}
 
 }
