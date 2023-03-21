@@ -133,8 +133,6 @@ public class HomePage extends BasePage {
 
 	public void verifyHomePageTitle() {
 		try {
-			// Temporary Fix
-			Thread.sleep(10000);
 			reusableHelper.waitForElementVisible(getAppLaunchPopupClose());
 			reusableHelper.elementClick(getAppLaunchPopupClose(), "appLaunchPopupClose");
 			browserHelper.getCurrentPageUrl();

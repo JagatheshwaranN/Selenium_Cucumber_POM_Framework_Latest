@@ -7,8 +7,8 @@ Feature: MakeMyTrip Ticket Booking
     Then user verify MakeMyTrip home page title
     When user enter travel details "<from>" "<to>" "<month>" "<day>" "<passengers>" "<travelclass>" and enter search
     Then travel booking page open and verify title
-    And user book ticket
-    And travel details page open and verify header
+    When user book ticket
+    Then travel details page open and verify header
     And user checks ticket details
 
     Examples: 

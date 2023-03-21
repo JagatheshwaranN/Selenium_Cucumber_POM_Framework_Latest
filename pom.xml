@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.jtaf</groupId>
 	<artifactId>SeleniumCucumberPOMFramework</artifactId>
@@ -20,11 +22,11 @@
 			<artifactId>testng</artifactId>
 			<version>7.7.1</version>
 		</dependency>
-		<!--<dependency>
+		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-java</artifactId>
 			<version>${cucumber.version}</version>
-		</dependency>-->
+		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-core</artifactId>
@@ -128,7 +130,8 @@
 				<version>3.0.0-M9</version>
 				<configuration>
 					<suiteXmlFiles>
-						<suiteXmlFile>src/test/resources/container/runner/${suiteXmlFile}</suiteXmlFile>
+						<suiteXmlFile>
+							src/test/resources/container/runner/${suiteXmlFile}</suiteXmlFile>
 					</suiteXmlFiles>
 					<!--<systemPropertyVariables>
 						<extent.reporter.spark.start>true</extent.reporter.spark.start>
