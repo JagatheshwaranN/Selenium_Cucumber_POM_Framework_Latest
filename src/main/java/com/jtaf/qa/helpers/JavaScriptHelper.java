@@ -202,5 +202,4 @@ public class JavaScriptHelper extends BasePage implements WebPage {
 			Assert.fail();
 		}
 	}
-
 }

@@ -49,5 +49,4 @@ public class RetryUtility implements IRetryAnalyzer {
 		}
 		return resultName;
 	}
-
 }

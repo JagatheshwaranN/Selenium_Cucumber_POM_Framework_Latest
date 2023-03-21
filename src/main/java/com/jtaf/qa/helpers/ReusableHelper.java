@@ -117,9 +117,9 @@ public class ReusableHelper extends BasePage implements WebPage {
 	}
 
 	public void typeCharsWithDelay(WebElement element, String value) {
-		for (int i = 0; i < value.length(); i++) {
-			char ch = value.charAt(i);
-			String valueToType = new StringBuilder().append(ch).toString();
+		for (var i = 0; i < value.length(); i++) {
+			var ch = value.charAt(i);
+			var valueToType = new StringBuilder().append(ch).toString();
 			element.sendKeys(valueToType);
 			try {
 				Thread.sleep(800);

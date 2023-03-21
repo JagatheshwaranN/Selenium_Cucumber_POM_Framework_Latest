@@ -24,7 +24,7 @@ public class MouseActionHelper extends BasePage {
 
 	public void mouseHover(WebElement element1, WebElement element2, String elementName) {
 		try {
-			Actions builder = new Actions(getDriver());
+			var builder = new Actions(getDriver());
 			builder.moveToElement(element1).build().perform();
 			element2.click();
 			log.info("The control is mouse hovered and clicked on an " + elementName + " element");
@@ -33,5 +33,4 @@ public class MouseActionHelper extends BasePage {
 			Assert.fail();
 		}
 	}
-
 }

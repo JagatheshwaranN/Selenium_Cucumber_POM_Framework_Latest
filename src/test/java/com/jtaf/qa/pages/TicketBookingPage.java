@@ -1,8 +1,8 @@
 package com.jtaf.qa.pages;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+
+import java.util.stream.Collectors;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -79,8 +79,8 @@ public class TicketBookingPage extends HomePage {
 	}
 
 	public TicketDetailsPage bookTicket() {
-		int price = 0;
-		int lowestPrice = 0;
+		var price = 0;
+		var lowestPrice = 0;
 		try {
 			javaScriptHelper.scrollToElement(getTicketBookingBanner());
 			verificationHelper.verifyElementPresent(getPriceList(), "priceList");
@@ -103,13 +103,13 @@ public class TicketBookingPage extends HomePage {
 	}
 
 	public int getLowestPrice() {
-		List<Integer> priceBucket = new ArrayList<Integer>();
+		var priceBucket = new ArrayList<Integer>();
 		String price = null;
-		int priceInNum = 0;
+		var priceInNum = 0;
 		try {
-			String priceList = "(//div[@class='priceSection']//p)";
-			int size = getDriver().findElements(By.xpath(priceList)).size();
-			for (int i = 1; i <= size; i++) {
+			var priceList = "(//div[@class='priceSection']//p)";
+			var size = getDriver().findElements(By.xpath(priceList)).size();
+			for (var i = 1; i <= size; i++) {
 				price = getDriver().findElement(By.xpath(priceList + "[" + i + "]")).getText();
 				price = price.substring(1).replaceAll(",", "").trim();
 				priceInNum = Integer.parseInt(price);
@@ -119,8 +119,8 @@ public class TicketBookingPage extends HomePage {
 			log.info("Error occured while get the lowest price list" + "\n" + ex);
 			Assert.fail();
 		}
-		Collections.sort(priceBucket);
-		int lowestPrice = priceBucket.get(0);
+
+		var lowestPrice = priceBucket.stream().sorted().collect(Collectors.toList()).get(0);
 		return lowestPrice;
 	}
 }

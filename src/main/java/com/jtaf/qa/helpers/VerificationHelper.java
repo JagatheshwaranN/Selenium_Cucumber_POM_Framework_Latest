@@ -36,7 +36,7 @@ public class VerificationHelper extends BasePage {
 	public boolean verifyTextEquals(WebElement element, String text, String elementName) {
 		boolean flag = false;
 		try {
-			String actualText = element.getText();
+			var actualText = element.getText();
 			if (actualText.equals(text)) {
 				log.info("The element " + elementName + " text and given text is equal");
 				return flag = true;

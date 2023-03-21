@@ -55,5 +55,4 @@ public class FileReaderUtility {
 		}
 		return dataFromPropFile;
 	}
-
 }

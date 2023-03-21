@@ -27,7 +27,7 @@ public class DropDownHelper extends BasePage {
 
 	public void selectByValue(WebElement element, String value, String elementName) {
 		try {
-			Select select = new Select(element);
+			var select = new Select(element);
 			select.selectByValue(value);
 			log.info("The value " + value + " is selected from " + elementName + " dropdown");
 		} catch (Exception ex) {
@@ -38,7 +38,7 @@ public class DropDownHelper extends BasePage {
 
 	public void selectByIndex(WebElement element, int index, String elementName) {
 		try {
-			Select select = new Select(element);
+			var select = new Select(element);
 			select.selectByIndex(index);
 			log.info("The value at index " + index + " is selected from " + elementName + " dropdown");
 		} catch (Exception ex) {
@@ -49,7 +49,7 @@ public class DropDownHelper extends BasePage {
 
 	public void selectByVisibleText(WebElement element, String visibleText, String elementName) {
 		try {
-			Select select = new Select(element);
+			var select = new Select(element);
 			select.selectByVisibleText(visibleText);
 			log.info("The visible text " + visibleText + " is selected from " + elementName + " dropdown");
 		} catch (Exception ex) {
@@ -73,10 +73,10 @@ public class DropDownHelper extends BasePage {
 	public List<String> getAllDropDownValue(WebElement element, String elementName) {
 		List<String> dropdownvalues = null;
 		try {
-			Select select = new Select(element);
-			List<WebElement> listelements = select.getOptions();
+			var select = new Select(element);
+			var listelements = select.getOptions();
 			dropdownvalues = new LinkedList<String>();
-			for (WebElement elements : listelements) {
+			for (var elements : listelements) {
 				log.info("The option values of the " + elementName + " dropdown are : " + elements.getText());
 				dropdownvalues.add(elements.getText());
 			}
@@ -86,5 +86,4 @@ public class DropDownHelper extends BasePage {
 		}
 		return dropdownvalues;
 	}
-
 }

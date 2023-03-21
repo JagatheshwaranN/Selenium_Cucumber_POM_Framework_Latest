@@ -75,5 +75,4 @@ public class BasePage extends Page {
 		}
 		return element;
 	}
-
 }

@@ -4,9 +4,6 @@ import java.io.File;
 import java.io.FileInputStream;
 
 import org.apache.log4j.Logger;
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
 
@@ -23,16 +20,16 @@ public class ExcelReaderUtility {
 		Object[][] dataSet = null;
 		try {
 			log.info("The extraction of data from excel sheet starts here");
-			FileInputStream file = new FileInputStream(new File(excelPath));
-			XSSFWorkbook workbook = new XSSFWorkbook(file);
-			XSSFSheet sheet = workbook.getSheet(sheetName);
-			int totalRow = sheet.getLastRowNum() + 1;
-			int totalColumn = sheet.getRow(0).getLastCellNum();
+			var file = new FileInputStream(new File(excelPath));
+			var workbook = new XSSFWorkbook(file);
+			var sheet = workbook.getSheet(sheetName);
+			var totalRow = sheet.getLastRowNum() + 1;
+			var totalColumn = sheet.getRow(0).getLastCellNum();
 			dataSet = new Object[totalRow - 1][totalColumn];
-			for (int i = 1; i < totalRow; i++) {
-				XSSFRow rows = sheet.getRow(i);
+			for (var i = 1; i < totalRow; i++) {
+				var rows = sheet.getRow(i);
 				for (int j = 0; j < totalColumn; j++) {
-					XSSFCell cell = rows.getCell(j);
+					var cell = rows.getCell(j);
 					switch (cell.getCellType()) {
 					case STRING:
 						dataSet[i - 1][j] = cell.getStringCellValue();
@@ -53,5 +50,4 @@ public class ExcelReaderUtility {
 		}
 		return dataSet;
 	}
-
 }

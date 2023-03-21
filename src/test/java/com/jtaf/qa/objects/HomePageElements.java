@@ -2,12 +2,15 @@ package com.jtaf.qa.objects;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.FindBys;
 import org.openqa.selenium.support.How;
 
 public class HomePageElements {
 
-	@FindBy(how = How.CSS, using = ".ic_circularclose_grey")
+	@FindAll({ @FindBy(how = How.CSS, using = ".ic_circularclose_grey"),
+			@FindBy(how = How.XPATH, using = "//span[@data-cy='handleSnackbarClose']") })
 	public WebElement AppLaunchPopupClose;
 	@FindBy(how = How.XPATH, using = "(//span[text()='Flights'])[1]")
 	public WebElement HomePageHeader;
@@ -43,7 +46,8 @@ public class HomePageElements {
 	public WebElement TravelSelectionApply;
 	@FindBy(how = How.XPATH, using = "//label[@for='travellers']//p[2]")
 	public WebElement TravelClassDisplay;
-	@FindBy(how = How.XPATH, using = "//a[contains(@class,'primaryBtn font24 latoBold widgetSearchBtn')]")
+	@FindBys({ @FindBy(how = How.XPATH, using = "//div[contains(@data-cy,'flightSW')]"),
+			@FindBy(how = How.XPATH, using = "//a[contains(@class,'primaryBtn font24 latoBold widgetSearchBtn')]") })
 	public WebElement SearchFlights;
 
 	public By FromLocationSuggestion1 = By.xpath("//ul[@role='listbox']//li[@role='option']//p[text()='@1@']");
@@ -51,5 +55,5 @@ public class HomePageElements {
 	public By DateInCalendar1 = By.xpath("//div[@class='DayPicker-Week']/div[@class='DayPicker-Day']//p[text()='@1@']");
 	public By TravelSelectionPassenger1 = By.xpath("//ul[contains(@class,'guestCounter')]//li[@data-cy='adults-@1@']");
 	public By TravelSelectionClass1 = By.xpath("//ul[contains(@class,'guestCounter')]//li[@data-cy='travelClass-@1@']");
-	
+
 }

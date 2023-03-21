@@ -109,7 +109,7 @@ public class AlertHelper extends BasePage {
 			if (!isAlertPresent()) {
 				return;
 			}
-			Alert alert = getAlert();
+			var alert = getAlert();
 			alert.sendKeys(text);
 			alert.accept();
 			log.info("The alert prompt window is present on the page and accepted");
@@ -118,5 +118,4 @@ public class AlertHelper extends BasePage {
 			Assert.fail();
 		}
 	}
-
 }

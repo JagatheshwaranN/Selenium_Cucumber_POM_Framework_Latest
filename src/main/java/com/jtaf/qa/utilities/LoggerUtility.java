@@ -20,7 +20,5 @@ public class LoggerUtility {
 		PropertyConfigurator.configure(System.getProperty("user.dir") + Constants.LOG_FILE_PATH);
 		root = true;
 		return Logger.getLogger(getclass);
-
 	}
-
 }

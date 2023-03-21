@@ -182,10 +182,10 @@ public class ReportListener implements ITestListener, ISuiteListener {
 	}
 
 	public String captureSnapShot(String snapshotCategory) {
-		Calendar calendar = Calendar.getInstance();
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd_MM_YYYY_hh_mm_ss");
-		File source = ((TakesScreenshot) BaseTest.getDriver()).getScreenshotAs(OutputType.FILE);
-		File destination = new File(System.getProperty("user.dir") + Constants.SNAPSHOT_PATH + snapshotCategory
+		var calendar = Calendar.getInstance();
+		var simpleDateFormat = new SimpleDateFormat("dd_MM_YYYY_hh_mm_ss");
+		var source = ((TakesScreenshot) BaseTest.getDriver()).getScreenshotAs(OutputType.FILE);
+		var destination = new File(System.getProperty("user.dir") + Constants.SNAPSHOT_PATH + snapshotCategory
 				+ simpleDateFormat.format(calendar.getTime()) + Constants.SNAPSHOT_TYPE);
 		try {
 			FileUtils.copyFile(source, destination);

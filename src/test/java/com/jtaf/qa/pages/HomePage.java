@@ -176,7 +176,7 @@ public class HomePage extends BasePage {
 	public void selectDepartureDate(String month, String day) {
 		try {
 			while (true) {
-				String monthInDatePicker = getMonthTextInDatePicker().getText();
+				var monthInDatePicker = getMonthTextInDatePicker().getText();
 				if (monthInDatePicker.equals(month)) {
 					break;
 				} else {

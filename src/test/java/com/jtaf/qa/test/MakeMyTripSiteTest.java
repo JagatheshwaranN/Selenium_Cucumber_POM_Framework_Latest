@@ -25,7 +25,7 @@ public class MakeMyTripSiteTest {
 				FileReaderUtility.getTestData(form), FileReaderUtility.getTestData(to),
 				FileReaderUtility.getTestData(month), FileReaderUtility.getTestData(day),
 				FileReaderUtility.getTestData(passengers), FileReaderUtility.getTestData(travelClass));
-		String ticketBookingPageTitle = ticketBookingPage.getTicketBookingPageTitle();
+		var ticketBookingPageTitle = ticketBookingPage.getTicketBookingPageTitle();
 		Assert.assertEquals(ticketBookingPageTitle, FileReaderUtility.getTestData("ticket.booking.page.title"));
 	}
 
@@ -35,7 +35,7 @@ public class MakeMyTripSiteTest {
 
 	public void bookTicket() {
 		TicketDetailsPage ticketDetailsPage = BaseTest.page.getInstance(TicketBookingPage.class).bookTicket();
-		String ticketDetailsPageHeader = ticketDetailsPage.getTicketDetailsHeader();
+		var ticketDetailsPageHeader = ticketDetailsPage.getTicketDetailsHeader();
 		Assert.assertEquals(ticketDetailsPageHeader, FileReaderUtility.getTestData("ticket.details.page.header"));
 	}
 
@@ -46,5 +46,4 @@ public class MakeMyTripSiteTest {
 	public void ticketDetails() {
 		BaseTest.page.getInstance(TicketDetailsPage.class).verifyTicketDetails();
 	}
-
 }

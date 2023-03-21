@@ -65,7 +65,7 @@ public class BrowserHelper extends BasePage {
 
 	public void SwitchToWindow(int index) {
 		try {
-			LinkedList<String> windowsId = new LinkedList<String>(getWindowHandles());
+			var windowsId = new LinkedList<String>(getWindowHandles());
 			if (index < 0 || index > windowsId.size())
 				throw new IllegalArgumentException("Window handle has invalid index : " + index);
 			getDriver().switchTo().window(windowsId.get(index));
@@ -78,8 +78,8 @@ public class BrowserHelper extends BasePage {
 
 	public void switchToParentWindow() {
 		try {
-			LinkedList<String> windowsid = new LinkedList<String>(getWindowHandles());
-			getDriver().switchTo().window(windowsid.get(0));
+			var windowsId = new LinkedList<String>(getWindowHandles());
+			getDriver().switchTo().window(windowsId.get(0));
 			log.info("The control switched to the parent window");
 		} catch (Exception ex) {
 			log.info("Error occured while the control switch to parent window" + "\n" + ex);
@@ -90,10 +90,10 @@ public class BrowserHelper extends BasePage {
 	public void switchToParentWithChildClose() {
 		try {
 			switchToParentWindow();
-			LinkedList<String> windowsid = new LinkedList<String>(getWindowHandles());
-			for (int i = 1; i < windowsid.size(); i++) {
-				log.info("Child window id : " + windowsid.get(i));
-				getDriver().switchTo().window(windowsid.get(i));
+			var windowsId = new LinkedList<String>(getWindowHandles());
+			for (var i = 1; i < windowsId.size(); i++) {
+				log.info("Child window id : " + windowsId.get(i));
+				getDriver().switchTo().window(windowsId.get(i));
 				getDriver().close();
 			}
 			switchToParentWindow();
