@@ -8,48 +8,48 @@ import org.openqa.selenium.support.How;
 public class HomePageElements {
 
 	@FindBy(how = How.CSS, using = ".ic_circularclose_grey")
-	public WebElement appLaunchPopupClose;
+	public WebElement AppLaunchPopupClose;
 	@FindBy(how = How.XPATH, using = "(//span[text()='Flights'])[1]")
-	public WebElement homePageHeader;
+	public WebElement HomePageHeader;
 	@FindBy(how = How.XPATH, using = "//span[contains(@class,'sc-eGRUor jFqzBD')]//..//span[@class='sc-ctqQKy jgGUHT']")
-	public WebElement oneWayTrip;
+	public WebElement OneWayTrip;
 	@FindBy(how = How.XPATH, using = "//label[@for='fromCity']")
-	public WebElement fromLocationSection;
+	public WebElement FromLocationSection;
 	@FindBy(how = How.XPATH, using = "//input[@id='fromCity']")
-	public WebElement fromLocation;
+	public WebElement FromLocation;
 	@FindBy(how = How.XPATH, using = "//ul[@role='listbox']//li[@role='option']//p[text()='@1@']")
-	public WebElement fromLocationSuggestion;
+	public WebElement FromLocationSuggestion;
 	@FindBy(how = How.XPATH, using = "//label[@for='toCity']")
-	public WebElement toLocationSection;
+	public WebElement ToLocationSection;
 	@FindBy(how = How.XPATH, using = "//input[@id='toCity']")
-	public WebElement toLocation;
+	public WebElement ToLocation;
 	@FindBy(how = How.XPATH, using = "//ul[@role='listbox']//li[@role='option']//p[text()='@1@']")
-	public WebElement toLocationSuggestion;
+	public WebElement ToLocationSuggestion;
 	@FindBy(how = How.XPATH, using = "//label[@for='departure']")
-	public WebElement depatureSection;
+	public WebElement DepatureSection;
 	@FindBy(how = How.XPATH, using = "(//div[@class='DayPicker-Caption' and @role='heading'])[2]")
-	public WebElement monthTextInDatePicker;
+	public WebElement MonthTextInDatePicker;
 	@FindBy(how = How.XPATH, using = "//span[@role='button' and @class='DayPicker-NavButton DayPicker-NavButton--next']")
-	public WebElement monthNavigatorInDatePicker;
+	public WebElement MonthNavigatorInDatePicker;
 	@FindBy(how = How.XPATH, using = "//div[@class='DayPicker-Week']/div[@class='DayPicker-Day']//p[text()='@1@']")
-	public WebElement dateInCalendar;
+	public WebElement DateInCalendar;
 	@FindBy(how = How.XPATH, using = "//label[@for='travellers']")
-	public WebElement travelSelection;
+	public WebElement TravelSelection;
 	@FindBy(how = How.XPATH, using = "//ul[contains(@class,'guestCounter')]//li[@data-cy='adults-2']")
-	public WebElement travelSelectionPassenger;
+	public WebElement TravelSelectionPassenger;
 	@FindBy(how = How.XPATH, using = "//ul[contains(@class,'guestCounter')]//li[@data-cy='travelClass-1']")
-	public WebElement travelSelectionClass;
+	public WebElement TravelSelectionClass;
 	@FindBy(how = How.XPATH, using = "//button[contains(@class,'primaryBtn btnApply pushRight')]")
-	public WebElement travelSelectionApply;
+	public WebElement TravelSelectionApply;
 	@FindBy(how = How.XPATH, using = "//label[@for='travellers']//p[2]")
-	public WebElement travelClassDisplay;
+	public WebElement TravelClassDisplay;
 	@FindBy(how = How.XPATH, using = "//a[contains(@class,'primaryBtn font24 latoBold widgetSearchBtn')]")
-	public WebElement searchFlights;
+	public WebElement SearchFlights;
 
-	public By fromLocationSuggestion1 = By.xpath("//ul[@role='listbox']//li[@role='option']//p[text()='@1@']");
-	public By toLocationSuggestion1 = By.xpath("//ul[@role='listbox']//li[@role='option']//p[text()='@1@']");
-	public By dateInCalendar1 = By.xpath("//div[@class='DayPicker-Week']/div[@class='DayPicker-Day']//p[text()='@1@']");
-	public By travelSelectionPassenger1 = By.xpath("//ul[contains(@class,'guestCounter')]//li[@data-cy='adults-@1@']");
-	public By travelSelectionClass1 = By.xpath("//ul[contains(@class,'guestCounter')]//li[@data-cy='travelClass-@1@']");
+	public By FromLocationSuggestion1 = By.xpath("//ul[@role='listbox']//li[@role='option']//p[text()='@1@']");
+	public By ToLocationSuggestion1 = By.xpath("//ul[@role='listbox']//li[@role='option']//p[text()='@1@']");
+	public By DateInCalendar1 = By.xpath("//div[@class='DayPicker-Week']/div[@class='DayPicker-Day']//p[text()='@1@']");
+	public By TravelSelectionPassenger1 = By.xpath("//ul[contains(@class,'guestCounter')]//li[@data-cy='adults-@1@']");
+	public By TravelSelectionClass1 = By.xpath("//ul[contains(@class,'guestCounter')]//li[@data-cy='travelClass-@1@']");
 	
 }

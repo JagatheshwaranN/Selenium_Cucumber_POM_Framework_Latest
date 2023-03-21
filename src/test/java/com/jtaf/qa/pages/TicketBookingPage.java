@@ -11,9 +11,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-import com.jtaf.qa.helpers.BrowserHelper;
 import com.jtaf.qa.helpers.ReusableHelper;
 import com.jtaf.qa.objects.TicketBookingPageElements;
+import com.jtaf.qa.utilities.Constants;
 import com.jtaf.qa.utilities.FileReaderUtility;
 import com.jtaf.qa.utilities.LoggerUtility;
 
@@ -38,31 +38,31 @@ public class TicketBookingPage extends HomePage {
 	}
 
 	public WebElement getTicketBookPopupClose() {
-		return ticketBookingPageElements.ticketBookPopupClose;
+		return ticketBookingPageElements.TicketBookPopupClose;
 	}
 
 	public WebElement getTicketBookingBanner() {
-		return ticketBookingPageElements.ticketBookingBanner;
+		return ticketBookingPageElements.TicketBookingBanner;
 	}
 
 	public WebElement getPriceSort() {
-		return ticketBookingPageElements.priceSort;
+		return ticketBookingPageElements.PriceSort;
 	}
 
 	public WebElement getPriceList() {
-		return ticketBookingPageElements.priceList;
+		return ticketBookingPageElements.PriceList;
 	}
 
 	public WebElement getviewPrices() {
-		return ticketBookingPageElements.viewPrices;
+		return ticketBookingPageElements.ViewPrices;
 	}
 
 	public WebElement getBook() {
-		return ticketBookingPageElements.book;
+		return ticketBookingPageElements.Book;
 	}
 
 	public WebElement getFlightName() {
-		return ticketBookingPageElements.flightName;
+		return ticketBookingPageElements.FlightName;
 	}
 
 	public void verifyTicketBookingTitle() {
@@ -93,7 +93,7 @@ public class TicketBookingPage extends HomePage {
 				reusableHelper.elementClick(getviewPrices(), "viewPricesButton");
 				verificationHelper.verifyElementPresent(getBook(), "bookButton");
 				reusableHelper.elementClick(getBook(), "bookButton");
-				browserHelper.SwitchToWindow(BrowserHelper.CHILD_PAGE1);
+				browserHelper.SwitchToWindow(Constants.CHILD_PAGE1);
 			}
 		} catch (Exception ex) {
 			log.info("Error occured while book the ticket" + "\n" + ex);

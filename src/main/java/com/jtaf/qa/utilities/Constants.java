@@ -10,5 +10,7 @@ public class Constants {
 	public static final String EXTENT_CONFIG_PATH = "//src//test//resources//container//extent//report-config.xml";
 	public static final String SNAPSHOT_PATH = "/src/test/resources/container/screenshots/";
 	public static final String SNAPSHOT_TYPE = ".png";
+	public static final int CHILD_PAGE1 = 1;
+	public static final int CHILD_PAGE2 = 2;
 
 }

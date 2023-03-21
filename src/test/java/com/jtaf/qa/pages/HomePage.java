@@ -48,87 +48,87 @@ public class HomePage extends BasePage {
 	}
 
 	public String getHomePageHeader() {
-		return getPageHeader(homePageElements.homePageHeader);
+		return getPageHeader(homePageElements.HomePageHeader);
 	}
 
 	public WebElement getAppLaunchPopupClose() {
-		return homePageElements.appLaunchPopupClose;
+		return homePageElements.AppLaunchPopupClose;
 	}
 
 	public WebElement getOneWayTrip() {
-		return homePageElements.oneWayTrip;
+		return homePageElements.OneWayTrip;
 	}
 
 	public WebElement getFromLocationSection() {
-		return homePageElements.fromLocationSection;
+		return homePageElements.FromLocationSection;
 	}
 
 	public WebElement getFromLocation() {
-		return homePageElements.fromLocation;
+		return homePageElements.FromLocation;
 	}
 
 	public WebElement getToLocationSection() {
-		return homePageElements.toLocationSection;
+		return homePageElements.ToLocationSection;
 	}
 
 	public WebElement getToLocation() {
-		return homePageElements.toLocation;
+		return homePageElements.ToLocation;
 	}
 
 	public WebElement getDepatureDate() {
-		return homePageElements.depatureSection;
+		return homePageElements.DepatureSection;
 	}
 
 	public WebElement getMonthTextInDatePicker() {
-		return homePageElements.monthTextInDatePicker;
+		return homePageElements.MonthTextInDatePicker;
 	}
 
 	public WebElement getMonthNavigatorInDatePicker() {
-		return homePageElements.monthNavigatorInDatePicker;
+		return homePageElements.MonthNavigatorInDatePicker;
 	}
 
 	public WebElement getTravelSelection() {
-		return homePageElements.travelSelection;
+		return homePageElements.TravelSelection;
 	}
 
 	public WebElement getTravelSelectionPassenger() {
-		return homePageElements.travelSelectionPassenger;
+		return homePageElements.TravelSelectionPassenger;
 	}
 
 	public WebElement getTravelSelectionClass() {
-		return homePageElements.travelSelectionClass;
+		return homePageElements.TravelSelectionClass;
 	}
 
 	public WebElement getTravelSelectionApply() {
-		return homePageElements.travelSelectionApply;
+		return homePageElements.TravelSelectionApply;
 	}
 
 	public WebElement getTravelClassDisplay() {
-		return homePageElements.travelClassDisplay;
+		return homePageElements.TravelClassDisplay;
 	}
 
 	public WebElement getSearchFlights() {
-		return homePageElements.searchFlights;
+		return homePageElements.SearchFlights;
 	}
 
 	public By getFromLocationSuggestion1() {
-		return homePageElements.fromLocationSuggestion1;
+		return homePageElements.FromLocationSuggestion1;
 	}
 
 	public By getToLocationSuggestion1() {
-		return homePageElements.toLocationSuggestion1;
+		return homePageElements.ToLocationSuggestion1;
 	}
 
 	public By getDateInCalendar1() {
-		return homePageElements.dateInCalendar1;
+		return homePageElements.DateInCalendar1;
 	}
 
 	public By getTravelSelectionPassenger1() {
-		return homePageElements.travelSelectionPassenger1;
+		return homePageElements.TravelSelectionPassenger1;
 	}
 
 	public By getTravelSelectionClass1() {
-		return homePageElements.travelSelectionClass1;
+		return homePageElements.TravelSelectionClass1;
 	}
 
 	public void verifyHomePageTitle() {

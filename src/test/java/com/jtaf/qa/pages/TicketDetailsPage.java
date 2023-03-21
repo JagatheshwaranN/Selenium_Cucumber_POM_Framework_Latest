@@ -31,32 +31,32 @@ public class TicketDetailsPage extends TicketBookingPage {
 	}
 
 	public String getTicketDetailsHeader() {
-		reusableHelper.waitForElementVisible(ticketDetailsPageElements.ticketDetailsHeader);
-		return getPageHeader(ticketDetailsPageElements.ticketDetailsHeader);
+		reusableHelper.waitForElementVisible(ticketDetailsPageElements.TicketDetailsHeader);
+		return getPageHeader(ticketDetailsPageElements.TicketDetailsHeader);
 	}
 
 	public WebElement getTicketDetailsFlightName() {
-		return ticketDetailsPageElements.ticketDetailsFlightName;
+		return ticketDetailsPageElements.TicketDetailsFlightName;
 	}
 
 	public WebElement getTicketDetailsFromPlace() {
-		return ticketDetailsPageElements.ticketDetailsFromPlace;
+		return ticketDetailsPageElements.TicketDetailsFromPlace;
 	}
 
 	public WebElement getTicketDetailsToPlace() {
-		return ticketDetailsPageElements.ticketDetailsToPlace;
+		return ticketDetailsPageElements.TicketDetailsToPlace;
 	}
 
 	public WebElement getTicketDetailsTravelClass() {
-		return ticketDetailsPageElements.ticketDetailsTravelClass;
+		return ticketDetailsPageElements.TicketDetailsTravelClass;
 	}
 
 	public WebElement getTicketFareSummary() {
-		return ticketDetailsPageElements.ticketFareSummary;
+		return ticketDetailsPageElements.TicketFareSummary;
 	}
 
 	public WebElement getTicketTotalAmount() {
-		return ticketDetailsPageElements.ticketTotalAmount;
+		return ticketDetailsPageElements.TicketTotalAmount;
 	}
 
 	public void verifyTicketDetailsHeader() {
