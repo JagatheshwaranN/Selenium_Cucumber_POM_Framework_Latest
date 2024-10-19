@@ -3,12 +3,12 @@ package com.jtaf.qa.helpers;
 import java.util.LinkedList;
 import java.util.Set;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import com.jtaf.qa.base.BasePage;
-import com.jtaf.qa.utilities.LoggerUtility;
 
 /**
  * 
@@ -17,7 +17,7 @@ import com.jtaf.qa.utilities.LoggerUtility;
  */
 public class BrowserHelper extends BasePage {
 
-	private static Logger log = LoggerUtility.getLog(BrowserHelper.class);
+	private static final Logger log = LogManager.getLogger(BrowserHelper.class.getName());
 
 	public BrowserHelper(WebDriver driver) {
 		super(driver);

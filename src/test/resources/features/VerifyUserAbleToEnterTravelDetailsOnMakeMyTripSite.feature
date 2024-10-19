@@ -9,4 +9,4 @@ Feature: MakeMyTrip Flights Search
 
     Examples: 
       | from          | to          | month        | day        | passengers        | travelclass  |
-      | from.location | to.location | travel.month | travel.day | travel.passengers | travel.class |
+      | from.location | to.location | travel.month | travel.day | travel.passengers | travel.class.getName() |

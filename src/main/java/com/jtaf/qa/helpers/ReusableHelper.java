@@ -3,13 +3,13 @@ package com.jtaf.qa.helpers;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-import com.jtaf.qa.utilities.LoggerUtility;
 import com.jtaf.qa.base.WebPage;
 import com.jtaf.qa.base.BasePage;
 
@@ -25,7 +25,7 @@ public class ReusableHelper extends BasePage implements WebPage {
 	public static String objValue;
 	public static String objKey;
 
-	private static Logger log = LoggerUtility.getLog(ReusableHelper.class);
+	private static final Logger log = LogManager.getLogger(ReusableHelper.class.getName());
 
 	public ReusableHelper(WebDriver driver) {
 		super(driver);

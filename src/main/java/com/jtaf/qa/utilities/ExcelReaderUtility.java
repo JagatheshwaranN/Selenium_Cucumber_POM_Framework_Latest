@@ -3,7 +3,8 @@ package com.jtaf.qa.utilities;
 import java.io.File;
 import java.io.FileInputStream;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
 
@@ -14,7 +15,7 @@ import org.testng.Assert;
  */
 public class ExcelReaderUtility {
 
-	private static Logger log = LoggerUtility.getLog(ExcelReaderUtility.class);
+	private static final Logger log = LogManager.getLogger(ExcelReaderUtility.class.getName());
 
 	public Object[][] getDataFromExcel(String excelPath, String sheetName) {
 		Object[][] dataSet = null;

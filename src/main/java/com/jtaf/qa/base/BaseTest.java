@@ -2,7 +2,8 @@ package com.jtaf.qa.base;
 
 import java.io.IOException;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -12,7 +13,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 
 import com.jtaf.qa.utilities.FileReaderUtility;
-import com.jtaf.qa.utilities.LoggerUtility;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -33,7 +33,7 @@ public class BaseTest extends FileReaderUtility {
 	// public static ExtentReports report;
 	// public static ExtentTest test;
 
-	private static Logger log = LoggerUtility.getLog(BaseTest.class);
+	private static final Logger log = LogManager.getLogger(BaseTest.class.getName());
 
 	@Before
 	public void before() throws IOException {

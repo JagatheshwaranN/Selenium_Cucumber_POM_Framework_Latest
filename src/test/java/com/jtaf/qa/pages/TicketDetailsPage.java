@@ -1,6 +1,7 @@
 package com.jtaf.qa.pages;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -9,7 +10,6 @@ import org.testng.Assert;
 import com.jtaf.qa.helpers.ReusableHelper;
 import com.jtaf.qa.objects.TicketDetailsPageElements;
 import com.jtaf.qa.utilities.FileReaderUtility;
-import com.jtaf.qa.utilities.LoggerUtility;
 
 /**
  * @author Jaga
@@ -17,7 +17,7 @@ import com.jtaf.qa.utilities.LoggerUtility;
  */
 public class TicketDetailsPage extends TicketBookingPage {
 
-	private static Logger log = LoggerUtility.getLog(TicketDetailsPage.class);
+	private static final Logger log = LogManager.getLogger(TicketDetailsPage.class.getName());
 	TicketDetailsPageElements ticketDetailsPageElements;
 
 	public TicketDetailsPage(WebDriver driver) {

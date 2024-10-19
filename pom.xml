@@ -152,7 +152,7 @@
 					<suiteXmlFiles>
 						<!--suppress UnresolvedMavenProperty -->
 						<suiteXmlFile>
-							src/test/resources/container/runner/${suiteXmlFile}</suiteXmlFile>
+							src/test/resources/container/runner/testNG.xml</suiteXmlFile>
 					</suiteXmlFiles>
 					<!--<systemPropertyVariables>
 						<extent.reporter.spark.start>true</extent.reporter.spark.start>

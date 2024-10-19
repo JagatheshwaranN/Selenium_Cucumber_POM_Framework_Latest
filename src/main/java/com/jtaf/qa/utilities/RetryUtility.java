@@ -1,6 +1,7 @@
 package com.jtaf.qa.utilities;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 import org.testng.IRetryAnalyzer;
 import org.testng.ITestResult;
@@ -15,7 +16,7 @@ public class RetryUtility implements IRetryAnalyzer {
 	private int retryCount = 0;
 	private int maxRetryCount = 2;
 
-	private static Logger log = LoggerUtility.getLog(RetryUtility.class);
+	private static final Logger log = LogManager.getLogger(RetryUtility.class.getName());
 
 	@Override
 	public boolean retry(ITestResult test) {

@@ -6,7 +6,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.Assert;
 
 /***
@@ -20,7 +21,7 @@ public class FileReaderUtility {
 	private static File file;
 	private static FileInputStream fileInputStream;
 
-	private static Logger log = LoggerUtility.getLog(FileReaderUtility.class);
+	private static final Logger log = LogManager.getLogger(FileReaderUtility.class.getName());
 
 	public void loadPropertyFile() throws IOException {
 		try {

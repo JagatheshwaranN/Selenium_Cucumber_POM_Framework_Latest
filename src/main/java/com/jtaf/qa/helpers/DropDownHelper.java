@@ -3,14 +3,14 @@ package com.jtaf.qa.helpers;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 
 import com.jtaf.qa.base.BasePage;
-import com.jtaf.qa.utilities.LoggerUtility;
 
 /**
  * 
@@ -23,7 +23,7 @@ public class DropDownHelper extends BasePage {
 		super(driver);
 	}
 
-	private static Logger log = LoggerUtility.getLog(DropDownHelper.class);
+	private static final Logger log = LogManager.getLogger(DropDownHelper.class.getName());
 
 	public void selectByValue(WebElement element, String value, String elementName) {
 		try {

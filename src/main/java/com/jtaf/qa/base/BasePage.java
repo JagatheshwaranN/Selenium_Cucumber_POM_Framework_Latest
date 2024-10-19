@@ -1,13 +1,12 @@
 package com.jtaf.qa.base;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
-
-import com.jtaf.qa.utilities.LoggerUtility;
 
 /**
  * @author Jaga
@@ -15,7 +14,7 @@ import com.jtaf.qa.utilities.LoggerUtility;
  */
 public class BasePage extends Page {
 
-	private static Logger log = LoggerUtility.getLog(BasePage.class);
+	private static final Logger log = LogManager.getLogger(BasePage.class.getName());
 
 	public BasePage(WebDriver driver) {
 		super(driver);

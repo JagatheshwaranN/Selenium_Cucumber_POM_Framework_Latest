@@ -1,6 +1,7 @@
 package com.jtaf.qa.utilities;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,7 +19,7 @@ public class ExtentUtility {
 	private static ExtentSparkReporter extentSparkReporter;
 	private static ExtentReports extentReports;
 
-	private static Logger log = LoggerUtility.getLog(ExtentUtility.class);
+	private static final Logger log = LogManager.getLogger(ExtentUtility.class.getName());
 
 	public static ExtentReports getInstance() {
 

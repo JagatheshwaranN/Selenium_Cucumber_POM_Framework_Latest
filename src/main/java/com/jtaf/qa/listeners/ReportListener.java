@@ -6,7 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
@@ -20,7 +21,6 @@ import org.testng.Reporter;
 
 import com.jtaf.qa.base.BaseTest;
 import com.jtaf.qa.utilities.Constants;
-import com.jtaf.qa.utilities.LoggerUtility;
 
 //import com.jtaf.qa.helpers.ReusableHelper;
 //import com.jtaf.qa.utilities.ExtentUtility;
@@ -34,7 +34,7 @@ import com.jtaf.qa.utilities.LoggerUtility;
  */
 public class ReportListener implements ITestListener, ISuiteListener {
 
-	private static Logger log = LoggerUtility.getLog(ReportListener.class);
+	private static final Logger log = LogManager.getLogger(ReportListener.class.getName());
 	private String snapshotCategory = null;
 
 	@Override

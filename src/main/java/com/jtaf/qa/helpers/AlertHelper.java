@@ -1,13 +1,14 @@
 package com.jtaf.qa.helpers;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
 import com.jtaf.qa.base.BasePage;
-import com.jtaf.qa.utilities.LoggerUtility;
+
 
 /**
  * 
@@ -16,7 +17,7 @@ import com.jtaf.qa.utilities.LoggerUtility;
  */
 public class AlertHelper extends BasePage {
 
-	private static Logger log = LoggerUtility.getLog(AlertHelper.class);
+	private static final Logger log = LogManager.getLogger(AlertHelper.class.getName());
 
 	public AlertHelper(WebDriver driver) {
 		super(driver);
