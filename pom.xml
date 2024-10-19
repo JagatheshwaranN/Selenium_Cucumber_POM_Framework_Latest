@@ -4,23 +4,33 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.jtaf</groupId>
 	<artifactId>SeleniumCucumberPOMFramework</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.1.0-SNAPSHOT</version>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jre.level>17</jre.level>
-		<jdk.level>17</jdk.level>
-		<cucumber.version>7.11.1</cucumber.version>
+		<jre.level>22</jre.level>
+		<jdk.level>22</jdk.level>
+		<selenium.version>4.25.0</selenium.version>
+		<testng.version>7.10.2</testng.version>
+		<cucumber.version>7.20.1</cucumber.version>
+		<gherkin.version>29.0.0</gherkin.version>
+		<report.version>5.8.2</report.version>
+		<extent.version>5.1.2</extent.version>
+		<cucumber.extent.version>1.14.0</cucumber.extent.version>
+		<poi.version>5.3.0</poi.version>
+		<reportng.version>1.1.4</reportng.version>
+		<log.version>2.24.1</log.version>
+		<commons.version>2.17.0</commons.version>
+		<guice.version>7.0.0</guice.version>
+		<guava.version>33.3.1-jre</guava.version>
+		<lombok.version>1.18.34</lombok.version>
+		<compiler.version>3.13.0</compiler.version>
+		<surefire.version>3.5.1</surefire.version>
 	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
-			<version>4.8.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.testng</groupId>
-			<artifactId>testng</artifactId>
-			<version>7.7.1</version>
+			<version>${selenium.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>io.cucumber</groupId>
@@ -45,72 +55,82 @@
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>gherkin</artifactId>
-			<version>26.0.3</version>
+			<version>${gherkin.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>${testng.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>net.masterthought</groupId>
 			<artifactId>cucumber-reporting</artifactId>
-			<version>5.7.5</version>
+			<version>${report.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>net.masterthought</groupId>
 			<artifactId>maven-cucumber-reporting</artifactId>
-			<version>5.7.5</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.maven.plugins</groupId>
-			<artifactId>maven-compiler-plugin</artifactId>
-			<version>3.11.0</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-io</groupId>
-			<artifactId>commons-io</artifactId>
-			<version>2.11.0</version>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.17</version>
-		</dependency>
-		<dependency>
-			<groupId>com.aventstack</groupId>
-			<artifactId>extentreports</artifactId>
-			<version>5.0.9</version>
-		</dependency>
-		<dependency>
-			<groupId>tech.grasshopper</groupId>
-			<artifactId>extentreports-cucumber7-adapter</artifactId>
-			<version>1.10.1</version>
+			<version>${report.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
-			<version>5.2.3</version>
+			<version>${poi.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
-			<version>5.2.3</version>
+			<version>${poi.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.aventstack</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>${extent.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>tech.grasshopper</groupId>
+			<artifactId>extentreports-cucumber7-adapter</artifactId>
+			<version>${cucumber.extent.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.uncommons</groupId>
 			<artifactId>reportng</artifactId>
-			<version>1.1.4</version>
+			<version>${reportng.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>${log.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>${log.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
-			<version>5.1.0</version>
+			<version>${guice.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
-			<version>31.1-jre</version>
+			<version>${guava.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>1.18.26</version>
+			<version>${lombok.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<version>${compiler.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -118,18 +138,19 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.1</version>
+				<version>${compiler.version}</version>
 				<configuration>
-					<source>17</source>
-					<target>17</target>
+					<source>${jdk.level}</source>
+					<target>${jdk.level}</target>
 				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0-M9</version>
+				<version>${surefire.version}</version>
 				<configuration>
 					<suiteXmlFiles>
+						<!--suppress UnresolvedMavenProperty -->
 						<suiteXmlFile>
 							src/test/resources/container/runner/${suiteXmlFile}</suiteXmlFile>
 					</suiteXmlFiles>
@@ -142,12 +163,12 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-report-plugin</artifactId>
-				<version>3.0.0-M9</version>
+				<version>${surefire.version}</version>
 			</plugin>
 			<plugin>
 				<groupId>net.masterthought</groupId>
 				<artifactId>maven-cucumber-reporting</artifactId>
-				<version>5.7.5</version>
+				<version>${report.version}</version>
 				<executions>
 					<execution>
 						<id>execution</id>
