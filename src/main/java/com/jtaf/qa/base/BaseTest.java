@@ -23,6 +23,7 @@ import io.cucumber.java.Scenario;
  * @author Jaga
  *
  */
+@SuppressWarnings("All")
 public class BaseTest extends FileReaderUtility {
 
 	private static WebDriver driver;
@@ -43,7 +44,7 @@ public class BaseTest extends FileReaderUtility {
 			log.info("======================== [ Property file is loaded Successfully ] =========================");
 			invokeBrowser(FileReaderUtility.getTestData("browser.name"));
 		} catch (Exception ex) {
-			log.info("Exception occured while initiliazation of the TEST" + "\n" + ex);
+			log.info("Exception occurred while initialization of the TEST" + "\n" + ex);
 			Assert.fail();
 		}
 	}
@@ -75,7 +76,7 @@ public class BaseTest extends FileReaderUtility {
 				Assert.fail();
 			}
 		} catch (Exception ex) {
-			log.info("Exception occured while invoke the browser" + "\n" + ex);
+			log.info("Exception occurred while invoke the browser" + "\n" + ex);
 			Assert.fail();
 		}
 		return getDriver();
@@ -102,7 +103,7 @@ public class BaseTest extends FileReaderUtility {
 				}
 			}
 		} catch (Exception ex) {
-			log.info("Error occured while TEST close" + "\n" + ex);
+			log.info("Error occurred while TEST close" + "\n" + ex);
 		}
 	}
 
@@ -118,9 +119,9 @@ public class BaseTest extends FileReaderUtility {
 		try {
 			getDriver().get(getTestData("app.url"));
 			page = new BasePage(getDriver());
-			log.info("The MakeMyTrip site is launched succesfully");
+			log.info("The MakeMyTrip site is launched successfully");
 		} catch (Exception ex) {
-			log.info("Error occured while launch of application" + "\n" + ex);
+			log.info("Error occurred while launch of application" + "\n" + ex);
 			Assert.fail();
 		}
 	}

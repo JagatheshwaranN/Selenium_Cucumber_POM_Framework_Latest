@@ -2,7 +2,7 @@
 Feature: MakeMyTrip Ticket Booking
 
   @bookticket @regression
-  Scenario Outline: Verify user is able to enter travel details, search filghts, book and view ticket details
+  Scenario Outline: Verify user is able to enter travel details, search flights, book and view ticket details
     Given user is on MakeMyTrip home page
     Then user verify MakeMyTrip home page title
     When user enter travel details "<from>" "<to>" "<month>" "<day>" "<passengers>" "<travelclass>" and enter search

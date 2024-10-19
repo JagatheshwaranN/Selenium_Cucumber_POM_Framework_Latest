@@ -9,7 +9,7 @@ import org.openqa.selenium.support.How;
 
 public class HomePageElements {
 
-	@FindAll({ @FindBy(how = How.CSS, using = ".ic_circularclose_grey"),
+	@FindAll({ @FindBy(how = How.CSS, using = ".commonModal__close"),
 			@FindBy(how = How.XPATH, using = "//span[@data-cy='handleSnackbarClose']") })
 	public WebElement AppLaunchPopupClose;
 	@FindBy(how = How.XPATH, using = "(//span[text()='Flights'])[1]")

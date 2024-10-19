@@ -1,0 +1,7 @@
+2024-10-19 21:41:39.641 INFO [main] [com.jtaf.qa.base.BaseTest.before(BaseTest.java:44)] - ======================== [ Property file is loaded Successfully ] =========================
+2024-10-19 21:41:39.654 INFO [main] [com.jtaf.qa.base.BaseTest.invokeBrowser(BaseTest.java:56)] - ======================== [ Launching Chrome Browser] ==============================
+2024-10-19 21:41:42.701 INFO [main] [com.jtaf.qa.base.BaseTest.invokeBrowser(BaseTest.java:73)] - The browser is launched successfully
+2024-10-19 21:41:47.437 INFO [main] [com.jtaf.qa.base.BaseTest.launchApplication(BaseTest.java:122)] - The MakeMyTrip site is launched successfully
+2024-10-19 21:41:50.307 INFO [main] [com.jtaf.qa.helpers.ReusableHelper.elementClick(ReusableHelper.java:65)] - The element appLaunchPopupClose is clicked
+2024-10-19 21:41:50.320 INFO [main] [com.jtaf.qa.helpers.BrowserHelper.getCurrentPageUrl(BrowserHelper.java:120)] - The browser current page url : https://www.makemytrip.com/
+2024-10-19 21:41:50.342 INFO [main] [com.jtaf.qa.base.BaseTest.after(BaseTest.java:98)] - PASSED =====>> Verify user is able to launch MakeMyTrip site
