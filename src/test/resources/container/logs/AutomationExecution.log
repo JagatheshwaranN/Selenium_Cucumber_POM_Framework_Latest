@@ -1,7 +1,32 @@
-2024-10-19 21:41:39.641 INFO [main] [com.jtaf.qa.base.BaseTest.before(BaseTest.java:44)] - ======================== [ Property file is loaded Successfully ] =========================
-2024-10-19 21:41:39.654 INFO [main] [com.jtaf.qa.base.BaseTest.invokeBrowser(BaseTest.java:56)] - ======================== [ Launching Chrome Browser] ==============================
-2024-10-19 21:41:42.701 INFO [main] [com.jtaf.qa.base.BaseTest.invokeBrowser(BaseTest.java:73)] - The browser is launched successfully
-2024-10-19 21:41:47.437 INFO [main] [com.jtaf.qa.base.BaseTest.launchApplication(BaseTest.java:122)] - The MakeMyTrip site is launched successfully
-2024-10-19 21:41:50.307 INFO [main] [com.jtaf.qa.helpers.ReusableHelper.elementClick(ReusableHelper.java:65)] - The element appLaunchPopupClose is clicked
-2024-10-19 21:41:50.320 INFO [main] [com.jtaf.qa.helpers.BrowserHelper.getCurrentPageUrl(BrowserHelper.java:120)] - The browser current page url : https://www.makemytrip.com/
-2024-10-19 21:41:50.342 INFO [main] [com.jtaf.qa.base.BaseTest.after(BaseTest.java:98)] - PASSED =====>> Verify user is able to launch MakeMyTrip site
+[INFO ] 20-10-2024 12:10:161 [main] BaseTest:44 - ======================== [ Property file is loaded Successfully ] =========================
+[INFO ] 20-10-2024 12:10:174 [main] BaseTest:56 - ======================== [ Launching Chrome Browser] ==============================
+[INFO ] 20-10-2024 12:10:88 [main] BaseTest:73 - The browser is launched successfully
+[INFO ] 20-10-2024 12:10:676 [main] BaseTest:122 - The MakeMyTrip site is launched successfully
+[INFO ] 20-10-2024 12:10:885 [main] ReusableHelper:65 - The element appLaunchPopupClose is clicked
+[INFO ] 20-10-2024 12:10:904 [main] BrowserHelper:120 - The browser current page url : https://www.makemytrip.com/
+[INFO ] 20-10-2024 12:10:921 [main] BaseTest:98 - PASSED =====>> Verify user is able to launch MakeMyTrip site
+[INFO ] 20-10-2024 12:10:618 [main] ReportListener:154 - The test success screenshot is captured to attach in report and testNG report
+[INFO ] 20-10-2024 12:10:606 [main] BaseTest:44 - ======================== [ Property file is loaded Successfully ] =========================
+[INFO ] 20-10-2024 12:10:611 [main] BaseTest:56 - ======================== [ Launching Chrome Browser] ==============================
+[INFO ] 20-10-2024 12:10:546 [main] BaseTest:73 - The browser is launched successfully
+[INFO ] 20-10-2024 12:10:642 [main] BaseTest:122 - The MakeMyTrip site is launched successfully
+[INFO ] 20-10-2024 12:10:704 [main] ReusableHelper:65 - The element appLaunchPopupClose is clicked
+[INFO ] 20-10-2024 12:10:730 [main] BrowserHelper:120 - The browser current page url : https://www.makemytrip.com/
+[INFO ] 20-10-2024 12:10:751 [main] BaseTest:98 - PASSED =====>> Verify user is able to launch MakeMyTrip site
+[INFO ] 20-10-2024 12:10:343 [main] ReportListener:154 - The test success screenshot is captured to attach in report and testNG report
+[INFO ] 20-10-2024 12:10:994 [main] BaseTest:44 - ======================== [ Property file is loaded Successfully ] =========================
+[INFO ] 20-10-2024 12:10:997 [main] BaseTest:56 - ======================== [ Launching Chrome Browser] ==============================
+[INFO ] 20-10-2024 12:10:967 [main] BaseTest:73 - The browser is launched successfully
+[INFO ] 20-10-2024 12:10:195 [main] BaseTest:122 - The MakeMyTrip site is launched successfully
+[INFO ] 20-10-2024 12:10:814 [main] ReusableHelper:65 - The element appLaunchPopupClose is clicked
+[INFO ] 20-10-2024 12:10:828 [main] BrowserHelper:120 - The browser current page url : https://www.makemytrip.com/
+[INFO ] 20-10-2024 12:10:846 [main] BaseTest:98 - PASSED =====>> Verify user is able to launch MakeMyTrip site
+[INFO ] 20-10-2024 12:10:572 [main] ReportListener:154 - The test success screenshot is captured to attach in report and testNG report
+[INFO ] 20-10-2024 12:10:963 [main] BaseTest:44 - ======================== [ Property file is loaded Successfully ] =========================
+[INFO ] 20-10-2024 12:10:970 [main] BaseTest:56 - ======================== [ Launching Chrome Browser] ==============================
+[INFO ] 20-10-2024 12:10:739 [main] BaseTest:73 - The browser is launched successfully
+[INFO ] 20-10-2024 12:10:581 [main] BaseTest:122 - The MakeMyTrip site is launched successfully
+[INFO ] 20-10-2024 12:10:374 [main] ReusableHelper:65 - The element appLaunchPopupClose is clicked
+[INFO ] 20-10-2024 12:10:390 [main] BrowserHelper:120 - The browser current page url : https://www.makemytrip.com/
+[INFO ] 20-10-2024 12:10:409 [main] BaseTest:98 - PASSED =====>> Verify user is able to launch MakeMyTrip site
+[INFO ] 20-10-2024 12:10:166 [main] ReportListener:154 - The test success screenshot is captured to attach in report and testNG report

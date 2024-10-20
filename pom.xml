@@ -26,6 +26,7 @@
 		<compiler.version>3.13.0</compiler.version>
 		<surefire.version>3.5.1</surefire.version>
 		<slf4j.version>2.0.16</slf4j.version>
+		<commander.version>2.0</commander.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -113,11 +114,11 @@
 			<artifactId>commons-io</artifactId>
 			<version>${commons.version}</version>
 		</dependency>
-		<dependency>
+		<!--<dependency>
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
 			<version>${guice.version}</version>
-		</dependency>
+		</dependency>-->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
@@ -142,6 +143,13 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-simple</artifactId>
 			<version>${slf4j.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.jcommander/jcommander -->
+		<dependency>
+			<groupId>org.jcommander</groupId>
+			<artifactId>jcommander</artifactId>
+			<version>${commander.version}</version>
+			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 	<build>
