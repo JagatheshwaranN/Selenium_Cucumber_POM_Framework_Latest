@@ -118,16 +118,16 @@
       <artifactId>commons-io</artifactId>
       <version>${commons.version}</version>
     </dependency>
-    <!--<dependency>
+    <dependency>
         <groupId>com.google.inject</groupId>
         <artifactId>guice</artifactId>
         <version>${guice.version}</version>
-    </dependency>-->
-   <!-- <dependency>
+    </dependency>
+    <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
       <version>${guava.version}</version>
-    </dependency>-->
+    </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
