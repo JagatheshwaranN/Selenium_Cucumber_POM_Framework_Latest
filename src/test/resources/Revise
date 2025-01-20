@@ -1,0 +1,45 @@
+@dummyFeatures
+Feature: Dummy Feature
+  As a customer of ABC app
+  I want to add an item to the cart
+  So that I can buy the item
+
+  Rule: Rule 1
+    Background: This a background
+
+    @dummyScenario
+    Scenario: Dummy Scenario 1
+      This is a Scenario
+      Given my account balance is $100
+      When I withdraw $50
+      Then account balance should be $100
+      And I should get a receipt
+
+
+  Rule: Rule 1
+    Background: This a background
+
+    @dummyScenario
+    Scenario: Dummy Scenario 2
+      This is a Scenario
+      Given I'm a dummy
+      When I do dummy things
+      Then dummy things happen
+
+    @dummyScenario
+    Scenario Outline: Dummy Scenario 3
+    This is a Scenario
+      Given my account balance is $<opening balance>
+      When I withdraw $<withdraw amount>
+      Then account balance should be $<closing balance>
+      And I should get a receipt
+
+      @QA
+      Examples:
+        | opening balance | withdraw amount | closing balance |
+        | 100             | 50              | 50              |
+
+      @UAT
+      Examples:
+        | opening balance | withdraw amount | closing balance |
+        | 100             | 50              | 50              |
