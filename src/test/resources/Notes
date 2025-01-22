@@ -1,0 +1,197 @@
+Runners
+=======
+CLI: io.cucumber.core.cli.Main
+Maven exec
+Scenarios in parallel
+
+JUnit
+Supports annotated methods
+Features in parallel
+
+TestNG
+Supports annotated methods
+Scenarios in parallel
+
+==============================
+mvn exec:java -Dexec.mainClass=io.cucumber.core.cli.Main
+
+To get the complete list of arguments that can be supplied to the CLI Runner
+mvn exec:java -Dexec.classpathScope=test -Dexec.mainClass=io.cucumber.core.cli.Main -Dexec.args='--help'
+
+mvn exec:java -Dexec.classpathScope=test -Dexec.mainClass=io.cucumber.core.cli.Main -Dexec.args='--plugin pretty -plugin html:target/cucumber.html'
+==============================
+
+Junit Runner
+============
+To run features using JUnitRunner, we need to keep the runner file, features and step def
+in same same folder. Then JUnitRunner will run the test.
+
+To run it via maven command line, we can use the command 'mvn clean test'. Here, the maven
+can identify the JunitRunner file as its ends Test keyword.
+
+TestNG Runner
+=============
+To run features using TestNGRunner, we need to keep the runner file, features and step def
+in same same folder. Then TestNGRunner will run the test.
+
+To run it via maven command line, we can use the command 'mvn clean test'. Here, the maven
+can identify the TestNGRunner file as its ends Test keyword.
+
+JUnit and TestNG Runners supports the Cucumber Hooks - BeforeAll & AfterAll.
+
+Cucumber Options
+================
+To get the snippet methods name as camelcase
+============================================
+plugin = {"pretty", "html:target/cucumber.html", "summary"},
+snippets = CAMELCASE
+
+To get the feature file steps have definitions
+==============================================
+dryRun = true
+
+To get the console output as readable format
+============================================
+monochrome = true
+
+To run the scenarios based on tags
+==================================
+tags = "@scenario1 and not @scenario2"
+
+Cucumber Exp: Optional Text
+===========================
+Then I see 1 product in the cart
+And I see 1 products in the cart
+
+@Then("I see {int} product(s) in the cart")
+    public void i_see_in_the_cart(Integer int1, String string) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+The above step def method should work for both lines
+
+Cucumber Exp: Alternate Text
+============================
+Given I'm on the Store page
+Given I'm on the Product page
+
+ @Given("I'm on the Store/Product page")
+    public void i_m_on_the_store_page() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new io.cucumber.java.PendingException();
+    }
+
+The above step def method should work for both lines
+
+Cucumber Exp: Custom Parameter Type
+===================================
+It is used to create the custom domain related parameters instead of generic values.
+
+When I add a "<product_name>" to the cart
+Examples:
+| product_name |
+| Blue Shoes   |
+
+@When("I add a {product} to the cart")
+public void i_add_a_to_the_cart(Product product) {
+   System.out.println("Product Name: "+ product.getProductName());
+}
+
+@ParameterType(".*")
+public Product product(String productName) {
+  return new Product(productName);
+}
+
+package cucumber.objects;
+
+public class Product {
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public Product(String productName){
+        this.productName = productName;
+    }
+
+    private String productName;
+
+}
+
+Data Table Types
+================
+List<List<String>> table
+List<Map<String, String>> table
+Map<String, String> table
+Map<String, List<String>> table
+Map<String, Map<String, String>> table
+
+Single Row with No Header
+=========================
+Given my credentials
+| John | John123 |
+
+Multiple Rows with No Header
+===========================
+Given my credentials
+| John | John123 |
+
+Data Table - Custom domain object instead of Datatable
+======================================================
+#      Given my credentials
+#        | John  | John123  |
+#        | Smith | Smith123 |
+
+Data Table - single rows with header
+====================================
+#      Given my credentials
+#        | username | password |
+#        | Smith    | Smith123 |
+
+Data Table - multiple rows with header
+======================================
+#      Given my credentials
+#        | username | password |
+#        | Smith    | Smith123 |
+#        | Will     | Will123  |
+
+Data Table - Custom domain object instead of Datatable
+======================================================
+#      Given my credentials
+#        | username | password |
+#        | Smith | Smith123 |
+#        | Will     | Will123  |
+
+Data Table - single column with no header
+=========================================
+#      Given my credentials
+#        | Smith |
+#        | Will  |
+
+Data Table - single column with header
+======================================
+#      Given my credentials
+#        | username | Smith |
+#        | password | Will  |
+
+Data Table - single column with no header with domain object
+============================================================
+#      Given my credentials
+#        | Smith |
+#        | Will  |
+
+Data Table - single column with header with domain object
+=========================================================
+#      Given my credentials
+#        | username | Smith |
+#        | password | Will  |
+
+References
+==========
+https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-testng
+https://cucumber.io/docs/cucumber/
