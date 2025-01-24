@@ -17,7 +17,7 @@ import io.cucumber.testng.CucumberOptions;
 //
 //}
 
-@CucumberOptions(features = "src/test/resources/features/", glue = { "com/qa/ctf"}, plugin = { "pretty",
+@CucumberOptions(features = "src/test/resources/features/", tags = "@single", glue = { "com/qa/ctf"}, plugin = { "pretty",
         "json:target/cucumber/report/report.json", "junit:target/cucumber/report/report.xml",
         "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" }, publish = true, monochrome = true)
 public class Old_TestRunner extends AbstractTestNGCucumberTests {
