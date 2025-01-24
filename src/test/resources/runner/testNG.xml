@@ -5,11 +5,11 @@
 		<listener
 				class-name="org.uncommons.reportng.JUnitXMLReporter" />
 		<listener class-name="org.uncommons.reportng.HTMLReporter" />
-		<listener class-name="com.qa.ctf.listeners.ReportListener" />
+<!--		<listener class-name="com.qa.ctf.listeners.ReportListener" />-->
 	</listeners>
 	<test name="MakeMyTrip Booking Scenario">
-<!--		<classes>-->
-<!--			<class name="com.qa.ctf.runner.Old_TestRunner" />-->
-<!--		</classes>-->
+		<classes>
+			<class name="com.qa.ctf.runner.TestNGRunnerTest" />
+		</classes>
 	</test>
 </suite>

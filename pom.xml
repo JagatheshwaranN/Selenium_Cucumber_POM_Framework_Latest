@@ -55,6 +55,11 @@
     </dependency>
     <dependency>
       <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-junit</artifactId>
+      <version>${cucumber.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.cucumber</groupId>
       <artifactId>cucumber-java8</artifactId>
       <version>${cucumber.version}</version>
     </dependency>
@@ -171,16 +176,23 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${surefire.version}</version>
-        <configuration>
+        <!--TestNG Config-->
+        <!--<configuration>
           <suiteXmlFiles>
-            <!--suppress UnresolvedMavenProperty -->
+            &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;
             <suiteXmlFile>
-              src/test/resources/container/runner/testNG.xml</suiteXmlFile>
+              src/test/resources/runner/testNG.xml</suiteXmlFile>
           </suiteXmlFiles>
-          <!--<systemPropertyVariables>
+          &lt;!&ndash;<systemPropertyVariables>
               <extent.reporter.spark.start>true</extent.reporter.spark.start>
               <extent.reporter.spark.out>test-output/SparkReport/Spark.html</extent.reporter.spark.out>
-          </systemPropertyVariables>-->
+          </systemPropertyVariables>&ndash;&gt;
+        </configuration>-->
+        <!--JUnit Config-->
+        <configuration>
+          <parallel>methods</parallel>
+<!--          <useUnlimitedThreads>true</useUnlimitedThreads>-->
+          <threadCount>3</threadCount>
         </configuration>
       </plugin>
       <plugin>
