@@ -24,9 +24,9 @@ public class CartSteps {
         Assert.assertEquals(quantity, cartPage.getProductQuantity());
     }
 
-    @Given("I'm on the checkout page")
-    public void i_m_on_the_checkout_page() {
-        cartPage.checkout();
-    }
+//    @Given("I'm on the checkout page")
+//    public void i_m_on_the_checkout_page() {
+//        //cartPage.checkout();
+//    }
 
 }

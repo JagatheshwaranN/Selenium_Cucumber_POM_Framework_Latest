@@ -1,7 +1,9 @@
 package com.qa.ctf.steps;
 
+import com.qa.ctf.apis.CartApi;
 import com.qa.ctf.constants.Endpoint;
 import com.qa.ctf.context.AppContext;
+import com.qa.ctf.context.TestContext;
 import com.qa.ctf.objects.Product;
 import com.qa.ctf.pages.PageFactory;
 import com.qa.ctf.pages.StorePage;
@@ -11,10 +13,15 @@ import org.openqa.selenium.WebDriver;
 
 public class StoreSteps {
 
+    private final WebDriver driver;
     private final StorePage storePage;
+    private final TestContext testContext;
 
-    public StoreSteps(AppContext appContext) {
-        WebDriver driver = appContext.driver;
+
+
+    public StoreSteps(AppContext appContext, TestContext testContext) {
+        this.testContext = testContext;
+        driver = appContext.driver;
         storePage = PageFactory.getStorePage(driver);
     }
 
@@ -31,7 +38,11 @@ public class StoreSteps {
 
     @Given("I have a product in the cart")
     public void i_have_a_product_in_the_cart() {
-        storePage.addToCart("Blue Shoes");
+        // storePage.addToCart("Blue Shoes");
+        CartApi cartApi = new CartApi(testContext.cookies.getCookies());
+        cartApi.addToCart(1215, 1);
+        testContext.cookies.setCookies(cartApi.getCookies());
+        testContext.cookies.injectCookiesToBrowser(driver);
     }
 
 }

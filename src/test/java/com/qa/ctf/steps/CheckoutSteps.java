@@ -1,5 +1,6 @@
 package com.qa.ctf.steps;
 
+import com.qa.ctf.constants.Endpoint;
 import com.qa.ctf.context.AppContext;
 import com.qa.ctf.context.TestContext;
 import com.qa.ctf.pages.CartPage;
@@ -20,6 +21,11 @@ public class CheckoutSteps {
         WebDriver driver = appContext.driver;
         this.testContext = testContext;
         checkoutPage = PageFactory.getCheckoutPage(driver);
+    }
+
+    @Given("I'm on the checkout page")
+    public void i_m_on_the_checkout_page() {
+    checkoutPage.load(Endpoint.CHECKOUT.url);
     }
 
     @When("I provide the billing details")

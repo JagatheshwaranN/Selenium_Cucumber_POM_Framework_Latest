@@ -18,7 +18,7 @@ import org.testng.annotations.DataProvider;
 //
 //}
 
-@CucumberOptions(features = "src/test/resources/features/",  glue = { "com/qa/ctf"}, plugin = { "pretty",
+@CucumberOptions(features = "src/test/resources/features/",  tags = "@placeOrder", glue = { "com/qa/ctf"}, plugin = { "pretty",
         "json:target/cucumber/report/report.json", "junit:target/cucumber/report/report.xml",
         "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" }, publish = true, monochrome = true)
 public class TestNGRunnerTest extends AbstractTestNGCucumberTests {
