@@ -6,7 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class DriverFactory {
 
-    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
+//    private static final ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
     public static WebDriver initializeDriver(String browser) {
         WebDriver driver = switch (browser) {
@@ -15,12 +15,12 @@ public class DriverFactory {
             default -> throw new IllegalArgumentException("Invalid browser: " + browser);
         };
         driver.manage().window().maximize();
-        DriverFactory.driver.set(driver);
+  //      DriverFactory.driver.set(driver);
         return driver;
     }
 
-    public static WebDriver getDriver() {
-        return driver.get();
-    }
+//    /*public static WebDriver getDriver() {
+//        return driver.get();
+//    }*/
 
 }

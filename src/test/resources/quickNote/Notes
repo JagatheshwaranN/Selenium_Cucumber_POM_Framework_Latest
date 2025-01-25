@@ -19,6 +19,9 @@ To get the complete list of arguments that can be supplied to the CLI Runner
 mvn exec:java -Dexec.classpathScope=test -Dexec.mainClass=io.cucumber.core.cli.Main -Dexec.args='--help'
 
 mvn exec:java -Dexec.classpathScope=test -Dexec.mainClass=io.cucumber.core.cli.Main -Dexec.args='--plugin pretty -plugin html:target/cucumber.html'
+
+To execute in parallel
+mvn exec:java -Dexec.classpathScope=test -Dexec.mainClass=io.cucumber.core.cli.Main -Dexec.args="src/test/resources/features/ --glue com/qa/ctf --threads 3"
 ==============================
 
 Junit Runner

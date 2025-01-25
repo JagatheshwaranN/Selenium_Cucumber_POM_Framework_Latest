@@ -69,6 +69,11 @@
       <version>${gherkin.version}</version>
     </dependency>
     <dependency>
+      <groupId>io.cucumber</groupId>
+      <artifactId>cucumber-picocontainer</artifactId>
+      <version>${cucumber.version}</version>
+    </dependency>
+    <dependency>
       <groupId>org.testng</groupId>
       <artifactId>testng</artifactId>
       <version>${testng.version}</version>
@@ -177,23 +182,23 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>${surefire.version}</version>
         <!--TestNG Config-->
-        <!--<configuration>
+        <configuration>
           <suiteXmlFiles>
-            &lt;!&ndash;suppress UnresolvedMavenProperty &ndash;&gt;
+            <!--suppress UnresolvedMavenProperty -->
             <suiteXmlFile>
               src/test/resources/runner/testNG.xml</suiteXmlFile>
           </suiteXmlFiles>
-          &lt;!&ndash;<systemPropertyVariables>
+          <!--<systemPropertyVariables>
               <extent.reporter.spark.start>true</extent.reporter.spark.start>
               <extent.reporter.spark.out>test-output/SparkReport/Spark.html</extent.reporter.spark.out>
-          </systemPropertyVariables>&ndash;&gt;
-        </configuration>-->
-        <!--JUnit Config-->
-        <configuration>
-          <parallel>methods</parallel>
-<!--          <useUnlimitedThreads>true</useUnlimitedThreads>-->
-          <threadCount>3</threadCount>
+          </systemPropertyVariables>-->
         </configuration>
+        <!--JUnit Config-->
+        <!--<configuration>
+          <parallel>methods</parallel>
+&lt;!&ndash;          <useUnlimitedThreads>true</useUnlimitedThreads>&ndash;&gt;
+          <threadCount>3</threadCount>
+        </configuration>-->
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

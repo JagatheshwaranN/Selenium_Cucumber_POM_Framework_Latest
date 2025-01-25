@@ -1,0 +1,41 @@
+package com.qa.ctf.steps;
+
+import com.qa.ctf.context.AppContext;
+import com.qa.ctf.context.TestContext;
+import com.qa.ctf.pages.CartPage;
+import com.qa.ctf.pages.CheckoutPage;
+import com.qa.ctf.pages.PageFactory;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
+
+public class CheckoutSteps {
+
+    private final TestContext testContext;
+    private final CheckoutPage checkoutPage;
+
+    public CheckoutSteps(AppContext appContext, TestContext testContext) {
+        WebDriver driver = appContext.driver;
+        this.testContext = testContext;
+        checkoutPage = PageFactory.getCheckoutPage(driver);
+    }
+
+    @When("I provide the billing details")
+    public void i_provide_the_billing_details() {
+        checkoutPage.setBillingDetails(testContext.billingDetails);
+    }
+
+    @When("I place an order")
+    public void i_place_an_order() {
+        checkoutPage.placeOrder();
+    }
+
+    @Then("the order should be placed successfully")
+    public void the_order_should_be_placed_successfully() {
+        Assert.assertEquals("Thank you. Your order has been received.",
+                checkoutPage.getNotice());
+    }
+
+}
