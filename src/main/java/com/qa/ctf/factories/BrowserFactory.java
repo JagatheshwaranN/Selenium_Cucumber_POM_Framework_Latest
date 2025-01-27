@@ -10,7 +10,7 @@ import static com.qa.ctf.constants.TestConstants.*;
 
 
 /**
- * The BrowserManager class handles browser-related configurations for test execution
+ * The BrowserFactory class handles browser-related configurations for test execution
  * using Selenium WebDriver. It manages the browser type (e.g., Chrome, Firefox, Edge)
  * based on environment variables or property files and provides utility methods for
  * setting and retrieving the browser type.
@@ -36,9 +36,9 @@ import static com.qa.ctf.constants.TestConstants.*;
  * <p>Example:
  * <pre>
  * {@code
- * BrowserManager browserManager = new BrowserManager();
- * browserManager.setBrowser("chrome");
- * BrowserType browserType = browserManager.getBrowserType();
+ * BrowserFactory BrowserFactory = new BrowserFactory();
+ * BrowserFactory.setBrowser("chrome");
+ * BrowserType browserType = BrowserFactory.getBrowserType();
  * }
  * </pre>
  *
@@ -47,7 +47,7 @@ import static com.qa.ctf.constants.TestConstants.*;
  */
 public class BrowserFactory extends FileReader {
 
-    // Logger instance for the BrowserManager class to enable logging during the execution
+    // Logger instance for the BrowserFactory class to enable logging during the execution
     private static final Logger log = LogManager.getLogger(BrowserFactory.class);
 
     // Instance variable to store the browser configuration (e.g., Chrome, Firefox, etc.)
@@ -139,9 +139,9 @@ public class BrowserFactory extends FileReader {
             return value;
         }
         value = fetchDataFromPropFile(key);
-        log.info("Browser is specified from the CONFIG FILE");
+        log.info("Browser is specified from the CONFIG FILE.");
         if (value == null || value.isEmpty()) {
-            log.warn("Value for key '{}' not found in config file.", key);
+            log.warn("Value for key '{}' not found in environment or property file.", key);
         }
         return value;
     }

@@ -9,8 +9,8 @@ import org.apache.logging.log4j.Logger;
 import static com.qa.ctf.constants.TestConstants.*;
 
 /**
- * The EnvironmentManager class manages the environment configurations for test execution
- * by retrieving and validating the environment type (e.g., LOCAL or REMOTE) based on
+ * The EnvironmentFactory class manages the environment configurations for test execution
+ * by retrieving and validating the environment type (e.g., STAGE or PROD) based on
  * environment variables or property files.
  *
  * <p>Features:
@@ -34,9 +34,9 @@ import static com.qa.ctf.constants.TestConstants.*;
  * <p>Example:
  * <pre>
  * {@code
- * EnvironmentManager environmentManager = new EnvironmentManager();
- * environmentManager.setEnv("local");
- * EnvType envType = environmentManager.getEnvType();
+ * EnvironmentFactory EnvironmentFactory = new EnvironmentFactory();
+ * EnvironmentFactory.setEnv("stage");
+ * EnvType envType = EnvironmentFactory.getEnvType();
  * }
  * </pre>
  *
@@ -45,7 +45,7 @@ import static com.qa.ctf.constants.TestConstants.*;
  */
 public class EnvironmentFactory extends FileReader {
 
-    // Logger instance for the EnvironmentManager class to enable logging during the execution
+    // Logger instance for the EnvironmentFactory class to enable logging during the execution
     private static final Logger log = LogManager.getLogger(EnvironmentFactory.class);
 
     // Instance variable to store the environment configuration for the application
@@ -59,7 +59,7 @@ public class EnvironmentFactory extends FileReader {
      * test execution.
      * </p>
      *
-     * @param env The environment name to set (e.g., "local" or "remote").
+     * @param env The environment name to set (e.g., "stage" or "prod").
      */
     public void setEnv(String env) {
         this.env = env;
@@ -69,7 +69,7 @@ public class EnvironmentFactory extends FileReader {
      * Retrieves the environment type currently set for the test execution.
      * <p>
      * This method returns the environment that has been set using the `setEnv`
-     * method. It returns values like "local" or "remote".
+     * method. It returns values like "stage" or "prod".
      * </p>
      *
      * @return The name of the currently set environment.
@@ -79,15 +79,15 @@ public class EnvironmentFactory extends FileReader {
     }
 
     /**
-     * Retrieves the EnvType enumeration for the environment set for the test
+     * Retrieves the EnvironmentType enumeration for the environment set for the test
      * execution.
      * <p>
      * This method fetches the environment type from either environment variables
-     * or a property file, then determines the corresponding `EnvType` enum (such
-     * as LOCAL or REMOTE). The environment type is logged for informational purposes.
+     * or a property file, then determines the corresponding `EnvironmentType` enum (such
+     * as STAGE or PROD). The environment type is logged for informational purposes.
      * </p>
      *
-     * @return The corresponding `EnvType` for the currently set environment.
+     * @return The corresponding `EnvironmentType` for the currently set environment.
      * @throws ExceptionHub.ConfigTypeException If the environment type is invalid or
      *                                          not recognized.
      */
@@ -99,11 +99,11 @@ public class EnvironmentFactory extends FileReader {
         }
         return switch (getEnv().toUpperCase()) {
             case STAGE -> {
-                log.info("STAGE Environment is opted for test execution");
+                log.info("Stage environment is opted for test execution");
                 yield EnvironmentType.STAGE;
             }
             case PROD -> {
-                log.info("PROD Environment is opted for test execution");
+                log.info("Prod environment is opted for test execution");
                 yield EnvironmentType.PROD;
             }
             default -> {
@@ -127,11 +127,11 @@ public class EnvironmentFactory extends FileReader {
     private String getValue(String key) {
         String value = System.getProperty(key);
         if (value != null && !value.isEmpty()) {
-            log.info("Environment is specified from mvn cmd line argument.");
+            log.info("Environment is specified from the MVN CMD LINE ARGS.");
             return value;
         }
         value = fetchDataFromPropFile(key);
-        log.info("Environment is specified from config file.");
+        log.info("Environment is specified from the CONFIG FILE.");
         if (value == null || value.isEmpty()) {
             log.warn("Value for key '{}' not found in environment or property file.", key);
         }

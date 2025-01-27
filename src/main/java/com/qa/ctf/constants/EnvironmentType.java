@@ -2,7 +2,7 @@ package com.qa.ctf.constants;
 
 public enum EnvironmentType {
 
-    TEST_ENV("TestEnv"),
+    TEST_ENV("EnvType"),
     PROD("Prod"),
     STAGE("Stage");
 
