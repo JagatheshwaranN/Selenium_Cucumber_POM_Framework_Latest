@@ -1,4 +1,4 @@
-package com.qa.ctf.utilities;
+package com.qa.ctf.utils;
 
 public class Constants {
 

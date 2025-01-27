@@ -1,4 +1,4 @@
-package com.qa.ctf.factory;
+package com.qa.ctf.factories;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -18,6 +18,7 @@ public class DriverFactory {
   //      DriverFactory.driver.set(driver);
         return driver;
     }
+
 
 //    /*public static WebDriver getDriver() {
 //        return driver.get();

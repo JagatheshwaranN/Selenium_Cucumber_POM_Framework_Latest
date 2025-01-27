@@ -1,6 +1,6 @@
 package com.qa.ctf.apis;
 
-import com.qa.ctf.utilities.ConfigLoader;
+import com.qa.ctf.utils.ConfigLoader;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;

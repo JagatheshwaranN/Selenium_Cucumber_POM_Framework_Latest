@@ -1,4 +1,4 @@
-package com.qa.ctf.utilities;
+package com.qa.ctf.utils;
 
 import io.restassured.http.Cookies;
 import org.openqa.selenium.Cookie;

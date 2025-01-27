@@ -1,7 +1,7 @@
 package com.qa.ctf.hooks;
 
-import com.qa.ctf.context.AppContext;
-import com.qa.ctf.factory.DriverFactory;
+import com.qa.ctf.context.TestContext;
+import com.qa.ctf.factories.DriverFactory;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -10,9 +10,9 @@ import org.openqa.selenium.WebDriver;
 public class TestHooks {
 
     private WebDriver driver;
-    private final AppContext appContext;
+    private final TestContext appContext;
 
-    public TestHooks(AppContext appContext) {
+    public TestHooks(TestContext appContext) {
         this.appContext = appContext;
     }
 

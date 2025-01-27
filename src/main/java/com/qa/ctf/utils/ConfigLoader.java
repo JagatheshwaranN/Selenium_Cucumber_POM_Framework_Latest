@@ -1,6 +1,6 @@
-package com.qa.ctf.utilities;
+package com.qa.ctf.utils;
 
-import com.qa.ctf.constants.EnvType;
+import com.qa.ctf.constants.EnvironmentType;
 
 import java.util.Properties;
 
@@ -10,8 +10,8 @@ public class ConfigLoader {
     private static ConfigLoader configLoader;
 
     public ConfigLoader() {
-        String env = System.getProperty("env", String.valueOf(EnvType.STAGE));
-        switch (EnvType.valueOf(env)){
+        String env = System.getProperty("env", String.valueOf(EnvironmentType.STAGE));
+        switch (EnvironmentType.valueOf(env)){
             case PROD -> properties = PropertyUtil.propertyLoader("src/test/resources/prod_config.properties");
             case STAGE -> properties = PropertyUtil.propertyLoader("src/test/resources/stage_config.properties");
             default -> throw new IllegalArgumentException("INVALID ENV:" + env);

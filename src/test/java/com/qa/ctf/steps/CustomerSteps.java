@@ -11,12 +11,12 @@ import org.openqa.selenium.WebDriver;
 
 public class CustomerSteps {
 
-    private final TestContext testContext;
+    private final AppContext appContext;
     private final StorePage storePage;
 
     public CustomerSteps(AppContext appContext, TestContext testContext) {
-        WebDriver driver = appContext.driver;
-        this.testContext = testContext;
+        WebDriver driver = testContext.driver;
+        this.appContext = appContext;
         storePage = PageFactory.getStorePage(driver);
     }
 
@@ -28,7 +28,7 @@ public class CustomerSteps {
 
     @Given("my billing details are")
     public void my_billing_details_are(BillingDetails billingDetails) {
-        testContext.billingDetails = billingDetails;
+        appContext.billingDetails = billingDetails;
     }
 
 }

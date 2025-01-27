@@ -1,4 +1,4 @@
-package com.qa.ctf.utilities;
+package com.qa.ctf.utils;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

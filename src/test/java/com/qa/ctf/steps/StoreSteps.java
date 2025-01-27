@@ -15,13 +15,13 @@ public class StoreSteps {
 
     private final WebDriver driver;
     private final StorePage storePage;
-    private final TestContext testContext;
+    private final AppContext appContext;
 
 
 
     public StoreSteps(AppContext appContext, TestContext testContext) {
-        this.testContext = testContext;
-        driver = appContext.driver;
+        this.appContext = appContext;
+        driver = testContext.driver;
         storePage = PageFactory.getStorePage(driver);
     }
 
@@ -39,10 +39,10 @@ public class StoreSteps {
     @Given("I have a product in the cart")
     public void i_have_a_product_in_the_cart() {
         // storePage.addToCart("Blue Shoes");
-        CartApi cartApi = new CartApi(testContext.cookies.getCookies());
+        CartApi cartApi = new CartApi(appContext.cookies.getCookies());
         cartApi.addToCart(1215, 1);
-        testContext.cookies.setCookies(cartApi.getCookies());
-        testContext.cookies.injectCookiesToBrowser(driver);
+        appContext.cookies.setCookies(cartApi.getCookies());
+        appContext.cookies.injectCookiesToBrowser(driver);
     }
 
 }

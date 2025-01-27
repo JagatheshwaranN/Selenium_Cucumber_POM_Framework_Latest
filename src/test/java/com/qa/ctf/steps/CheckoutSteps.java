@@ -3,7 +3,6 @@ package com.qa.ctf.steps;
 import com.qa.ctf.constants.Endpoint;
 import com.qa.ctf.context.AppContext;
 import com.qa.ctf.context.TestContext;
-import com.qa.ctf.pages.CartPage;
 import com.qa.ctf.pages.CheckoutPage;
 import com.qa.ctf.pages.PageFactory;
 import io.cucumber.java.en.Given;
@@ -14,12 +13,12 @@ import org.testng.Assert;
 
 public class CheckoutSteps {
 
-    private final TestContext testContext;
+    private final AppContext appContext;
     private final CheckoutPage checkoutPage;
 
     public CheckoutSteps(AppContext appContext, TestContext testContext) {
-        WebDriver driver = appContext.driver;
-        this.testContext = testContext;
+        WebDriver driver = testContext.driver;
+        this.appContext = appContext;
         checkoutPage = PageFactory.getCheckoutPage(driver);
     }
 
@@ -30,7 +29,7 @@ public class CheckoutSteps {
 
     @When("I provide the billing details")
     public void i_provide_the_billing_details() {
-        checkoutPage.setBillingDetails(testContext.billingDetails);
+        checkoutPage.setBillingDetails(appContext.billingDetails);
     }
 
     @When("I place an order")

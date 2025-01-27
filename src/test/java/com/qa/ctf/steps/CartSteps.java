@@ -1,10 +1,10 @@
 package com.qa.ctf.steps;
 
 import com.qa.ctf.context.AppContext;
+import com.qa.ctf.context.TestContext;
 import com.qa.ctf.objects.Product;
 import com.qa.ctf.pages.CartPage;
 import com.qa.ctf.pages.PageFactory;
-import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
@@ -13,8 +13,8 @@ public class CartSteps {
 
     private final CartPage cartPage;
 
-    public CartSteps(AppContext appContext) {
-        WebDriver driver = appContext.driver;
+    public CartSteps(TestContext testContext) {
+        WebDriver driver = testContext.driver;
         cartPage = PageFactory.getCartPage(driver);
     }
 
