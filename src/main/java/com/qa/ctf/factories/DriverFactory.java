@@ -22,7 +22,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import static com.qa.ctf.constants.TestConstants.*;
 
 /**
- * The DriverManager class manages the WebDriver instances for various browsers
+ * The DriverFactory class manages the WebDriver instances for various browsers
  * and environments (local or remote). It provides methods for initializing,
  * retrieving, and closing WebDriver instances, as well as managing thread-local
  * storage for WebDriver and ExtentTest instances.
@@ -59,10 +59,10 @@ import static com.qa.ctf.constants.TestConstants.*;
  * <p>Example:
  * <pre>
  * {@code
- * DriverManager driverManager = DriverManager.getInstance();
- * driverManager.initializeDriver();
- * WebDriver driver = driverManager.getDriver();
- * driverManager.closeDriver();
+ * DriverFactory DriverFactory = DriverFactory.getInstance();
+ * DriverFactory.initializeDriver();
+ * WebDriver driver = DriverFactory.getDriver();
+ * DriverFactory.closeDriver();
  * }
  * </pre>
  *
@@ -71,7 +71,7 @@ import static com.qa.ctf.constants.TestConstants.*;
  */
 public class DriverFactory extends BrowserFactory {
 
-    // Logger instance for the DriverManager class to enable logging during the execution
+    // Logger instance for the DriverFactory class to enable logging during the execution
     private static final Logger log = LogManager.getLogger(DriverFactory.class);
 
     // Instance of ChromeOptions to configure Chrome-specific WebDriver options
@@ -94,7 +94,7 @@ public class DriverFactory extends BrowserFactory {
 
 
     /**
-     * Constructs a DriverManager instance and initializes the EnvironmentManager
+     * Constructs a DriverFactory instance and initializes the EnvironmentManager
      * and ExcelReader.
      * <p>
      * This constructor sets up the EnvironmentManager to manage environment configurations
@@ -109,10 +109,10 @@ public class DriverFactory extends BrowserFactory {
     }
 
     /**
-     * Singleton instance holder for the DriverManager class.
+     * Singleton instance holder for the DriverFactory class.
      * <p>
      * This inner static class is used to implement the Singleton design pattern
-     * in a thread-safe manner. The DriverManager instance is created lazily when
+     * in a thread-safe manner. The DriverFactory instance is created lazily when
      * the `getInstance()` method is called for the first time.
      * </p>
      */
@@ -121,14 +121,14 @@ public class DriverFactory extends BrowserFactory {
     }
 
     /**
-     * Retrieves the singleton instance of the DriverManager class.
+     * Retrieves the singleton instance of the DriverFactory class.
      * <p>
      * This method provides a thread-safe way to access the single instance of
-     * DriverManager, ensuring that only one instance exists throughout the
+     * DriverFactory, ensuring that only one instance exists throughout the
      * application lifecycle.
      * </p>
      *
-     * @return The singleton instance of DriverManager.
+     * @return The singleton instance of DriverFactory.
      */
     public static DriverFactory getInstance() {
         return InstanceHolder.instance;
@@ -175,7 +175,7 @@ public class DriverFactory extends BrowserFactory {
      */
     public WebDriver initializeDriver() {
         //setDriver(driver);
-        //new BasePage(DriverManager.getInstance());
+        //new BasePage(DriverFactory.getInstance());
         //driver.get(fetchDataFromPropFile(APP_URL));
         return createDriver();
     }

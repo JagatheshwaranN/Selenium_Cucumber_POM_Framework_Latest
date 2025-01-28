@@ -114,7 +114,8 @@ public class BrowserFactory extends FileReader {
                 yield BrowserType.EDGE;
             }
             default -> {
-                log.error("Invalid browser type: '{}'", getBrowser());
+                log.error(
+                        "Invalid browser type: '{}'", getBrowser());
                 throw new ExceptionHub.ConfigTypeException(getBrowser());
             }
         };
