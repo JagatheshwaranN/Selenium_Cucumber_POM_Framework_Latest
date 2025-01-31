@@ -2,6 +2,7 @@ package com.qa.ctf.hooks;
 
 import com.qa.ctf.context.TestContext;
 import com.qa.ctf.factories.DriverFactory;
+import com.qa.ctf.utils.FileReader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -27,6 +28,7 @@ public class TestHooks {
     public void before(Scenario scenario) {
         System.out.println("BEFORE THREAD ID: " + Thread.currentThread().threadId());
         System.out.println("BEFORE SCENARIO NAME: " + scenario.getName());
+        FileReader.loadPropertyFile();
         driver = DriverFactory.getInstance().initializeDriver();
         testContext.driver = driver;
     }

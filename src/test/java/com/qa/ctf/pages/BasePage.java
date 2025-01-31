@@ -1,6 +1,6 @@
 package com.qa.ctf.pages;
 
-import com.qa.ctf.utils.ConfigLoader;
+import com.qa.ctf.utils.FileReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -23,7 +23,7 @@ public class BasePage {
     }
 
     public void load(String endpoint) {
-        driver.get(ConfigLoader.getInstance().getBaseUrl()+endpoint);
+        driver.get(FileReader.fetchDataFromPropFile("BaseURL") +endpoint);
     }
 
     public void waitForOverlayToDisappear(By overlay) {

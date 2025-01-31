@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+import com.qa.ctf.constants.EnvironmentType;
 import com.qa.ctf.constants.TestConstants;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -52,7 +53,7 @@ import static com.qa.ctf.constants.TestConstants.*;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.0
+ * @version 1.1
  */
 public class FileReader {
 
@@ -75,7 +76,13 @@ public class FileReader {
      *                                          occurs while loading it.
      */
     public static void loadPropertyFile() {
-        try (FileInputStream fileInputStream = new FileInputStream(CWD + CONFIG_FILE_PATH)) {
+        String envType = System.getProperty(EnvironmentType.TEST_ENV.getEnvType(), STAGE).toLowerCase();
+        log.info("################### Env Type : {}", envType);
+        String updatedFilePath = CONFIG_FILE_PATH.replace("$", envType);
+        log.info("################### Updated File Path : {}", updatedFilePath);
+        FileInputStream fileInputStream;
+        try {
+            fileInputStream = new FileInputStream(CWD + updatedFilePath);
             properties.load(fileInputStream);
             log.info("The configuration file is loaded!!");
         } catch (FileNotFoundException ex) {

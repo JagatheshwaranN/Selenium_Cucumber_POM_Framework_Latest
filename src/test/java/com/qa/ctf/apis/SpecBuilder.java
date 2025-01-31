@@ -1,6 +1,6 @@
 package com.qa.ctf.apis;
 
-import com.qa.ctf.utils.ConfigLoader;
+import com.qa.ctf.utils.FileReader;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;
@@ -11,7 +11,7 @@ public class SpecBuilder {
 
     public static RequestSpecification getRequestSpec() {
         return new RequestSpecBuilder()
-                .setBaseUri(ConfigLoader.getInstance().getBaseUrl())
+                .setBaseUri(FileReader.fetchDataFromPropFile("BaseURL"))
                 .log(LogDetail.ALL)
                 .build();
     }

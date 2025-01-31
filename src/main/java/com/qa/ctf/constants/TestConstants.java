@@ -45,7 +45,7 @@ public class TestConstants {
 	public static final String CWD = System.getProperty("user.dir");
 
 	// File Path Details
-	public static final String CONFIG_FILE_PATH = "/src/main/resources/config/configuration.properties";
+	public static final String CONFIG_FILE_PATH = "/src/test/resources/config/$.properties";
 	public static final String EXCEL_FILE_PATH = "/src/test/resources/data/testData.xlsx";
 	public static final String EXTENT_REPORT_CONFIG_FILE_PATH = "//src//main//resources//config//report-config.xml";
 	public static final String EXTENT_REPORT_PATH = "//src//test//resources//report//";
