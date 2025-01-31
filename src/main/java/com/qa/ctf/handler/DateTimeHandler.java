@@ -1,7 +1,7 @@
 package com.qa.ctf.handler;
 
 import com.qa.ctf.context.TestContext;
-import com.qa.ctf.utils.ExceptionHub;
+import com.qa.ctf.util.ExceptionHub;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;

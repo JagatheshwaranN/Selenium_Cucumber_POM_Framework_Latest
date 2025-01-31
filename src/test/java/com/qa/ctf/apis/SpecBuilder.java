@@ -1,6 +1,6 @@
 package com.qa.ctf.apis;
 
-import com.qa.ctf.utils.FileReader;
+import com.qa.ctf.util.FileReader;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.filter.log.LogDetail;

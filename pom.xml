@@ -31,6 +31,7 @@
     <surefire.version>3.5.1</surefire.version>
     <slf4j.version>2.0.16</slf4j.version>
     <commander.version>2.0</commander.version>
+    <ashot.version>1.5.4</ashot.version>
   </properties>
   <dependencies>
     <dependency>
@@ -172,6 +173,11 @@
       <version>5.5.0</version>
 <!--      <scope>test</scope>-->
     </dependency>
+    <dependency>
+      <groupId>ru.yandex.qatools.ashot</groupId>
+      <artifactId>ashot</artifactId>
+      <version>${ashot.version}</version>
+    </dependency>
   </dependencies>
   <build>
     <plugins>
@@ -193,7 +199,7 @@
           <suiteXmlFiles>
             <!--suppress UnresolvedMavenProperty -->
             <suiteXmlFile>
-              src/test/resources/runner/testNG.xml</suiteXmlFile>
+              src/test/resources/xml/testNG.xml</suiteXmlFile>
           </suiteXmlFiles>
           <!--<systemPropertyVariables>
               <extent.reporter.spark.start>true</extent.reporter.spark.start>

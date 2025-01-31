@@ -1,6 +1,6 @@
 package com.qa.ctf.pages;
 
-import com.qa.ctf.utils.FileReader;
+import com.qa.ctf.util.FileReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

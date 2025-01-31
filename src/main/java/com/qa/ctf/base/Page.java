@@ -1,52 +1,56 @@
 package com.qa.ctf.base;
 
-import java.time.Duration;
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
- * @author Jaga
+ * Abstract base class for representing a webpage.
+ * Provides common methods and utilities for interacting with web elements.
  *
+ * @author Jagatheshwaran N
+ * @version 1.0
  */
 public abstract class Page {
 
-	private WebDriver driver;
-	public WebDriverWait wait;
-
-	public Page(WebDriver driver) {
-		this.setDriver(driver);
-		this.wait = new WebDriverWait(this.getDriver(), Duration.ofSeconds(15));
-	}
-
+	/**
+	 * Retrieves the title of the current page.
+	 *
+	 * @return the title of the page as a {@link String}
+	 */
 	public abstract String getPageTitle();
 
-	public abstract String getPageHeader(WebElement element);
+	/**
+	 * Retrieves the URL of the current page.
+	 *
+	 * @return the URL of the page as a {@link String}
+	 */
+	public abstract String getPageUrl();
 
-	public abstract void waitForElementVisible(WebElement element);
+	/**
+	 * Retrieves the header of the current page based on the specified element.
+	 *
+	 * @param element the {@link WebElement} representing the header
+	 * @param label a descriptive label for the element (used for logging or reporting)
+	 * @return the header text as a {@link String}
+	 */
+	public abstract String getPageHeader(WebElement element, String label);
 
-	public abstract void waitForPageTitle(String title);
+	/**
+	 * Generates a web element based on the specified locator.
+	 *
+	 * @param locator the {@link By} locator of the element
+	 * @param label a descriptive label for the locator (used for logging or reporting)
+	 * @return the generated {@link WebElement}
+	 */
+	public abstract WebElement generateElement(By locator, String label);
 
-	public abstract WebElement getElement(By locator);
+	/**
+	 * Generates a web element based on the specified string locator.
+	 *
+	 * @param locator the string representation of the locator
+	 * @param label a descriptive label for the locator (used for logging or reporting)
+	 * @return the generated {@link WebElement}
+	 */
+	public abstract WebElement generateElement(String locator, String label);
 
-	public abstract WebElement getElement(String locator);
-
-	public <TPage extends BasePage> TPage getInstance(Class<TPage> pageClass) {
-		try {
-			return pageClass.getDeclaredConstructor(WebDriver.class).newInstance(this.getDriver());
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			return null;
-		}
-	}
-
-	public WebDriver getDriver() {
-		return driver;
-	}
-
-	public void setDriver(WebDriver driver) {
-		this.driver = driver;
-	}
 }

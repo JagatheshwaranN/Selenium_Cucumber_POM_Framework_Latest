@@ -4,8 +4,8 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
-import com.qa.ctf.constants.BrowserType;
-import com.qa.ctf.utils.ExceptionHub;
+import com.qa.ctf.constant.BrowserType;
+import com.qa.ctf.util.ExceptionHub;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static com.qa.ctf.constants.TestConstants.*;
+import static com.qa.ctf.constant.TestConstants.*;
 
 /**
  * The ExtentReport class provides utility methods for generating and managing Extent

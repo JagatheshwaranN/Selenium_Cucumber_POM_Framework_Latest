@@ -1,6 +1,6 @@
 package com.qa.ctf.custom;
 
-import com.qa.ctf.utils.CookieUtil;
+import com.qa.ctf.util.CookieUtil;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 

@@ -7,6 +7,9 @@ import org.openqa.selenium.WebElement;
  * Interface for defining interactions with web elements on a webpage.
  * It provides methods to perform common actions such as clearing, clicking,
  * and typing into web elements.
+ *
+ * @author Jagatheshwaran N
+ * @version 1.0
  */
 public interface ElementActions {
 

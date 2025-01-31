@@ -3,7 +3,7 @@ package com.qa.ctf.handler;
 import com.aventstack.extentreports.Status;
 import com.qa.ctf.context.TestContext;
 import com.qa.ctf.report.ExtentReportManager;
-import com.qa.ctf.utils.ExceptionHub;
+import com.qa.ctf.util.ExceptionHub;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
@@ -13,7 +13,7 @@ import java.time.Duration;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static com.qa.ctf.constants.TestConstants.*;
+import static com.qa.ctf.constant.TestConstants.*;
 
 /**
  * The WaitHandler class provides utility methods for implementing explicit,
