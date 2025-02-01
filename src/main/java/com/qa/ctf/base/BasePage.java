@@ -12,6 +12,7 @@ import org.openqa.selenium.*;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * The BasePage class serves as a foundational class for interacting with
@@ -56,38 +57,45 @@ import java.util.List;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.1
+ * @version 1.2
  */
 public class BasePage extends Page implements ElementActions {
 
     // Logger instance for the BasePage class to enable logging during the execution
     private static final Logger log = LogManager.getLogger(BasePage.class);
 
-    // Instance of DriverFactory to manage the WebDriver for interacting with the browser
+    // TestContext instance to manage shared test data and dependencies
     private final TestContext testContext;
 
+    // WebDriver instance to interact with web elements on the web pages
     private final WebDriver driver;
 
     // Instance of ExtentReportManager to manage the extent report
     protected ExtentReportManager extentReportManager;
 
+    // HashMap to store key-value pairs of string data
     public static HashMap<String, String> anyObject;
+
+    // List instance to hold string values, initialized as null
     List<String> list = null;
+
+    // Static string variable to store an object value
     public static String objValue;
+
+    // Static string variable to store an object key
     public static String objKey;
 
-
     /**
-     * Constructs a BasePage instance and initializes the WebDriver and WebDriverWait.
+     * Constructs a BasePage instance and initializes it with the provided TestContext.
      * <p>
-     * This constructor ensures that the DriverFactory is not null and sets up the
-     * WebDriverWait using the driver from the provided DriverFactory instance. The
-     * WebDriverWait is configured to use a duration defined in the TestConstants class.
+     * This constructor ensures that the TestContext is not null before assigning
+     * it to the instance variable. It is used for managing the WebDriver instance
+     * and shared test data across different page objects.
      * </p>
      *
-     * @param testContext The DriverFactory instance used to initialize the WebDriver
-     *                      and WebDriverWait.
-     * @throws IllegalArgumentException If the provided DriverFactory is null.
+     * @param testContext The TestContext instance to be used for interacting with
+     *                    the WebDriver.
+     * @throws IllegalArgumentException If the provided TestContext is null.
      */
     public BasePage(TestContext testContext) {
         if (testContext == null) {
@@ -300,7 +308,7 @@ public class BasePage extends Page implements ElementActions {
      */
     public void typeTextInSequence(WebElement element, String text, String elementLabel) {
         if (text != null) {
-            for(char ch : text.toCharArray()){
+            for (char ch : text.toCharArray()) {
                 element.sendKeys(String.valueOf(ch));
             }
             log.info("Entered '{}' text into the '{}' element", text, elementLabel);
@@ -308,28 +316,50 @@ public class BasePage extends Page implements ElementActions {
         }
     }
 
+    /**
+     * Stores a key-value pair in the `anyObject` map.
+     * If the key already exists, its value will be updated.
+     *
+     * @param key   The key to store.
+     * @param value The value to associate with the key.
+     */
     public static void setAnyElement(String key, String value) {
         try {
-            if (anyObject == null) {
-                anyObject = new HashMap<String, String>();
+            if (key == null || value == null) {
+                throw new IllegalArgumentException("Key or Value cannot be null.");
             }
-            objKey = key;
-            objValue = value;
-            anyObject.put(objKey, objValue);
-            log.info("The stored object : {}", anyObject);
+            anyObject.put(key, value);
+            log.info("Stored object: {}", anyObject);
+        } catch (IllegalArgumentException ex) {
+            log.error("Invalid input: {}", ex.getMessage(), ex);
         } catch (Exception ex) {
-            log.info("Error occurred while setting an object value: {}", ex.getMessage());
+            log.error("Unexpected error while setting an object value", ex);
         }
     }
 
-    public static HashMap<String, String> getAnyElement() {
-        return anyObject;
+    /**
+     * Retrieves the map containing all stored key-value pairs.
+     *
+     * @return The static map `anyObject` containing stored elements.
+     */
+    public static Map<String, String> getAnyElement() {
+        return new HashMap<>(anyObject); // Return a copy to avoid direct modification
     }
 
+    /**
+     * Gets the list.
+     *
+     * @return The list of strings.
+     */
     public List<String> getList() {
         return list;
     }
 
+    /**
+     * Sets the list.
+     *
+     * @param list The list to be set.
+     */
     public void setList(List<String> list) {
         this.list = list;
     }

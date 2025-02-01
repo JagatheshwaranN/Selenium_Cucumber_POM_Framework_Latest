@@ -4,7 +4,6 @@ import java.net.MalformedURLException;
 import java.net.URI;
 
 import com.qa.ctf.constant.BrowserType;
-//import com.qa.ctf.utils.ExcelReader;
 import com.qa.ctf.util.ExceptionHub;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -22,52 +21,44 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import static com.qa.ctf.constant.TestConstants.*;
 
 /**
- * The DriverFactory class manages the WebDriver instances for various browsers
- * and environments (local or remote). It provides methods for initializing,
- * retrieving, and closing WebDriver instances, as well as managing thread-local
- * storage for WebDriver and ExtentTest instances.
+ * The DriverFactory class provides utility methods for managing WebDriver instances
+ * for different browsers (Chrome, Firefox, and Edge), supporting both local and remote
+ * execution.
  *
  * <p>Features:
  * <ul>
- *     <li>Creates and manages WebDriver instances for Chrome, Firefox, and Edge
- *         browsers.</li>
- *     <li>Supports local and remote WebDriver execution based on environment
- *         configuration.</li>
- *     <li>Provides thread-safe WebDriver and ExtentTest instances using thread-local
- *         storage.</li>
- *     <li>Supports integration with ExtentReports for logging test results.</li>
- *     <li>Handles initialization and closing of WebDriver instances in multi-threaded
- *         test environments.</li>
+ *     <li>Initialize WebDriver instances for Chrome, Firefox, and Edge browsers.</li>
+ *     <li>Support for both local and remote WebDriver configurations.</li>
+ *     <li>Thread-safe singleton pattern to provide a single instance of DriverFactory.</li>
+ *     <li>Logging of driver initialization processes for better debugging and traceability.</li>
  * </ul>
  *
  * <p>Exception Handling:
  * <ul>
- *   <li>Custom exceptions from the {@link ExceptionHub} class are thrown for invalid
- *       data and environmental configurations.</li>
- *   <li>Detailed logging is provided for the initialization and closure of WebDriver
- *       instances.</li>
- *   <li>Malformed URL errors are caught and logged when creating remote WebDriver
- *       instances.</li>
+ *   <li>Custom exceptions from the {@link ExceptionHub} class are thrown for invalid data
+ *   or unsupported configurations.</li>
+ *   <li>Detailed logging of the driver initialization process, including any errors or
+ *   misconfigurations.</li>
  * </ul>
  *
  * <p>Note:
- * This class assumes proper WebDriver setup and configuration. The users must ensure
- * that the WebDriver executable and environment configurations are correctly set up
- * before invoking the methods. Additionally, WebDriver initialization and termination
- * must be managed separately using the provided methods.
+ * The class assumes proper configuration for browser types, WebDriver setup, and system
+ * properties.
+ * Users must handle WebDriver termination and ensure correct system property values are
+ * set for successful execution.
  *
  * <p>Example:
  * <pre>
  * {@code
- * DriverFactory DriverFactory = DriverFactory.getInstance();
- * DriverFactory.initializeDriver();
- * WebDriver driver = DriverFactory.getDriver();
- * DriverFactory.closeDriver();
+ * DriverFactory driverFactory = DriverFactory.getInstance();
+ * WebDriver driver = driverFactory.initializeDriver();
+ * driver.get("https://example.com");
+ * driver.quit();
  * }
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.1
+ * @version 1.2
  */
 public class DriverFactory extends BrowserFactory {
 
@@ -83,27 +74,23 @@ public class DriverFactory extends BrowserFactory {
     // Instance of EdgeOptions to configure Microsoft Edge-specific WebDriver options
     private EdgeOptions meOptions;
 
-    // ThreadLocal variable to store WebDriver instance specific to the current thread (for multithreaded execution)
-    //private static final ThreadLocal<WebDriver> driverLocal = new ThreadLocal<>();
-
     // Instance of RunFactory to manage and retrieve run configurations
     private final RunFactory runFactory;
 
+    // WebDriver instance to interact with web elements on the web pages
     private WebDriver driver;
 
     // Static instance of ExcelReader to read data from Excel files for test execution
     //public static ExcelReader excelReader;
 
-
     /**
-     * Constructs a DriverFactory instance and initializes the EnvironmentManager
+     * Constructs a DriverFactory instance and initializes the RunFactory
      * and ExcelReader.
      * <p>
-     * This constructor sets up the EnvironmentManager to manage environment configurations
-     * and initializes the ExcelReader to read test data from an Excel file located at the
-     * specified path in the TestConstants class.
+     * This constructor sets up the RunFactory to manage run type configurations
+     * and initializes the ExcelReader to read test data from an Excel file located
+     * at the specified path in the TestConstants class.
      * </p>
-     *
      */
     public DriverFactory() {
         this.runFactory = new RunFactory();
@@ -137,45 +124,40 @@ public class DriverFactory extends BrowserFactory {
     }
 
     /**
-     * Sets the WebDriver instance for the current thread.
+     * Sets the WebDriver instance.
      * <p>
-     * This method stores the WebDriver instance in a thread-local variable
-     * to ensure that each thread gets its own instance of WebDriver,
-     * avoiding concurrency issues in a multi-threaded test environment.
+     * This method assigns the provided WebDriver instance to the class-level variable,
+     * ensuring to provide access to the WebDriver across different test components.
      * </p>
      *
-     * @param driver The WebDriver instance to be set for the current thread.
+     * @param driver The WebDriver instance to be set.
      */
-     public void setDriver(WebDriver driver) {
-//        driverLocal.set(driver);
-         this.driver = driver;
-
+    public void setDriver(WebDriver driver) {
+        this.driver = driver;
     }
 
     /**
-     * Retrieves the WebDriver instance for the current thread.
+     * Retrieves the WebDriver instance.
      * <p>
-     * This method fetches the WebDriver instance stored in the thread-local
-     * variable for the current thread. Each thread maintains its own
-     * WebDriver instance, ensuring thread safety.
+     * This method returns the current WebDriver instance, allowing test components
+     * to access the WebDriver.
      * </p>
      *
-     * @return The WebDriver instance for the current thread.
+     * @return The WebDriver instance currently being used.
      */
-     public WebDriver getDriver() {
+    public WebDriver getDriver() {
         return driver;
     }
 
     /**
-     * Initializes the WebDriver by creating a new driver instance and setting it for
-     * the current thread.
+     * Initializes and returns a WebDriver instance.
      * <p>
-     * This method initializes the WebDriver instance based on the environment type
-     * (local or remote) and opens the application URL. It also creates a new TestListener
-     * and a BasePage instance.
+     * This method creates a new WebDriver instance using the {@link #createDriver()} method,
+     * sets it using the {@link #setDriver(WebDriver)} method, and then returns the initialized
+     * WebDriver instance for use in test components.
      * </p>
      *
-     * @throws RuntimeException If any error occurs while creating the WebDriver instance.
+     * @return The newly initialized WebDriver instance.
      */
     public WebDriver initializeDriver() {
         WebDriver driver = createDriver();
@@ -184,15 +166,15 @@ public class DriverFactory extends BrowserFactory {
     }
 
     /**
-     * Creates a WebDriver instance based on the environment type (local or remote).
+     * Creates a WebDriver instance based on the run type (local or remote).
      * <p>
      * This method determines whether to create a local or remote WebDriver instance
-     * based on the environment type (LOCAL or REMOTE) and calls the appropriate
+     * based on the run type (LOCAL or REMOTE) and calls the appropriate
      * method to create the driver.
      * </p>
      *
      * @return The created WebDriver instance (either local or remote).
-     * @throws ExceptionHub.InvalidDataException If the environment type is not
+     * @throws ExceptionHub.InvalidDataException If the run type is not
      *                                           recognized.
      */
     private WebDriver createDriver() {
@@ -304,22 +286,6 @@ public class DriverFactory extends BrowserFactory {
             throw new RuntimeException("Invalid URL for Remote WebDriver.", ex);
         }
     }
-
-    /**
-     * Closes the currently active WebDriver and removes it from the thread-local
-     * storage.
-     * <p>
-     * This method safely quits the WebDriver instance if it's active, ensuring that
-     * the browser is closed properly. It also removes the WebDriver instance from the
-     * thread-local storage to avoid memory leaks and maintain proper resource management.
-     * </p>
-     */
-//    public void closeDriver() {
-//        if (getDriver() != null) {
-//            getDriver().quit();
-//            driverLocal.remove();
-//        }
-//    }
 
     /**
      * Retrieves the system property value for the given key.
