@@ -65,6 +65,9 @@ public class DriverFactory extends BrowserFactory {
     // Logger instance for the DriverFactory class to enable logging during the execution
     private static final Logger log = LogManager.getLogger(DriverFactory.class);
 
+    // WebDriver instance to interact with web elements on the web pages
+    private WebDriver driver;
+
     // Instance of ChromeOptions to configure Chrome-specific WebDriver options
     private ChromeOptions gcOptions;
 
@@ -76,9 +79,6 @@ public class DriverFactory extends BrowserFactory {
 
     // Instance of RunFactory to manage and retrieve run configurations
     private final RunFactory runFactory;
-
-    // WebDriver instance to interact with web elements on the web pages
-    private WebDriver driver;
 
     // Static instance of ExcelReader to read data from Excel files for test execution
     //public static ExcelReader excelReader;

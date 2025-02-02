@@ -50,12 +50,15 @@ import com.qa.ctf.base.ElementActions;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.6
+ * @version 1.1
  */
 public class JavaScriptHandler implements ElementActions {
 
     // Logger instance for the JavaScriptHandler class to enable logging during the execution
     private static final Logger log = LogManager.getLogger(JavaScriptHandler.class);
+
+    // WebDriver instance to interact with web elements on the web pages
+    private final WebDriver driver;
 
     // Instance of JavascriptExecutor to execute JavaScript commands within the browser context
     private final JavascriptExecutor executor;
@@ -64,56 +67,55 @@ public class JavaScriptHandler implements ElementActions {
     private final VerificationHandler verificationHandler;
 
     // Instance of ExtentReportManager to manage the extent report
-    protected ExtentReportManager extentReportManager;
-
-    private final WebDriver driver;
+    private final ExtentReportManager extentReportManager;
 
     // JavaScript command to click on an element using arguments[0] (the element)
-    protected static final String CLICK_ELEMENT = "arguments[0].click();";
+    private static final String CLICK_ELEMENT = "arguments[0].click();";
 
     // JavaScript command to type a value into an element using arguments[0] (the element)
-    protected static final String TYPE_INTO_ELEMENT = "arguments[0].value='%s';";
+    private static final String TYPE_INTO_ELEMENT = "arguments[0].value='%s';";
 
     // JavaScript command to clear the value of an element using arguments[0] (the element)
-    protected static final String CLEAR_ELEMENT = "arguments[0].value = '';";
+    private static final String CLEAR_ELEMENT = "arguments[0].value = '';";
 
     // JavaScript command to scroll to a specific point on the page using arguments[0] (x-axis) and arguments[1] (y-axis)
-    protected static final String SCROLL_TO_ELEMENT = "window.scrollTo(arguments[0],arguments[1])";
+    private static final String SCROLL_TO_ELEMENT = "window.scrollTo(arguments[0],arguments[1])";
 
     // JavaScript command to scroll an element into view
-    protected static final String SCROLL_INTO_VIEW = "arguments[0].scrollIntoView()";
+    private static final String SCROLL_INTO_VIEW = "arguments[0].scrollIntoView()";
 
     // JavaScript command to scroll up vertically by the height of the document
-    protected static final String SCROLL_UP_VERTICAL = "window.scrollTo(0, -document.body.scrollHeight)";
+    private static final String SCROLL_UP_VERTICAL = "window.scrollTo(0, -document.body.scrollHeight)";
 
     // JavaScript command to scroll down vertically by the height of the document
-    protected static final String SCROLL_DOWN_VERTICAL = "window.scrollTo(0, document.body.scrollHeight)";
+    private static final String SCROLL_DOWN_VERTICAL = "window.scrollTo(0, document.body.scrollHeight)";
 
     // JavaScript command to scroll vertically by a specified number of pixels
-    protected static final String SCROLL_VERTICAL_PIXEL = "window.scrollBy(0, %s);";
+    private static final String SCROLL_VERTICAL_PIXEL = "window.scrollBy(0, %s);";
 
     // JavaScript command to zoom the page by a specified percentage
-    protected static final String PAGE_ZOOM = "document.body.style.zoom='%s';";
-
+    private static final String PAGE_ZOOM = "document.body.style.zoom='%s';";
 
     /**
      * Constructs a JavaScriptHandler instance and initializes it with the provided
-     * DriverManager and VerificationHandler.
+     * TestContext and VerificationHandler.
      * <p>
-     * This constructor sets up the necessary dependencies, including the DriverManager
+     * This constructor sets up the necessary dependencies, including the TestContext
      * for managing WebDriver instances, the JavascriptExecutor for executing JavaScript
-     * commands, and the VerificationHandler for handling verification tasks.
+     * commands, and the VerificationHandler for handling verification tasks. Additionally,
+     * it initializes an ExtentReportManager to handle reporting.
      * </p>
      *
-     * @param testContext       The DriverManager instance for managing WebDriver.
+     * @param testContext The TestContext instance to be used for interacting with
+     *                    the WebDriver.
      * @param verificationHandler The VerificationHandler instance for handling verification
      *                            tasks.
-     * @throws IllegalArgumentException If the provided DriverManager is null.
+     * @throws IllegalArgumentException If the provided TestContext is null.
      */
     public JavaScriptHandler(TestContext testContext, VerificationHandler verificationHandler) {
-//        if (driverManager == null) {
-//            throw new IllegalArgumentException("DriverManager cannot be null.");
-//        }
+        if (testContext == null) {
+            throw new IllegalArgumentException("TestContext cannot be null.");
+        }
         this.driver = testContext.driver;
         this.executor = (JavascriptExecutor) driver;
         this.verificationHandler = verificationHandler;

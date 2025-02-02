@@ -71,7 +71,7 @@ public class BasePage extends Page implements ElementActions {
     private final WebDriver driver;
 
     // Instance of ExtentReportManager to manage the extent report
-    protected ExtentReportManager extentReportManager;
+    private final ExtentReportManager extentReportManager;
 
     // HashMap to store key-value pairs of string data
     public static HashMap<String, String> anyObject;
@@ -90,7 +90,8 @@ public class BasePage extends Page implements ElementActions {
      * <p>
      * This constructor ensures that the TestContext is not null before assigning
      * it to the instance variable. It is used for managing the WebDriver instance
-     * and shared test data across different page objects.
+     * and shared test data across different page objects. Additionally, it initializes
+     * an ExtentReportManager to handle reporting.
      * </p>
      *
      * @param testContext The TestContext instance to be used for interacting with
@@ -103,6 +104,7 @@ public class BasePage extends Page implements ElementActions {
         }
         this.testContext = testContext;
         this.driver = testContext.driver;
+        extentReportManager = ExtentReportManager.getInstance();
     }
 
     /**

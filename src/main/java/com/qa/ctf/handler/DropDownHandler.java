@@ -54,33 +54,41 @@ import org.openqa.selenium.support.ui.Select;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.0
+ * @version 1.1
  */
 public class DropDownHandler {
 
     // Logger instance for the DropDownHandler class to enable logging during the execution
     private static final Logger log = LogManager.getLogger(DropDownHandler.class);
 
+    // TestContext instance to manage shared test data and dependencies
+    private final TestContext testContext;
+
     // Instance of VerificationHandler to perform verification actions on dropdown elements
     private final VerificationHandler verificationHandler;
 
     // Instance of ExtentReportManager to manage the extent report
-    protected ExtentReportManager extentReportManager;
-
-    private final TestContext testContext;
+    private final ExtentReportManager extentReportManager;
 
     /**
      * Constructs a DropDownHandler instance and initializes it with the provided
-     * VerificationHandler.
+     * TestContext and VerificationHandler.
      * <p>
      * This constructor assigns the given VerificationHandler to the instance variable,
      * which is used for performing verification operations related to dropdown elements.
+     * Additionally, it initializes an ExtentReportManager to handle reporting.
      * </p>
      *
+     * @param testContext The TestContext instance to be used for interacting with
+     *                    the WebDriver.
      * @param verificationHandler The VerificationHandler instance to be used for handling
      *                            verification tasks.
+     * @throws IllegalArgumentException If the provided TestContext is null.
      */
     public DropDownHandler(TestContext testContext, VerificationHandler verificationHandler) {
+        if (testContext == null) {
+            throw new IllegalArgumentException("TestContext cannot be null.");
+        }
         this.testContext = testContext;
         this.verificationHandler = verificationHandler;
         extentReportManager = ExtentReportManager.getInstance();

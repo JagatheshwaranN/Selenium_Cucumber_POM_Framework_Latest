@@ -51,7 +51,7 @@ import java.util.List;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.0
+ * @version 1.1
  */
 public class DateTimeHandler {
 
@@ -67,23 +67,26 @@ public class DateTimeHandler {
     // Instance of InteractionHandler to perform mouse actions on elements
     private final InteractionHandler interactionHandler;
 
-
     /**
      * Constructs a DatePickerHandler instance and initializes it with the provided
-     * DriverManager and VerificationHandler.
+     * TestContext and VerificationHandler.
      * <p>
-     * This constructor sets up the necessary dependencies, including the DriverManager
+     * This constructor sets up the necessary dependencies, including the TestContext
      * for managing WebDriver instances and the VerificationHandler for performing
      * verification tasks. Additionally, it initializes an InteractionHandler to handle
      * user interactions with web elements.
      * </p>
      *
-     * @param testContext       The DriverManager instance for managing WebDriver.
+     * @param testContext  The TestContext instance to be used for interacting with
+     *                     the WebDriver.
      * @param verificationHandler The VerificationHandler instance for handling verification
      *                            tasks.
-     * @throws IllegalArgumentException If the provided DriverManager is null.
+     * @throws IllegalArgumentException If the provided TestContext is null.
      */
     public DateTimeHandler(TestContext testContext, VerificationHandler verificationHandler) {
+        if (testContext == null) {
+            throw new IllegalArgumentException("TestContext cannot be null.");
+        }
         this.verificationHandler = verificationHandler;
         this.interactionHandler = new InteractionHandler(testContext, this.verificationHandler);
     }

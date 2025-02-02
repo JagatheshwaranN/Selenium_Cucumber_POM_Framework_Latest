@@ -53,42 +53,43 @@ import static com.qa.ctf.constant.TestConstants.*;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.4
+ * @version 1.1
  */
 public class WaitHandler {
 
     // Logger instance for the WaitHandler class to enable logging during the execution
     private static final Logger log = LogManager.getLogger(WaitHandler.class);
 
+    // WebDriver instance to interact with web elements on the web pages
+    private final WebDriver driver;
+
     // Instance of WebDriverWait to handle waiting for elements to appear on the page
     protected WebDriverWait wait;
 
     // Instance of ExtentReportManager to manage the extent report
-    protected ExtentReportManager extentReportManager;
-
-    private final WebDriver driver;
+    private final ExtentReportManager extentReportManager;
 
     /**
      * Constructs a WaitHandler instance and initializes it with the provided
-     * DriverManager.
+     * TestContext.
      * <p>
-     * This constructor ensures that the DriverManager is not null before assigning
+     * This constructor ensures that the TestContext is not null before assigning
      * it to the instance variable. It also initializes the WebDriverWait instance
      * for handling explicit waits and sets up the ExtentReportManager for reporting.
      * </p>
      *
-     * @param  testContext DriverManager instance to be used for interacting with
-     *                      the WebDriver.
-     * @throws IllegalArgumentException If the provided DriverManager is null.
+     * @param testContext The TestContext instance to be used for interacting with
+     *                    the WebDriver.
+     * @throws IllegalArgumentException If the provided TextContext is null.
      */
     public WaitHandler(TestContext testContext) {
-//        if (driverManager == null) {
-//            throw new IllegalArgumentException("DriverManager cannot be null.");
-//        }
+        if (testContext == null) {
+            throw new IllegalArgumentException("TestContext cannot be null.");
+        }
         this.driver = testContext.driver;
-        extentReportManager = ExtentReportManager.getInstance();
         this.wait = new WebDriverWait(driver,
                 Duration.ofSeconds(EXPLICIT_WAIT_TIME));
+        extentReportManager = ExtentReportManager.getInstance();
     }
 
     /**
@@ -97,6 +98,7 @@ public class WaitHandler {
      * This method waits until the given element becomes visible. If the element
      * is not visible within the specified timeout, an exception is thrown.
      * </p>
+     *
      *
      * @param element      The WebElement to wait for.
      * @param elementLabel The label or description of the element.

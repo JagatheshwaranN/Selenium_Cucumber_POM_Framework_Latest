@@ -60,12 +60,15 @@ import java.util.Collections;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.4
+ * @version 1.1
  */
 public class InteractionHandler implements ElementActions {
 
     // Logger instance for the InteractionHandler class to enable logging during the execution
     private static final Logger log = LogManager.getLogger(InteractionHandler.class);
+
+    // WebDriver instance to interact with web elements on the web pages
+    private final WebDriver driver;
 
     // Instance of Actions to build complex user interactions (e.g., mouse movements, clicks, keyboard actions)
     private final Actions builder;
@@ -74,29 +77,28 @@ public class InteractionHandler implements ElementActions {
     private final VerificationHandler verificationHandler;
 
     // Instance of ExtentReportManager to manage the extent report
-    protected ExtentReportManager extentReportManager;
-
-    private final WebDriver driver;
+    private final ExtentReportManager extentReportManager;
 
     /**
      * Constructs an InteractionHandler instance and initializes it with the provided
-     * DriverManager and VerificationHandler.
+     * TestContext and VerificationHandler.
      * <p>
-     * This constructor sets up the necessary dependencies, including the DriverManager
+     * This constructor sets up the necessary dependencies, including the TestContext
      * for managing WebDriver instances, the Actions builder for simulating user
      * interactions with elements, and the VerificationHandler for performing verification
-     * tasks.
+     * tasks. Additionally, it initializes an ExtentReportManager to handle reporting.
      * </p>
      *
-     * @param testContext       The DriverManager instance for managing WebDriver.
+     * @param testContext The TestContext instance to be used for interacting with
+     *                    the WebDriver.
      * @param verificationHandler The VerificationHandler instance for handling verification
      *                            tasks.
-     * @throws IllegalArgumentException If the provided DriverManager is null.
+     * @throws IllegalArgumentException If the provided TestContext is null.
      */
     public InteractionHandler(TestContext testContext, VerificationHandler verificationHandler) {
-//        if (driverManager == null) {
-//            throw new IllegalArgumentException("DriverManager cannot be null.");
-//        }
+        if (testContext == null) {
+            throw new IllegalArgumentException("TestContext cannot be null.");
+        }
         this.driver = testContext.driver;
         this.builder = new Actions(driver);
         this.verificationHandler = verificationHandler;

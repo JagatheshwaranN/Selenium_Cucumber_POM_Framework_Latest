@@ -55,29 +55,39 @@ import java.util.Objects;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.3
+ * @version 1.1
  */
 public class VerificationHandler {
 
     // Logger instance for the VerificationHandler class to enable logging during the execution
     private static final Logger log = LogManager.getLogger(VerificationHandler.class);
 
-    // Instance of ExtentReportManager to manage the extent report
-    protected ExtentReportManager extentReportManager;
-
+    // TestContext instance to manage shared test data and dependencies
     private final TestContext testContext;
 
+    // Instance of ExtentReportManager to manage the extent report
+    private final ExtentReportManager extentReportManager;
+
     /**
-     * Constructs an VerificationHandler instance and initializes it with the
-     * provided ExtentReportManager.
+     * Constructs a VerificationHandler instance and initializes it with the provided
+     * TestContext.
      * <p>
-     * It is used for handling the extent report.
+     * This constructor ensures that the TestContext is not null before assigning
+     * it to the instance variable. It is used for managing the WebDriver instance
+     * and shared test data across different page objects. Additionally, it initializes
+     * an ExtentReportManager to handle reporting.
      * </p>
+     *
+     * @param testContext The TestContext instance to be used for interacting with
+     *                    the WebDriver.
+     * @throws IllegalArgumentException If the provided TestContext is null.
      */
-    public VerificationHandler(TestContext testContext)
-    {
-        extentReportManager = ExtentReportManager.getInstance();
+    public VerificationHandler(TestContext testContext) {
+        if (testContext == null) {
+            throw new IllegalArgumentException("TestContext cannot be null.");
+        }
         this.testContext = testContext;
+        extentReportManager = ExtentReportManager.getInstance();
     }
 
     /**
@@ -86,6 +96,7 @@ public class VerificationHandler {
      * This method verifies whether a given web element is displayed on the page.
      * If the element is null, an error is logged, and the method returns false.
      * If an exception occurs during the check, it is logged and rethrown as a
+     * BaseException.ElementNotFoundException.
      * BaseException.ElementNotFoundException.
      * </p>
      *
