@@ -95,5 +95,6 @@ public class TestConstants {
 	// Screenshot Details
 	public static final String SNAPSHOT_PATH = "//src//test//resources//screenshots//";
 	public static final String FULL_PAGE_SCREENSHOT = "FullPageScreenShot";
+	public static final String IMG_PNG_FORMAT = "image/png";
 
 }

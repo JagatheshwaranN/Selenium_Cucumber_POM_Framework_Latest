@@ -60,7 +60,6 @@ import static com.qa.ctf.constant.TestConstants.*;
  * <pre>
  * {@code
  * public class TestExecution {
- *     @BeforeClass
  *     public void setup() {
  *         DriverFactory driverFactory = new DriverFactory();
  *         TestListener listener = new TestListener(driverFactory);
@@ -71,11 +70,11 @@ import static com.qa.ctf.constant.TestConstants.*;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.10
+ * @version 1.1
  */
 public class TestListener extends DriverFactory implements ITestListener, ISuiteListener {
 
-    // Importing the logger to enable logging for the TestListener class
+    // Logger instance for the TestListener class to enable logging during the execution
     private static final Logger log = LogManager.getLogger(TestListener.class);
 
     // Instance of ExtentReports to manage and generate test execution reports

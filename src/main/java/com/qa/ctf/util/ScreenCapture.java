@@ -62,11 +62,11 @@ import static com.qa.ctf.constant.TestConstants.*;
  */
 public class ScreenCapture {
 
+    // Logger instance for the ScreenCapture class to enable logging during the execution
+    private static final Logger log = LogManager.getLogger(ScreenCapture.class);
+
     // Instance of DriverFactory to manage the WebDriver for interacting with the browser
     private final DriverFactory driverFactory;
-
-    // Importing the logger to enable logging for the TestListener class
-    private static final Logger log = LogManager.getLogger(ScreenCapture.class);
 
     // Path to store the screenshot files, constructed using the project's root directory and a constant path
     private static final String SCREENSHOT_PATH = CWD + SNAPSHOT_PATH;

@@ -64,7 +64,7 @@ public class WaitHandler {
     private final WebDriver driver;
 
     // Instance of WebDriverWait to handle waiting for elements to appear on the page
-    protected WebDriverWait wait;
+    private final WebDriverWait wait;
 
     // Instance of ExtentReportManager to manage the extent report
     private final ExtentReportManager extentReportManager;

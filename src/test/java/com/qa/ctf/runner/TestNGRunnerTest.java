@@ -5,9 +5,7 @@ import io.cucumber.testng.CucumberOptions;
 import org.testng.annotations.DataProvider;
 
 /**
- *
  * @author Jaga
- *
  */
 
 //@CucumberOptions(features = "src/test/resources/features/", tags = "@launch", glue = { "com/jtaf/qa/steps",
@@ -18,9 +16,17 @@ import org.testng.annotations.DataProvider;
 //
 //}
 
-@CucumberOptions(features = "src/test/resources/features/", tags = "@placeOrder", glue = { "com/qa/ctf"}, plugin = { "pretty",
-        "json:target/cucumber/report/report.json", "junit:target/cucumber/report/report.xml",
-        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" }, publish = true, monochrome = true)
+@CucumberOptions(
+        features = "src/test/resources/features/",
+        tags = "@placeOrder",
+        glue = {"com/qa/ctf"},
+        plugin = {"pretty",
+                "html:target/cucumber/report/cucumber.html",
+                "json:target/cucumber/report/report.json",
+                "junit:target/cucumber/report/report.xml",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+        publish = true,
+        monochrome = true)
 public class TestNGRunnerTest extends AbstractTestNGCucumberTests {
 
     @DataProvider(parallel = true)

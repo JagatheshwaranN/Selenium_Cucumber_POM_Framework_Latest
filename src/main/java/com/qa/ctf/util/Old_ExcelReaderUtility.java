@@ -8,14 +8,9 @@ import org.apache.logging.log4j.Logger;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.Assert;
 
-/**
- * 
- * @author Jaga
- *
- */
-public class ExcelReaderUtility {
+public class Old_ExcelReaderUtility {
 
-	private static final Logger log = LogManager.getLogger(ExcelReaderUtility.class.getName());
+	private static final Logger log = LogManager.getLogger(Old_ExcelReaderUtility.class.getName());
 
 	public Object[][] getDataFromExcel(String excelPath, String sheetName) {
 		Object[][] dataSet = null;
@@ -46,7 +41,7 @@ public class ExcelReaderUtility {
 			log.info("The extraction of data from excel sheet has end");
 			workbook.close();
 		} catch (Exception ex) {
-			log.info("Error occured while read data from excel sheet" + "\n" + ex);
+			log.info("Error occurred while read data from excel sheet" + "\n" + ex);
 			Assert.fail();
 		}
 		return dataSet;

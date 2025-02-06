@@ -58,7 +58,7 @@ package com.qa.ctf.util;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.4
+ * @version 1.1
  */
 public class ExceptionHub extends RuntimeException {
 
