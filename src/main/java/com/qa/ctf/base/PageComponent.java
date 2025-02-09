@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * The BasePage class serves as a foundational class for interacting with
+ * The PageComponent class serves as a foundational class for interacting with
  * web pages using Selenium WebDriver. It provides utility methods for common
  * page-level actions such as retrieving page titles, URLs, headers, and
  * interacting with page elements like clicking, typing, and waiting for
@@ -49,20 +49,20 @@ import java.util.Map;
  * <p>Example:
  * <pre>
  * {@code
- * BasePage basePage = new BasePage(driverFactory);
- * basePage.getPageTitle();
- * basePage.waitForElementVisible(element, "Sample Element");
- * basePage.clickElement(element, "Submit Button");
+ * PageComponent PageComponent = new PageComponent(driverFactory);
+ * PageComponent.getPageTitle();
+ * PageComponent.waitForElementVisible(element, "Sample Element");
+ * PageComponent.clickElement(element, "Submit Button");
  * }
  * </pre>
  *
  * @author Jagatheshwaran N
  * @version 1.2
  */
-public class BasePage extends Page implements ElementActions {
+public class PageComponent extends Page implements ElementActions {
 
-    // Logger instance for the BasePage class to enable logging during the execution
-    private static final Logger log = LogManager.getLogger(BasePage.class);
+    // Logger instance for the PageComponent class to enable logging during the execution
+    private static final Logger log = LogManager.getLogger(PageComponent.class);
 
     // TestContext instance to manage shared test data and dependencies
     private final TestContext testContext;
@@ -86,7 +86,7 @@ public class BasePage extends Page implements ElementActions {
     public static String objKey;
 
     /**
-     * Constructs a BasePage instance and initializes it with the provided TestContext.
+     * Constructs a PageComponent instance and initializes it with the provided TestContext.
      * <p>
      * This constructor ensures that the TestContext is not null before assigning
      * it to the instance variable. It is used for managing the WebDriver instance
@@ -98,7 +98,7 @@ public class BasePage extends Page implements ElementActions {
      *                    the WebDriver.
      * @throws IllegalArgumentException If the provided TestContext is null.
      */
-    public BasePage(TestContext testContext) {
+    public PageComponent(TestContext testContext) {
         if (testContext == null) {
             throw new IllegalArgumentException("TestContext cannot be null.");
         }

@@ -1,4 +1,4 @@
-package com.qa.ctf.custom;
+package com.qa.ctf.app;
 
 import com.qa.ctf.util.CookieUtil;
 import org.openqa.selenium.Cookie;

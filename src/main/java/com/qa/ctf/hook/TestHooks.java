@@ -8,9 +8,12 @@ import com.qa.ctf.util.ScreenCapture;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+
+import java.io.File;
 
 import static com.qa.ctf.constant.TestConstants.*;
 
@@ -96,6 +99,7 @@ public class TestHooks {
         log.info("BEFORE SCENARIO - THREAD ID: {} & SCENARIO NAME: {}",
                 Thread.currentThread().threadId(), scenario.getName());
         try {
+            // FileUtils.cleanDirectory(new File(SCREENSHOT_PATH));
             FileReader.loadPropertyFile();
             driver = DriverFactory.getInstance().initializeDriver();
             this.testContext.driver = driver;

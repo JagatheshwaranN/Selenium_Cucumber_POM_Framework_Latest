@@ -1,10 +1,10 @@
 package com.qa.ctf.steps;
 
-import com.qa.ctf.constants.Endpoint;
+import com.qa.ctf.constant.Endpoint;
 import com.qa.ctf.context.AppContext;
 import com.qa.ctf.context.TestContext;
 import com.qa.ctf.pages.CheckoutPage;
-import com.qa.ctf.pages.PageFactory;
+import com.qa.ctf.base.PageFactory;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -39,7 +39,7 @@ public class CheckoutSteps {
 
     @Then("the order should be placed successfully")
     public void the_order_should_be_placed_successfully() {
-        Assert.assertEquals("Thank you. Your order has been received...",
+        Assert.assertEquals("Thank you. Your order has been received.",
                 checkoutPage.getNotice());
     }
 

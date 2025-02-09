@@ -1,27 +1,31 @@
 package com.qa.ctf.pages;
 
+import com.qa.ctf.base.PageComponent;
+import com.qa.ctf.base.PageFactory;
+import com.qa.ctf.handler.VerificationHandler;
+import com.qa.ctf.objects.StorePageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class StorePage extends BasePage {
+public class StorePage extends StorePageObject {
 
-    @FindBy(css = "a[title='View cart']")
-    private WebElement viewCartLink;
-
-    @FindBy(xpath = "//h1[text()='Store']")
-    private WebElement titleText;
+    private final VerificationHandler verificationHandler;
+    private final PageComponent pageComponent;
 
     public StorePage(WebDriver driver) {
         super(driver);
+        this.verificationHandler = PageFactory.getVerificationHelper();
+        this.pageComponent = PageFactory.getPageComponent();
     }
 
     public void addToCart(String productName) {
         By addToCartBtn = By.cssSelector("a[aria-label='Add “" + productName + "” to your cart']");
-        wait.until(ExpectedConditions.visibilityOf(titleText));
+//        wait.until(ExpectedConditions.visibilityOf(getTitleText()));
+//        wait.until(ExpectedConditions.elementToBeClickable(getViewCartLink())).click();
+        verificationHandler.isElementDisplayed(getTitleText(), getTitleTextLabel());
         wait.until(ExpectedConditions.elementToBeClickable(addToCartBtn)).click();
-        wait.until(ExpectedConditions.elementToBeClickable(viewCartLink)).click();
+        pageComponent.clickElement(getViewCartLink(), getViewCartLinkLabel());
     }
+
 }

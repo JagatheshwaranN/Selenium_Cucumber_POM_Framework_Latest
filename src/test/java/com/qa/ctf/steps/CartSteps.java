@@ -1,10 +1,9 @@
 package com.qa.ctf.steps;
 
-import com.qa.ctf.context.AppContext;
 import com.qa.ctf.context.TestContext;
-import com.qa.ctf.objects.Product;
+import com.qa.ctf.data.Product;
 import com.qa.ctf.pages.CartPage;
-import com.qa.ctf.pages.PageFactory;
+import com.qa.ctf.base.PageFactory;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;

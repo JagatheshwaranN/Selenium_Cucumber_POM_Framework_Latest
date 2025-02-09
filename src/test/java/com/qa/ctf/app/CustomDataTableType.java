@@ -1,6 +1,6 @@
-package com.qa.ctf.custom;
+package com.qa.ctf.app;
 
-import com.qa.ctf.objects.BillingDetails;
+import com.qa.ctf.data.BillingDetails;
 import io.cucumber.java.DataTableType;
 
 import java.util.Map;

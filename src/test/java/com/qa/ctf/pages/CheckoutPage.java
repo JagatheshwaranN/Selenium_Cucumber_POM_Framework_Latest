@@ -1,71 +1,69 @@
 package com.qa.ctf.pages;
 
-import com.qa.ctf.objects.BillingDetails;
+import com.qa.ctf.base.PageComponent;
+import com.qa.ctf.base.PageFactory;
+import com.qa.ctf.data.BillingDetails;
+import com.qa.ctf.handler.VerificationHandler;
+import com.qa.ctf.objects.CheckoutPageObject;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
-public class CheckoutPage  extends BasePage {
+public class CheckoutPage  extends CheckoutPageObject {
 
-    @FindBy(id="billing_first_name") private WebElement billFirstNameFld;
-    @FindBy(id="billing_last_name") private WebElement billLastNameFld;
-    @FindBy(id="billing_address_1") private WebElement billAddressFld;
-    @FindBy(id="billing_city") private WebElement billCityFld;
-    @FindBy(id="billing_state") private WebElement billStateDropdown;
-    @FindBy(id="billing_postcode") private WebElement billZipFld;
-    @FindBy(id="billing_email") private WebElement billEmailFld;
-    @FindBy(id="place_order") private WebElement placeOrderBtn;
-    @FindBy(css=".woocommerce-notice") private WebElement noticeTxt;
+    private final VerificationHandler verificationHandler;
+    private final PageComponent pageComponent;
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
+        this.verificationHandler = PageFactory.getVerificationHelper();
+        this.pageComponent = PageFactory.getPageComponent();
     }
 
     public CheckoutPage enterBillingFirstName(String billingFirstName) {
-        WebElement element = wait.until(ExpectedConditions.visibilityOf(billFirstNameFld));
+        WebElement element = wait.until(ExpectedConditions.visibilityOf(getBillFirstNameFld()));
         element.clear();
         element.sendKeys(billingFirstName);
         return this;
     }
 
     public CheckoutPage enterBillingLastName(String billingLastName) {
-        WebElement element = wait.until(ExpectedConditions.visibilityOf(billLastNameFld));
+        WebElement element = wait.until(ExpectedConditions.visibilityOf(getBillLastNameFld()));
         element.clear();
         element.sendKeys(billingLastName);
         return this;
     }
 
     public CheckoutPage enterBillingAddress(String billingAddress) {
-        WebElement element = wait.until(ExpectedConditions.visibilityOf(billAddressFld));
+        WebElement element = wait.until(ExpectedConditions.visibilityOf(getBillAddressFld()));
         element.clear();
         element.sendKeys(billingAddress);
         return this;
     }
 
     public CheckoutPage enterBillingCity(String billingCity) {
-        WebElement element = wait.until(ExpectedConditions.visibilityOf(billCityFld));
+        WebElement element = wait.until(ExpectedConditions.visibilityOf(getBillCityFld()));
         element.clear();
         element.sendKeys(billingCity);
         return this;
     }
 
     public CheckoutPage selectBillingState(String billingState) {
-        Select select = new Select(wait.until(ExpectedConditions.visibilityOf(billStateDropdown)));
+        Select select = new Select(wait.until(ExpectedConditions.visibilityOf(getBillStateDropdown())));
         select.selectByVisibleText(billingState);
         return this;
     }
 
     public CheckoutPage enterBillingZipcode(String billingZipcode) {
-        WebElement element = wait.until(ExpectedConditions.visibilityOf(billZipFld));
+        WebElement element = wait.until(ExpectedConditions.visibilityOf(getBillZipFld()));
         element.clear();
         element.sendKeys(billingZipcode);
         return this;
     }
 
     public CheckoutPage enterBillingEmail(String billingEmail) {
-        WebElement element = wait.until(ExpectedConditions.visibilityOf(billEmailFld));
+        WebElement element = wait.until(ExpectedConditions.visibilityOf(getBillEmailFld()));
         element.clear();
         element.sendKeys(billingEmail);
         return this;
@@ -82,12 +80,12 @@ public class CheckoutPage  extends BasePage {
     }
 
     public CheckoutPage placeOrder() {
-        wait.until(ExpectedConditions.elementToBeClickable(placeOrderBtn)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(getPlaceOrderBtn())).click();
         return this;
     }
 
     public String getNotice() {
-        return wait.until(ExpectedConditions.visibilityOf(noticeTxt)).getText();
+        return wait.until(ExpectedConditions.visibilityOf(getNoticeTxt())).getText();
     }
 
 }

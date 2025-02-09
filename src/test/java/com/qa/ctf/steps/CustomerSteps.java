@@ -1,10 +1,10 @@
 package com.qa.ctf.steps;
 
-import com.qa.ctf.constants.Endpoint;
+import com.qa.ctf.constant.Endpoint;
 import com.qa.ctf.context.AppContext;
 import com.qa.ctf.context.TestContext;
-import com.qa.ctf.objects.BillingDetails;
-import com.qa.ctf.pages.PageFactory;
+import com.qa.ctf.data.BillingDetails;
+import com.qa.ctf.base.PageFactory;
 import com.qa.ctf.pages.StorePage;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.WebDriver;

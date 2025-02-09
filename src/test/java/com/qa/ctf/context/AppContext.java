@@ -1,7 +1,7 @@
 package com.qa.ctf.context;
 
-import com.qa.ctf.custom.Cookies;
-import com.qa.ctf.objects.BillingDetails;
+import com.qa.ctf.app.Cookies;
+import com.qa.ctf.data.BillingDetails;
 
 public class AppContext {
 

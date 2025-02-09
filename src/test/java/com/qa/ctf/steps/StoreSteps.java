@@ -1,11 +1,11 @@
 package com.qa.ctf.steps;
 
 import com.qa.ctf.apis.CartApi;
-import com.qa.ctf.constants.Endpoint;
+import com.qa.ctf.constant.Endpoint;
 import com.qa.ctf.context.AppContext;
 import com.qa.ctf.context.TestContext;
-import com.qa.ctf.objects.Product;
-import com.qa.ctf.pages.PageFactory;
+import com.qa.ctf.data.Product;
+import com.qa.ctf.base.PageFactory;
 import com.qa.ctf.pages.StorePage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
@@ -17,11 +17,10 @@ public class StoreSteps {
     private final StorePage storePage;
     private final AppContext appContext;
 
-
-
     public StoreSteps(AppContext appContext, TestContext testContext) {
         this.appContext = appContext;
         driver = testContext.driver;
+        new PageFactory(testContext);
         storePage = PageFactory.getStorePage(driver);
     }
 

@@ -1,6 +1,6 @@
 package com.qa.ctf.apis;
 
-import com.qa.ctf.constants.Endpoint;
+import com.qa.ctf.constant.Endpoint;
 import io.restassured.http.Cookies;
 import io.restassured.http.Header;
 import io.restassured.http.Headers;

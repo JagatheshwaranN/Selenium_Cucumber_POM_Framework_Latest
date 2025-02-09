@@ -1,4 +1,4 @@
-package com.qa.ctf.constants;
+package com.qa.ctf.constant;
 
 public enum Endpoint {
 

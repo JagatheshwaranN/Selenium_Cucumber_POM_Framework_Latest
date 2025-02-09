@@ -1,4 +1,4 @@
-package com.qa.ctf.pages;
+package com.qa.ctf.base;
 
 import com.qa.ctf.util.FileReader;
 import org.openqa.selenium.By;
@@ -14,6 +14,7 @@ import java.util.List;
 public class BasePage {
 
     protected WebDriver driver;
+
     protected WebDriverWait wait;
 
     public BasePage(WebDriver driver) {

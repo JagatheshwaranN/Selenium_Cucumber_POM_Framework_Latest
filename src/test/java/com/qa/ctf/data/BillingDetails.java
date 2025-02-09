@@ -1,4 +1,4 @@
-package com.qa.ctf.objects;
+package com.qa.ctf.data;
 
 public class BillingDetails {
 
