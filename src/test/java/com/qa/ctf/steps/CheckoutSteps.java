@@ -39,7 +39,7 @@ public class CheckoutSteps {
 
     @Then("the order should be placed successfully")
     public void the_order_should_be_placed_successfully() {
-        Assert.assertEquals("Thank you. Your order has been received.",
+        Assert.assertEquals("Thank you. Your order has been received...",
                 checkoutPage.getNotice());
     }
 

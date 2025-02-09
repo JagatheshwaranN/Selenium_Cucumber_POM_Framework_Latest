@@ -2,7 +2,6 @@ package com.qa.ctf.handler;
 
 import com.aventstack.extentreports.Status;
 import com.qa.ctf.context.TestContext;
-import com.qa.ctf.report.ExtentReportManager;
 import com.qa.ctf.util.ExceptionHub;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -57,17 +56,13 @@ public class AlertHandler {
     // WebDriver instance to interact with web elements on the web pages
     private final WebDriver driver;
 
-    // Instance of ExtentReportManager to manage the extent report
-    private final ExtentReportManager extentReportManager;
-
     /**
      * Constructs an AlertHandler instance and initializes it with the provided
      * TestContext
      * <p>
      * This constructor ensures that the TestContext is not null before assigning
      * it to the instance variable. It is used for managing the WebDriver instance
-     * and shared test data across different page objects. Additionally, it initializes
-     * an ExtentReportManager to handle reporting.
+     * and shared test data across different page objects.
      * </p>
      *
      * @param testContext The TestContext instance to be used for interacting with
@@ -79,7 +74,6 @@ public class AlertHandler {
             throw new IllegalArgumentException("TestContext cannot be null.");
         }
         this.driver = testContext.driver;
-        extentReportManager = ExtentReportManager.getInstance();
     }
 
     /**
@@ -96,11 +90,9 @@ public class AlertHandler {
         try {
             Alert alert = driver.switchTo().alert();
             log.info("Alert found and retrieved.");
-            extentReportManager.getExtentTest().log(Status.PASS,"Alert found and retrieved.");
             return Optional.of(alert);
         } catch (NoAlertPresentException ex) {
             log.error("No alert present on the page.");
-            extentReportManager.getExtentTest().log(Status.FAIL,"No alert present on the page.");
             throw new ExceptionHub.AlertNotFoundException(ex);
         }
     }
@@ -116,7 +108,6 @@ public class AlertHandler {
         getAlert().ifPresent(alert -> {
             alert.accept();
             log.info("The alert popup is accepted.");
-            extentReportManager.getExtentTest().log(Status.PASS,"The alert popup is accepted.");
         });
     }
 
@@ -131,7 +122,6 @@ public class AlertHandler {
         getAlert().ifPresent(alert -> {
             alert.dismiss();
             log.info("The alert popup is dismissed.");
-            extentReportManager.getExtentTest().log(Status.PASS,"The alert popup is dismissed.");
         });
     }
 
@@ -149,10 +139,8 @@ public class AlertHandler {
         String text = alert.map(Alert::getText).orElse("No Alert Present");
         if (text.isEmpty()) {
             log.error("No alert is active, returning empty string.");
-            extentReportManager.getExtentTest().log(Status.FAIL,"No alert is active, returning empty string.");
         }
         log.info("Alert text retrieved: '{}'", text);
-        extentReportManager.getExtentTest().log(Status.PASS,String.format("Alert text retrieved: '%s'", text));
         return text;
     }
 
@@ -171,7 +159,6 @@ public class AlertHandler {
             alert.sendKeys(text);
             alert.accept();
             log.info("The prompt alert window is accepted.");
-            extentReportManager.getExtentTest().log(Status.PASS,"The prompt alert window is accepted");
         });
     }
 

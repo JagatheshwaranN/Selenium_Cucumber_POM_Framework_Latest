@@ -1,14 +1,15 @@
 package com.qa.ctf.base;
 
-import com.aventstack.extentreports.Status;
 import com.qa.ctf.context.TestContext;
 import com.qa.ctf.factory.DriverFactory;
 import com.qa.ctf.handler.WaitHandler;
-import com.qa.ctf.report.ExtentReportManager;
 import com.qa.ctf.util.ExceptionHub;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.openqa.selenium.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.ElementClickInterceptedException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.util.HashMap;
 import java.util.List;
@@ -57,7 +58,7 @@ import java.util.Map;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.2
+ * @version 1.3
  */
 public class PageComponent extends Page implements ElementActions {
 
@@ -69,9 +70,6 @@ public class PageComponent extends Page implements ElementActions {
 
     // WebDriver instance to interact with web elements on the web pages
     private final WebDriver driver;
-
-    // Instance of ExtentReportManager to manage the extent report
-    private final ExtentReportManager extentReportManager;
 
     // HashMap to store key-value pairs of string data
     public static HashMap<String, String> anyObject;
@@ -90,8 +88,7 @@ public class PageComponent extends Page implements ElementActions {
      * <p>
      * This constructor ensures that the TestContext is not null before assigning
      * it to the instance variable. It is used for managing the WebDriver instance
-     * and shared test data across different page objects. Additionally, it initializes
-     * an ExtentReportManager to handle reporting.
+     * and shared test data across different page objects.
      * </p>
      *
      * @param testContext The TestContext instance to be used for interacting with
@@ -104,7 +101,6 @@ public class PageComponent extends Page implements ElementActions {
         }
         this.testContext = testContext;
         this.driver = testContext.driver;
-        extentReportManager = ExtentReportManager.getInstance();
     }
 
     /**
@@ -120,7 +116,6 @@ public class PageComponent extends Page implements ElementActions {
     public String getPageTitle() {
         String title = driver.getTitle();
         log.info("Page title retrieved: '{}'", title);
-//        extentReportManager.getExtentTest().log(Status.PASS, String.format("Page title retrieved: '%s'", title));
         return title;
     }
 
@@ -137,7 +132,6 @@ public class PageComponent extends Page implements ElementActions {
     public String getPageUrl() {
         String url = driver.getCurrentUrl();
         log.info("Page URL retrieved: '{}'", url);
-//        extentReportManager.getExtentTest().log(Status.PASS, String.format("Page URL retrieved: '%s'", url));
         return url;
     }
 
@@ -158,7 +152,6 @@ public class PageComponent extends Page implements ElementActions {
         new WaitHandler(testContext).waitForElementVisible(element, elementLabel);
         String headerText = element.getText();
         log.info("Page header retrieved for '{}': '{}'", elementLabel, headerText);
-//        extentReportManager.getExtentTest().log(Status.PASS, String.format("Page header retrieved for '%s': '%s'", elementLabel, headerText));
         return headerText;
     }
 
@@ -182,7 +175,6 @@ public class PageComponent extends Page implements ElementActions {
         }
         WebElement element = driver.findElement(locator);
         log.debug("Element generated for '{}' using locator: '{}'", locatorLabel, locator);
-//        extentReportManager.getExtentTest().log(Status.PASS, String.format("Element generated for '%s' using locator: '%s'", locatorLabel, locator));
         return element;
     }
 
@@ -206,7 +198,6 @@ public class PageComponent extends Page implements ElementActions {
         }
         WebElement element = driver.findElement(By.xpath(locator));
         log.debug("Element generated for '{}' using XPath: '{}'", locatorLabel, locator);
-//        extentReportManager.getExtentTest().log(Status.PASS, String.format("Element generated for '%s' using XPath: '%s'", locatorLabel, locator));
         return element;
     }
 
@@ -225,7 +216,6 @@ public class PageComponent extends Page implements ElementActions {
     public void clearElement(WebElement element, String elementLabel) {
         element.clear();
         log.info("Cleared the content of '{}' element", elementLabel);
-//        extentReportManager.getExtentTest().log(Status.PASS, String.format("Cleared the content of '%s' element", elementLabel));
     }
 
     /**
@@ -242,7 +232,6 @@ public class PageComponent extends Page implements ElementActions {
     public void clickElement(WebElement element, String elementLabel) {
         element.click();
         log.info("Clicked the '{}' element", elementLabel);
-//        extentReportManager.getExtentTest().log(Status.PASS, String.format("Clicked the '%s' element", elementLabel));
     }
 
     /**
@@ -267,10 +256,8 @@ public class PageComponent extends Page implements ElementActions {
             WebElement element = driver.findElement(By.xpath(String.format(locator.toString().replace("By.xpath: ", ""), value)));
             element.click();
             log.info("Clicked the '{}' element", elementLabel);
-//            extentReportManager.getExtentTest().log(Status.PASS, String.format("Clicked the '%s' element", elementLabel));
         } catch (ElementClickInterceptedException ex) {
             log.error("Failed to click the '{}' element", elementLabel, ex);
-//            extentReportManager.getExtentTest().log(Status.FAIL, String.format("Failed to click the '%s' element", elementLabel));
             throw new ExceptionHub.InteractionException("Exception occurred while clicking '" + elementLabel + "' element", ex);
         }
     }
@@ -292,7 +279,6 @@ public class PageComponent extends Page implements ElementActions {
         if (text != null) {
             element.sendKeys(text);
             log.info("Entered '{}' text into the '{}' element", text, elementLabel);
-//            extentReportManager.getExtentTest().log(Status.PASS, String.format("Entered '%s' text into the '%s' element", text, elementLabel));
         }
     }
 
@@ -314,7 +300,6 @@ public class PageComponent extends Page implements ElementActions {
                 element.sendKeys(String.valueOf(ch));
             }
             log.info("Entered '{}' text into the '{}' element", text, elementLabel);
-//            extentReportManager.getExtentTest().log(Status.PASS, String.format("Entered '%s' text into the '%s' element", text, elementLabel));
         }
     }
 
@@ -367,4 +352,3 @@ public class PageComponent extends Page implements ElementActions {
     }
 
 }
-
