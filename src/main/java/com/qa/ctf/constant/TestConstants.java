@@ -31,9 +31,12 @@ public class TestConstants {
 	public static final String STAGE = "STAGE";
 	public static final String PROD = "PROD";
 
+	public static final String OPTION_YES = "Yes";
+	public static final String OPTION_NO = "No";
+
 	// Browser Option Details
 	public static final String BROWSER_PRIVATE_MODE = "Private";
-	public static final String BROWSER_PRIVATE_MODE_YES = "Yes";
+//	public static final String BROWSER_PRIVATE_MODE_YES = "Yes";
 	public static final String CHROME_REMOTE_ORIGIN = "--remote-allow-origins=*";
 	public static final String BROWSER_MAXIMIZE = "--start-maximized";
 	public static final String EDGE_BROWSER_MAXIMIZE = "start-maximized";

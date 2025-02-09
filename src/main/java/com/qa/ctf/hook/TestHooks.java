@@ -146,8 +146,9 @@ public class TestHooks {
      *                 be attached.
      */
     private void attachScreenToScenario(Scenario scenario) {
-        String screenshotPath = new ScreenCapture(DriverFactory.getInstance()).takeScreenshot();
-        scenario.attach(screenshotPath, IMG_PNG_FORMAT, scenario.getName());
+        ScreenCapture screenCapture = new ScreenCapture(DriverFactory.getInstance());
+        byte[] screenshot = screenCapture.convertImageToByteArray(screenCapture.takeScreenshot());
+        scenario.attach(screenshot, IMG_PNG_FORMAT, scenario.getName());
         log.info("Screenshot attached for scenario: {}", scenario.getName());
     }
 

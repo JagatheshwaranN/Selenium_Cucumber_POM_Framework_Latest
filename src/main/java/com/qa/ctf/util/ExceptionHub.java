@@ -270,6 +270,16 @@ public class ExceptionHub extends RuntimeException {
          * and includes the underlying cause of the failure.
          *
          * @param message The error message detailing the issue during screenshot capture.
+         */
+        public ScreenshotException(String message) {
+            super(message);
+        }
+
+        /**
+         * Constructs the exception with a message explaining the screenshot error
+         * and includes the underlying cause of the failure.
+         *
+         * @param message The error message detailing the issue during screenshot capture.
          * @param cause   The underlying cause of the exception.
          */
         public ScreenshotException(String message, Throwable cause) {

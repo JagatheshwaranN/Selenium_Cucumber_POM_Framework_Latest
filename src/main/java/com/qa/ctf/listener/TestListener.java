@@ -70,7 +70,7 @@ import static com.qa.ctf.constant.TestConstants.*;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.1
+ * @version 1.2
  */
 public class TestListener extends DriverFactory implements ITestListener, ISuiteListener {
 
@@ -141,7 +141,6 @@ public class TestListener extends DriverFactory implements ITestListener, ISuite
      */
     @Override
     public void onStart(ITestContext context) {
-//        extentReports = ExtentReportManager.setupExtentReport();
         log.info("Test Context started: '{}'", context.getName());
     }
 
@@ -214,17 +213,16 @@ public class TestListener extends DriverFactory implements ITestListener, ISuite
      */
     private void handleTestResult(ITestResult result, Status status, String message) {
         System.setProperty(REPORT_CONFIG_KEY, REPORT_CONFIG_VALUE);
-        String snapshotPath = new ScreenCapture(driverFactory).takeScreenshot();
+        ScreenCapture screenCapture = new ScreenCapture(driverFactory);
+        String snapshotPath = screenCapture.takeScreenshot();
         try {
-            byte[] imageBytes = Files.readAllBytes(Paths.get(snapshotPath));
-            String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+            String base64Image = screenCapture.convertImageToBase64Format(snapshotPath);
             extentReportManager.getExtentTest().log(status, StringUtils.capitalize(result.getName()) + message,
                     MediaEntityBuilder.createScreenCaptureFromBase64String(base64Image).build());
         } catch (Exception ex) {
             log.error("Failed to capture Base64 screenshot: {}", ex.getMessage(), ex);
             throw new ExceptionHub.ScreenshotException("Failed to create the Base64 screenshot", ex);
         }
-        // BasePage.waitForSeconds();
         testNGReporterUpdate(StringUtils.capitalize(result.getName()) + message, snapshotPath);
     }
 
@@ -238,13 +236,13 @@ public class TestListener extends DriverFactory implements ITestListener, ISuite
         Reporter.log("<br>");
         Reporter.log(testStatus);
         Reporter.log("<br>");
-        byte[] imageBytes;
-        try {
-            imageBytes = Files.readAllBytes(Paths.get(screenshotPath));
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
-        String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+//        byte[] imageBytes;
+//        try {
+//            imageBytes = Files.readAllBytes(Paths.get(screenshotPath));
+//        } catch (IOException ex) {
+//            throw new RuntimeException(ex);
+//        }
+        String base64Image = new ScreenCapture(DriverFactory.getInstance()).convertImageToBase64Format(screenshotPath);
         String base64Src = BASE64_ENCODE + base64Image;
         Reporter.log("<a href=" + base64Src + "><img src=" + base64Src
                 + " height='100' width='100' /></a>");
