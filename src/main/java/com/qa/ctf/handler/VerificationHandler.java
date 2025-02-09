@@ -112,7 +112,7 @@ public class VerificationHandler {
             return element.isDisplayed();
         } catch (NoSuchElementException | StaleElementReferenceException ex) {
             log.error("Error occurred while checking the presence of the '{}' element. Exception: {}", elementLabel, ex.getMessage(), ex);
-            extentReportManager.getExtentTest().log(Status.FAIL, String.format("Error occurred while checking the presence of the '%s' element", elementLabel));
+//            extentReportManager.getExtentTest().log(Status.FAIL, String.format("Error occurred while checking the presence of the '%s' element", elementLabel));
             throw new ExceptionHub.ElementNotFoundException(elementLabel, ex);
         }
     }
@@ -137,7 +137,7 @@ public class VerificationHandler {
             actualText = element.getText();
             if (actualText.isEmpty()) {
                 log.error("The '{}' element's text is empty, expected text: '{}'", elementLabel, expectedText);
-                extentReportManager.getExtentTest().log(Status.FAIL, String.format("The '%s' element's text is empty, expected text: '%s'", elementLabel, expectedText));
+//                extentReportManager.getExtentTest().log(Status.FAIL, String.format("The '%s' element's text is empty, expected text: '%s'", elementLabel, expectedText));
                 return false;
             }
         }
@@ -160,7 +160,7 @@ public class VerificationHandler {
         if (isElementDisplayed(element, elementLabel)) {
             text = element.getText();
             log.info("The '{}' element's text is: '{}'", elementLabel, text);
-            extentReportManager.getExtentTest().log(Status.PASS, String.format("The '%s' element's text is: '%s'", elementLabel, text));
+//            extentReportManager.getExtentTest().log(Status.PASS, String.format("The '%s' element's text is: '%s'", elementLabel, text));
         }
         return text;
     }
@@ -183,10 +183,10 @@ public class VerificationHandler {
             value = element.getDomAttribute("value");
             if (value == null || value.isEmpty()) {
                 log.info("The '{}' element has no value or is empty.", elementLabel);
-                extentReportManager.getExtentTest().log(Status.PASS, String.format("The '%s' element has no value or is empty.", elementLabel));
+//                extentReportManager.getExtentTest().log(Status.PASS, String.format("The '%s' element has no value or is empty.", elementLabel));
             } else {
                 log.info("The '{}' element's value is: '{}'", elementLabel, value);
-                extentReportManager.getExtentTest().log(Status.PASS, String.format("The '%s' element's value is: '%s'", elementLabel, value));
+//                extentReportManager.getExtentTest().log(Status.PASS, String.format("The '%s' element's value is: '%s'", elementLabel, value));
             }
         }
         return value;
@@ -207,7 +207,7 @@ public class VerificationHandler {
     private boolean isElementNotNull(WebElement element, String elementLabel) {
         if (element == null) {
             log.error("The '{}' element is null.", elementLabel);
-            extentReportManager.getExtentTest().log(Status.PASS, String.format("The '%s' element is null.", elementLabel));
+//            extentReportManager.getExtentTest().log(Status.PASS, String.format("The '%s' element is null.", elementLabel));
             return false;
         }
         return true;

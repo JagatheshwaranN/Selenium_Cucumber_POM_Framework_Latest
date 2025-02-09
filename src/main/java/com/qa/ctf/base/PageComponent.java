@@ -120,7 +120,7 @@ public class PageComponent extends Page implements ElementActions {
     public String getPageTitle() {
         String title = driver.getTitle();
         log.info("Page title retrieved: '{}'", title);
-        extentReportManager.getExtentTest().log(Status.PASS, String.format("Page title retrieved: '%s'", title));
+//        extentReportManager.getExtentTest().log(Status.PASS, String.format("Page title retrieved: '%s'", title));
         return title;
     }
 
@@ -137,7 +137,7 @@ public class PageComponent extends Page implements ElementActions {
     public String getPageUrl() {
         String url = driver.getCurrentUrl();
         log.info("Page URL retrieved: '{}'", url);
-        extentReportManager.getExtentTest().log(Status.PASS, String.format("Page URL retrieved: '%s'", url));
+//        extentReportManager.getExtentTest().log(Status.PASS, String.format("Page URL retrieved: '%s'", url));
         return url;
     }
 
@@ -158,7 +158,7 @@ public class PageComponent extends Page implements ElementActions {
         new WaitHandler(testContext).waitForElementVisible(element, elementLabel);
         String headerText = element.getText();
         log.info("Page header retrieved for '{}': '{}'", elementLabel, headerText);
-        extentReportManager.getExtentTest().log(Status.PASS, String.format("Page header retrieved for '%s': '%s'", elementLabel, headerText));
+//        extentReportManager.getExtentTest().log(Status.PASS, String.format("Page header retrieved for '%s': '%s'", elementLabel, headerText));
         return headerText;
     }
 
@@ -182,7 +182,7 @@ public class PageComponent extends Page implements ElementActions {
         }
         WebElement element = driver.findElement(locator);
         log.debug("Element generated for '{}' using locator: '{}'", locatorLabel, locator);
-        extentReportManager.getExtentTest().log(Status.PASS, String.format("Element generated for '%s' using locator: '%s'", locatorLabel, locator));
+//        extentReportManager.getExtentTest().log(Status.PASS, String.format("Element generated for '%s' using locator: '%s'", locatorLabel, locator));
         return element;
     }
 
@@ -206,7 +206,7 @@ public class PageComponent extends Page implements ElementActions {
         }
         WebElement element = driver.findElement(By.xpath(locator));
         log.debug("Element generated for '{}' using XPath: '{}'", locatorLabel, locator);
-        extentReportManager.getExtentTest().log(Status.PASS, String.format("Element generated for '%s' using XPath: '%s'", locatorLabel, locator));
+//        extentReportManager.getExtentTest().log(Status.PASS, String.format("Element generated for '%s' using XPath: '%s'", locatorLabel, locator));
         return element;
     }
 
@@ -225,7 +225,7 @@ public class PageComponent extends Page implements ElementActions {
     public void clearElement(WebElement element, String elementLabel) {
         element.clear();
         log.info("Cleared the content of '{}' element", elementLabel);
-        extentReportManager.getExtentTest().log(Status.PASS, String.format("Cleared the content of '%s' element", elementLabel));
+//        extentReportManager.getExtentTest().log(Status.PASS, String.format("Cleared the content of '%s' element", elementLabel));
     }
 
     /**
@@ -242,7 +242,7 @@ public class PageComponent extends Page implements ElementActions {
     public void clickElement(WebElement element, String elementLabel) {
         element.click();
         log.info("Clicked the '{}' element", elementLabel);
-        extentReportManager.getExtentTest().log(Status.PASS, String.format("Clicked the '%s' element", elementLabel));
+//        extentReportManager.getExtentTest().log(Status.PASS, String.format("Clicked the '%s' element", elementLabel));
     }
 
     /**
@@ -267,10 +267,10 @@ public class PageComponent extends Page implements ElementActions {
             WebElement element = driver.findElement(By.xpath(String.format(locator.toString().replace("By.xpath: ", ""), value)));
             element.click();
             log.info("Clicked the '{}' element", elementLabel);
-            extentReportManager.getExtentTest().log(Status.PASS, String.format("Clicked the '%s' element", elementLabel));
+//            extentReportManager.getExtentTest().log(Status.PASS, String.format("Clicked the '%s' element", elementLabel));
         } catch (ElementClickInterceptedException ex) {
             log.error("Failed to click the '{}' element", elementLabel, ex);
-            extentReportManager.getExtentTest().log(Status.FAIL, String.format("Failed to click the '%s' element", elementLabel));
+//            extentReportManager.getExtentTest().log(Status.FAIL, String.format("Failed to click the '%s' element", elementLabel));
             throw new ExceptionHub.InteractionException("Exception occurred while clicking '" + elementLabel + "' element", ex);
         }
     }
@@ -292,7 +292,7 @@ public class PageComponent extends Page implements ElementActions {
         if (text != null) {
             element.sendKeys(text);
             log.info("Entered '{}' text into the '{}' element", text, elementLabel);
-            extentReportManager.getExtentTest().log(Status.PASS, String.format("Entered '%s' text into the '%s' element", text, elementLabel));
+//            extentReportManager.getExtentTest().log(Status.PASS, String.format("Entered '%s' text into the '%s' element", text, elementLabel));
         }
     }
 
@@ -314,7 +314,7 @@ public class PageComponent extends Page implements ElementActions {
                 element.sendKeys(String.valueOf(ch));
             }
             log.info("Entered '{}' text into the '{}' element", text, elementLabel);
-            extentReportManager.getExtentTest().log(Status.PASS, String.format("Entered '%s' text into the '%s' element", text, elementLabel));
+//            extentReportManager.getExtentTest().log(Status.PASS, String.format("Entered '%s' text into the '%s' element", text, elementLabel));
         }
     }
 

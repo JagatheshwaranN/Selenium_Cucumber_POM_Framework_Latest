@@ -29,7 +29,7 @@ public class CartPage extends CartPageObject {
 
     public int getProductQuantity() {
         //return Integer.parseInt(Objects.requireNonNull(wait.until(ExpectedConditions.visibilityOf(getProductQuantityFld())).getAttribute("value")));
-        return Integer.parseInt(verificationHandler.readTextValueFromElement(getProductQuantityFld(), getProductQuantityFldLabel()));
+        return Integer.parseInt(verificationHandler.readValueFromInput(getProductQuantityFld(), getProductQuantityFldLabel()));
     }
 
     public void checkout() {

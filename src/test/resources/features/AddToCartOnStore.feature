@@ -1,4 +1,4 @@
-@addToCart
+@addToCart @reg
 Feature: Add To Cart
 
 #  @single

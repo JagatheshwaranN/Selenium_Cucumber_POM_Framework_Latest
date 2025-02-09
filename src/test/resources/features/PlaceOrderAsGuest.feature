@@ -1,4 +1,4 @@
-@placeOrder
+@placeOrder @reg
 Feature: Place Order
 
   Scenario: Verify user able to place order as guest user.

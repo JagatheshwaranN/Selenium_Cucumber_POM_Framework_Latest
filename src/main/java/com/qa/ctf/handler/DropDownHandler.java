@@ -152,7 +152,7 @@ public class DropDownHandler {
             Select select = new Select(dropdown);
             select.selectByVisibleText(visibleText);
             log.info("The visible text '{}' is selected from the '{}' dropdown", visibleText, elementLabel);
-            extentReportManager.getExtentTest().log(Status.PASS, String.format("The visible text '%s' is selected from the '%s' dropdown", visibleText, elementLabel));
+//            extentReportManager.getExtentTest().log(Status.PASS, String.format("The visible text '%s' is selected from the '%s' dropdown", visibleText, elementLabel));
         }
     }
 

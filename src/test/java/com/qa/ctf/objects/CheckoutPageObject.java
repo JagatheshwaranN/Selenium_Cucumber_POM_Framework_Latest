@@ -48,40 +48,75 @@ public class CheckoutPageObject extends BasePage {
         super(driver);
     }
 
-    public WebElement getBillEmailFld() {
-        return billEmailFld;
-    }
-
     public WebElement getBillFirstNameFld() {
         return billFirstNameFld;
+    }
+
+    public String getBillFirstNameFldLabel() {
+        return billFirstNameFldLabel;
     }
 
     public WebElement getBillLastNameFld() {
         return billLastNameFld;
     }
 
+    public String getBillLastNameFldLabel() {
+        return billLastNameFldLabel;
+    }
+
     public WebElement getBillAddressFld() {
         return billAddressFld;
+    }
+
+    public String getBillAddressFldLabel() {
+        return billAddressFldLabel;
     }
 
     public WebElement getBillCityFld() {
         return billCityFld;
     }
 
+    public String getBillCityFldLabel() {
+        return billCityFldLabel;
+    }
+
     public WebElement getBillStateDropdown() {
         return billStateDropdown;
+    }
+
+    public String getBillStateDropdownLabel() {
+        return billStateDropdownLabel;
     }
 
     public WebElement getBillZipFld() {
         return billZipFld;
     }
 
+    public String getBillZipFldLabel() {
+        return billZipFldLabel;
+    }
+
+    public WebElement getBillEmailFld() {
+        return billEmailFld;
+    }
+
+    public String getBillEmailFldLabel() {
+        return billEmailFldLabel;
+    }
+
     public WebElement getPlaceOrderBtn() {
         return placeOrderBtn;
+    }
+
+    public String getPlaceOrderBtnLabel() {
+        return placeOrderBtnLabel;
     }
 
     public WebElement getNoticeTxt() {
         return noticeTxt;
     }
 
+    public String getNoticeTxtLabel() {
+        return noticeTxtLabel;
+    }
 }
