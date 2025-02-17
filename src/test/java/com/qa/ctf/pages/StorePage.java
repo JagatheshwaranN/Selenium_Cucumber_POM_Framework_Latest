@@ -7,6 +7,7 @@ import com.qa.ctf.handler.WaitHandler;
 import com.qa.ctf.objects.StorePageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class StorePage extends StorePageObject {
@@ -23,11 +24,8 @@ public class StorePage extends StorePageObject {
     }
 
     public void addToCart(String productName) {
-        By addToCartBtn = By.cssSelector("a[aria-label='Add “" + productName + "” to your cart']");
-//        wait.until(ExpectedConditions.visibilityOf(getTitleText()));
-//        wait.until(ExpectedConditions.elementToBeClickable(getViewCartLink())).click();
         verificationHandler.isElementDisplayed(getTitleText(), getTitleTextLabel());
-        wait.until(ExpectedConditions.elementToBeClickable(addToCartBtn)).click();
+        pageComponent.clickElement(getAddToCartBtn(), productName, getAddToCartBtnLabel());
         waitHandler.waitForElementVisible(getViewCartLink(), getViewCartLinkLabel());
         pageComponent.clickElement(getViewCartLink(), getViewCartLinkLabel());
     }

@@ -1,19 +1,20 @@
 package com.qa.ctf.handler;
 
-import com.aventstack.extentreports.Status;
 import com.qa.ctf.context.TestContext;
-import com.qa.ctf.report.ExtentReportManager;
 import com.qa.ctf.util.ExceptionHub;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 
-import static com.qa.ctf.constant.TestConstants.*;
+import static com.qa.ctf.constant.TestConstants.EXPLICIT_WAIT_TIME;
+import static com.qa.ctf.constant.TestConstants.WAIT_TIME;
 
 /**
  * The WaitHandler class provides utility methods for implementing explicit,
@@ -53,7 +54,7 @@ import static com.qa.ctf.constant.TestConstants.*;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.1
+ * @version 1.2
  */
 public class WaitHandler {
 
@@ -65,9 +66,6 @@ public class WaitHandler {
 
     // Instance of WebDriverWait to handle waiting for elements to appear on the page
     private final WebDriverWait wait;
-
-    // Instance of ExtentReportManager to manage the extent report
-    private final ExtentReportManager extentReportManager;
 
     /**
      * Constructs a WaitHandler instance and initializes it with the provided
@@ -89,7 +87,6 @@ public class WaitHandler {
         this.driver = testContext.driver;
         this.wait = new WebDriverWait(driver,
                 Duration.ofSeconds(EXPLICIT_WAIT_TIME));
-        extentReportManager = ExtentReportManager.getInstance();
     }
 
     /**
@@ -166,7 +163,7 @@ public class WaitHandler {
      *                                               within the timeout.
      * @throws ExceptionHub                          if the provided element is null.
      */
-    private void waitForElementToBeClickable(WebElement element, String elementLabel) {
+    public void waitForElementToBeClickable(WebElement element, String elementLabel) {
         if (element == null) {
             throw new ExceptionHub(elementLabel + " element is null.");
         }

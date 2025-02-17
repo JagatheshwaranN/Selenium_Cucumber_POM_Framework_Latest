@@ -1,8 +1,6 @@
 package com.qa.ctf.handler;
 
-import com.aventstack.extentreports.Status;
 import com.qa.ctf.context.TestContext;
-import com.qa.ctf.report.ExtentReportManager;
 import com.qa.ctf.util.ExceptionHub;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -55,7 +53,7 @@ import java.util.Objects;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.1
+ * @version 1.2
  */
 public class VerificationHandler {
 
@@ -65,17 +63,13 @@ public class VerificationHandler {
     // TestContext instance to manage shared test data and dependencies
     private final TestContext testContext;
 
-    // Instance of ExtentReportManager to manage the extent report
-    private final ExtentReportManager extentReportManager;
-
     /**
      * Constructs a VerificationHandler instance and initializes it with the provided
      * TestContext.
      * <p>
      * This constructor ensures that the TestContext is not null before assigning
      * it to the instance variable. It is used for managing the WebDriver instance
-     * and shared test data across different page objects. Additionally, it initializes
-     * an ExtentReportManager to handle reporting.
+     * and shared test data across different page objects.
      * </p>
      *
      * @param testContext The TestContext instance to be used for interacting with
@@ -87,7 +81,6 @@ public class VerificationHandler {
             throw new IllegalArgumentException("TestContext cannot be null.");
         }
         this.testContext = testContext;
-        extentReportManager = ExtentReportManager.getInstance();
     }
 
     /**
@@ -112,7 +105,6 @@ public class VerificationHandler {
             return element.isDisplayed();
         } catch (NoSuchElementException | StaleElementReferenceException ex) {
             log.error("Error occurred while checking the presence of the '{}' element. Exception: {}", elementLabel, ex.getMessage(), ex);
-//            extentReportManager.getExtentTest().log(Status.FAIL, String.format("Error occurred while checking the presence of the '%s' element", elementLabel));
             throw new ExceptionHub.ElementNotFoundException(elementLabel, ex);
         }
     }
@@ -137,7 +129,6 @@ public class VerificationHandler {
             actualText = element.getText();
             if (actualText.isEmpty()) {
                 log.error("The '{}' element's text is empty, expected text: '{}'", elementLabel, expectedText);
-//                extentReportManager.getExtentTest().log(Status.FAIL, String.format("The '%s' element's text is empty, expected text: '%s'", elementLabel, expectedText));
                 return false;
             }
         }
@@ -160,7 +151,6 @@ public class VerificationHandler {
         if (isElementDisplayed(element, elementLabel)) {
             text = element.getText();
             log.info("The '{}' element's text is: '{}'", elementLabel, text);
-//            extentReportManager.getExtentTest().log(Status.PASS, String.format("The '%s' element's text is: '%s'", elementLabel, text));
         }
         return text;
     }
@@ -183,10 +173,8 @@ public class VerificationHandler {
             value = element.getDomAttribute("value");
             if (value == null || value.isEmpty()) {
                 log.info("The '{}' element has no value or is empty.", elementLabel);
-//                extentReportManager.getExtentTest().log(Status.PASS, String.format("The '%s' element has no value or is empty.", elementLabel));
             } else {
                 log.info("The '{}' element's value is: '{}'", elementLabel, value);
-//                extentReportManager.getExtentTest().log(Status.PASS, String.format("The '%s' element's value is: '%s'", elementLabel, value));
             }
         }
         return value;
@@ -207,7 +195,6 @@ public class VerificationHandler {
     private boolean isElementNotNull(WebElement element, String elementLabel) {
         if (element == null) {
             log.error("The '{}' element is null.", elementLabel);
-//            extentReportManager.getExtentTest().log(Status.PASS, String.format("The '%s' element is null.", elementLabel));
             return false;
         }
         return true;

@@ -36,25 +36,24 @@ public class PageFactory {
         PageFactory.testContext = testContext;
     }
 
+    public static VerificationHandler getVerificationHelper() {
+        return (verificationHelper == null) ? verificationHelper = new VerificationHandler(testContext) : verificationHelper;
+    }
 
     public static PageComponent getPageComponent() {
-        return (pageComponent == null) ? pageComponent = new PageComponent(testContext) : pageComponent;
+        return (pageComponent == null) ? pageComponent = new PageComponent(testContext, getVerificationHelper()) : pageComponent;
     }
 
     public static DateTimeHandler getDatePickerHandler() {
-        return (datePickerHandler == null) ? datePickerHandler = new DateTimeHandler(testContext, new VerificationHandler(testContext)) : datePickerHandler;
+        return (datePickerHandler == null) ? datePickerHandler = new DateTimeHandler(testContext, getVerificationHelper()) : datePickerHandler;
     }
 
     public static DropDownHandler getDropDownHandler() {
-        return (dropDownHandler == null) ? dropDownHandler = new DropDownHandler(testContext, new VerificationHandler(testContext)) : dropDownHandler;
+        return (dropDownHandler == null) ? dropDownHandler = new DropDownHandler(testContext, getVerificationHelper()) : dropDownHandler;
     }
 
     public static InteractionHandler getInteractionHandler() {
-        return (interactionHandler == null) ? interactionHandler = new InteractionHandler(testContext, new VerificationHandler(testContext)) : interactionHandler;
-    }
-
-    public static VerificationHandler getVerificationHelper() {
-        return (verificationHelper == null) ? verificationHelper = new VerificationHandler(testContext) : verificationHelper;
+        return (interactionHandler == null) ? interactionHandler = new InteractionHandler(testContext, getVerificationHelper()) : interactionHandler;
     }
 
     public static WaitHandler getWaitHandler() {

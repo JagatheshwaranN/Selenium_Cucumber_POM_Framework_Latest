@@ -2,6 +2,7 @@ package com.qa.ctf.base;
 
 import com.qa.ctf.context.TestContext;
 import com.qa.ctf.factory.DriverFactory;
+import com.qa.ctf.handler.VerificationHandler;
 import com.qa.ctf.handler.WaitHandler;
 import com.qa.ctf.util.ExceptionHub;
 import org.apache.logging.log4j.LogManager;
@@ -71,6 +72,9 @@ public class PageComponent extends Page implements ElementActions {
     // WebDriver instance to interact with web elements on the web pages
     private final WebDriver driver;
 
+    // Instance of VerificationHandler to handle verification actions, likely for validating elements on the page
+    private final VerificationHandler verificationHandler;
+
     // HashMap to store key-value pairs of string data
     public static HashMap<String, String> anyObject;
 
@@ -88,19 +92,23 @@ public class PageComponent extends Page implements ElementActions {
      * <p>
      * This constructor ensures that the TestContext is not null before assigning
      * it to the instance variable. It is used for managing the WebDriver instance
-     * and shared test data across different page objects.
+     * and shared test data across different page objects, and the VerificationHandler
+     * for performing verification.
      * </p>
      *
-     * @param testContext The TestContext instance to be used for interacting with
-     *                    the WebDriver.
+     * @param testContext         The TestContext instance to be used for interacting with
+     *                            the WebDriver.
+     * @param verificationHandler The VerificationHandler instance for handling verification
+     *                            tasks.
      * @throws IllegalArgumentException If the provided TestContext is null.
      */
-    public PageComponent(TestContext testContext) {
+    public PageComponent(TestContext testContext, VerificationHandler verificationHandler) {
         if (testContext == null) {
             throw new IllegalArgumentException("TestContext cannot be null.");
         }
         this.testContext = testContext;
         this.driver = testContext.driver;
+        this.verificationHandler = verificationHandler;
     }
 
     /**
@@ -230,8 +238,10 @@ public class PageComponent extends Page implements ElementActions {
      */
     @Override
     public void clickElement(WebElement element, String elementLabel) {
-        element.click();
-        log.info("Clicked the '{}' element", elementLabel);
+        if (verificationHandler.isElementDisplayed(element, elementLabel)) {
+            element.click();
+            log.info("Clicked the '{}' element", elementLabel);
+        }
     }
 
     /**
@@ -253,9 +263,12 @@ public class PageComponent extends Page implements ElementActions {
     @Override
     public void clickElement(By locator, String value, String elementLabel) {
         try {
-            WebElement element = driver.findElement(By.xpath(String.format(locator.toString().replace("By.xpath: ", ""), value)));
-            element.click();
-            log.info("Clicked the '{}' element", elementLabel);
+            By locatorObj = By.xpath(String.format(locator.toString().replace("By.xpath: ", ""), value));
+            WebElement element = generateElement(locatorObj, elementLabel);
+            if (verificationHandler.isElementDisplayed(element, elementLabel)) {
+                element.click();
+                log.info("Clicked the '{}' element", elementLabel);
+            }
         } catch (ElementClickInterceptedException ex) {
             log.error("Failed to click the '{}' element", elementLabel, ex);
             throw new ExceptionHub.InteractionException("Exception occurred while clicking '" + elementLabel + "' element", ex);
@@ -277,8 +290,10 @@ public class PageComponent extends Page implements ElementActions {
     @Override
     public void typeText(WebElement element, String text, String elementLabel) {
         if (text != null) {
-            element.sendKeys(text);
-            log.info("Entered '{}' text into the '{}' element", text, elementLabel);
+            if (verificationHandler.isElementDisplayed(element, elementLabel)) {
+                element.sendKeys(text);
+                log.info("Entered '{}' text into the '{}' element", text, elementLabel);
+            }
         }
     }
 
@@ -296,10 +311,12 @@ public class PageComponent extends Page implements ElementActions {
      */
     public void typeTextInSequence(WebElement element, String text, String elementLabel) {
         if (text != null) {
-            for (char ch : text.toCharArray()) {
-                element.sendKeys(String.valueOf(ch));
+            if (verificationHandler.isElementDisplayed(element, elementLabel)) {
+                for (char ch : text.toCharArray()) {
+                    element.sendKeys(String.valueOf(ch));
+                }
+                log.info("Entered '{}' text into the '{}' element", text, elementLabel);
             }
-            log.info("Entered '{}' text into the '{}' element", text, elementLabel);
         }
     }
 
