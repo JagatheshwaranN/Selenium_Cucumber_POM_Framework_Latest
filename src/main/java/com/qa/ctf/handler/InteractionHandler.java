@@ -129,7 +129,7 @@ public class InteractionHandler implements ElementActions {
      *                                           element.
      */
     @Override
-    public void clickElement(By locator, String value, String elementLabel) {
+    public void clickElement(String locator, String value, String elementLabel) {
         try {
             WebElement element = driver.findElement(By.xpath(String.format(locator.toString().replace("By.xpath: ", ""), value)));
             if (verificationHandler.isElementDisplayed(element, elementLabel)) {

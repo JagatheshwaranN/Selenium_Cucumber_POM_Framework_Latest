@@ -1,17 +1,16 @@
 package com.qa.ctf.handler;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.aventstack.extentreports.Status;
 import com.qa.ctf.context.TestContext;
-import com.qa.ctf.report.ExtentReportManager;
 import com.qa.ctf.util.ExceptionHub;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 
 /**
@@ -67,16 +66,12 @@ public class DropDownHandler {
     // Instance of VerificationHandler to perform verification actions on dropdown elements
     private final VerificationHandler verificationHandler;
 
-    // Instance of ExtentReportManager to manage the extent report
-    private final ExtentReportManager extentReportManager;
-
     /**
      * Constructs a DropDownHandler instance and initializes it with the provided
      * TestContext and VerificationHandler.
      * <p>
      * This constructor assigns the given VerificationHandler to the instance variable,
      * which is used for performing verification operations related to dropdown elements.
-     * Additionally, it initializes an ExtentReportManager to handle reporting.
      * </p>
      *
      * @param testContext The TestContext instance to be used for interacting with
@@ -91,7 +86,6 @@ public class DropDownHandler {
         }
         this.testContext = testContext;
         this.verificationHandler = verificationHandler;
-        extentReportManager = ExtentReportManager.getInstance();
     }
 
     /**
@@ -110,7 +104,6 @@ public class DropDownHandler {
             Select select = new Select(dropdown);
             select.selectByValue(value);
             log.info("The value '{}' is selected from the '{}' dropdown", value, elementLabel);
-            extentReportManager.getExtentTest().log(Status.PASS, String.format("The value '%s' is selected from the '%s' dropdown", value, elementLabel));
         }
     }
 
@@ -130,7 +123,6 @@ public class DropDownHandler {
             Select select = new Select(dropdown);
             select.selectByIndex(index);
             log.info("The value at index '{}' is selected from the '{}' dropdown", index, elementLabel);
-            extentReportManager.getExtentTest().log(Status.PASS, String.format("The value at index '%s' is selected from the '%s' dropdown", index, elementLabel));
         }
     }
 
@@ -152,7 +144,6 @@ public class DropDownHandler {
             Select select = new Select(dropdown);
             select.selectByVisibleText(visibleText);
             log.info("The visible text '{}' is selected from the '{}' dropdown", visibleText, elementLabel);
-//            extentReportManager.getExtentTest().log(Status.PASS, String.format("The visible text '%s' is selected from the '%s' dropdown", visibleText, elementLabel));
         }
     }
 
@@ -182,16 +173,13 @@ public class DropDownHandler {
                         .findFirst()
                         .orElseThrow(() -> {
                             log.error("'{}' option not found in the '{}' dropdown", value, elementLabel);
-                            extentReportManager.getExtentTest().log(Status.FAIL, String.format("'%s' option not found in the '%s' dropdown", value, elementLabel));
                             return new ExceptionHub.OptionNotFoundException(value, elementLabel);
                         });
                 option.click();
                 log.info("The option '{}' is selected from the '{}' dropdown", value, elementLabel);
-                extentReportManager.getExtentTest().log(Status.PASS, String.format("The option '%s' is selected from the '%s' dropdown", value, elementLabel));
             }
         } catch (ElementNotInteractableException ex) {
             log.error("The dropdown is present but not interactable. Exception: {}", ex.getMessage(), ex);
-            extentReportManager.getExtentTest().log(Status.FAIL, "The dropdown is present but not interactable.");
             throw new ExceptionHub.DropDownException("Failed to interact with the dropdown due to its non-interactable state.", ex);
         }
     }
@@ -212,7 +200,6 @@ public class DropDownHandler {
         if (verificationHandler.isElementDisplayed(dropdown, elementLabel)) {
             value = new Select(dropdown).getFirstSelectedOption().getText();
             log.info("The '{}' option is selected in the '{}' dropdown", value, elementLabel);
-            extentReportManager.getExtentTest().log(Status.PASS, String.format("The '%s' option is selected in the '%s' dropdown", value, elementLabel));
         }
         return value;
     }

@@ -2,6 +2,7 @@ package com.qa.ctf.pages;
 
 import com.qa.ctf.base.PageComponent;
 import com.qa.ctf.base.PageFactory;
+import com.qa.ctf.context.TestContext;
 import com.qa.ctf.handler.VerificationHandler;
 import com.qa.ctf.handler.WaitHandler;
 import com.qa.ctf.objects.StorePageObject;
@@ -16,18 +17,30 @@ public class StorePage extends StorePageObject {
     private final PageComponent pageComponent;
     private final WaitHandler waitHandler;
 
+    WebDriver driver;
+
     public StorePage(WebDriver driver) {
         super(driver);
+        this.driver = driver;
         this.verificationHandler = PageFactory.getVerificationHelper();
-        this.pageComponent = PageFactory.getPageComponent();
+        this.pageComponent = new PageFactory().getPageComponent();
         this.waitHandler = PageFactory.getWaitHandler();
     }
 
     public void addToCart(String productName) {
+        System.out.println("Product::: "+productName);
         verificationHandler.isElementDisplayed(getTitleText(), getTitleTextLabel());
-        pageComponent.clickElement(getAddToCartBtn(), productName, getAddToCartBtnLabel());
+        PageComponent pageComponent1 = new PageComponent(driver);
+        pageComponent1.clickElement(getAddToCartBtn(), productName, getAddToCartBtnLabel());
         waitHandler.waitForElementVisible(getViewCartLink(), getViewCartLinkLabel());
-        pageComponent.clickElement(getViewCartLink(), getViewCartLinkLabel());
+        pageComponent1.clickElement(getViewCartLink(), getViewCartLinkLabel());
+//        By addToCartBtn = By.cssSelector("a[aria-label='Add “" + productName + "” to your cart']");
+//        verificationHandler.isElementDisplayed(getTitleText(), getTitleTextLabel());
+//        WebElement element = driver.findElement(By.xpath(String.format(getAddToCartBtn(), productName)));
+        //wait.until(ExpectedConditions.elementToBeClickable(element)).click();
+//        element.click();
+//        waitHandler.waitForElementVisible(getViewCartLink(), getViewCartLinkLabel());
+//        pageComponent.clickElement(getViewCartLink(), getViewCartLinkLabel());
     }
 
 }

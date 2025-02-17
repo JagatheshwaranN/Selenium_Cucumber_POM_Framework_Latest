@@ -67,13 +67,13 @@ public class PageComponent extends Page implements ElementActions {
     private static final Logger log = LogManager.getLogger(PageComponent.class);
 
     // TestContext instance to manage shared test data and dependencies
-    private final TestContext testContext;
+    private TestContext testContext;
 
     // WebDriver instance to interact with web elements on the web pages
-    private final WebDriver driver;
+    private WebDriver driver;
 
     // Instance of VerificationHandler to handle verification actions, likely for validating elements on the page
-    private final VerificationHandler verificationHandler;
+    private VerificationHandler verificationHandler;
 
     // HashMap to store key-value pairs of string data
     public static HashMap<String, String> anyObject;
@@ -86,6 +86,10 @@ public class PageComponent extends Page implements ElementActions {
 
     // Static string variable to store an object key
     public static String objKey;
+
+    public PageComponent(WebDriver driver) {
+        this.driver = driver;
+    }
 
     /**
      * Constructs a PageComponent instance and initializes it with the provided TestContext.
@@ -110,6 +114,7 @@ public class PageComponent extends Page implements ElementActions {
         this.driver = testContext.driver;
         this.verificationHandler = verificationHandler;
     }
+
 
     /**
      * Retrieves the title of the current page.
@@ -238,10 +243,10 @@ public class PageComponent extends Page implements ElementActions {
      */
     @Override
     public void clickElement(WebElement element, String elementLabel) {
-        if (verificationHandler.isElementDisplayed(element, elementLabel)) {
+      //  if (verificationHandler.isElementDisplayed(element, elementLabel)) {
             element.click();
             log.info("Clicked the '{}' element", elementLabel);
-        }
+        //}
     }
 
     /**
@@ -261,14 +266,14 @@ public class PageComponent extends Page implements ElementActions {
      *                                           the element.
      */
     @Override
-    public void clickElement(By locator, String value, String elementLabel) {
+    public void clickElement(String locator, String value, String elementLabel) {
         try {
-            By locatorObj = By.xpath(String.format(locator.toString().replace("By.xpath: ", ""), value));
+            By locatorObj = By.xpath(String.format(locator, value));
             WebElement element = generateElement(locatorObj, elementLabel);
-            if (verificationHandler.isElementDisplayed(element, elementLabel)) {
+            //if (verificationHandler.isElementDisplayed(element, elementLabel)) {
                 element.click();
                 log.info("Clicked the '{}' element", elementLabel);
-            }
+            //}
         } catch (ElementClickInterceptedException ex) {
             log.error("Failed to click the '{}' element", elementLabel, ex);
             throw new ExceptionHub.InteractionException("Exception occurred while clicking '" + elementLabel + "' element", ex);

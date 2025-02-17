@@ -16,7 +16,7 @@ public class StorePageObject extends BasePage {
     protected WebElement viewCartLink;
     protected String viewCartLinkLabel = "View Cart Link";
 
-    protected By addToCartBtn = By.xpath("//a[contains(@aria-label,'Blue Shoes')]");
+    protected String addToCartBtn = "//a[contains(@aria-label,'%s')]";
     protected String addToCartBtnLabel = "Add To Cart Button";
 
     public StorePageObject(WebDriver driver) {
@@ -39,7 +39,7 @@ public class StorePageObject extends BasePage {
         return viewCartLinkLabel;
     }
 
-    public By getAddToCartBtn() {
+    public String getAddToCartBtn() {
         return addToCartBtn;
     }
 

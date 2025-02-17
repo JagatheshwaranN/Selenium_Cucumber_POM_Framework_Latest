@@ -32,11 +32,11 @@ public interface ElementActions {
     /**
      * Clicks on an element located by the specified locator.
      *
-     * @param locator      the {@link By} locator of the element
+     * @param locator      the {@link String} locator of the element
      * @param value        a dynamic value for the locator, if applicable
      * @param elementLabel a descriptive label for the element, used for logging or reporting
      */
-    void clickElement(By locator, String value, String elementLabel);
+    void clickElement(String locator, String value, String elementLabel);
 
     /**
      * Types the given text into the specified web element.

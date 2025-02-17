@@ -14,7 +14,7 @@ public class CartPage extends CartPageObject {
     public CartPage(WebDriver driver) {
         super(driver);
         this.verificationHandler = PageFactory.getVerificationHelper();
-        this.pageComponent = PageFactory.getPageComponent();
+        this.pageComponent = new PageFactory().getPageComponent();
     }
 
     public String getProductName() {

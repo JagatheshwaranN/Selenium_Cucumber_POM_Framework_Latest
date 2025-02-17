@@ -17,7 +17,7 @@ public class CheckoutPage  extends CheckoutPageObject {
     public CheckoutPage(WebDriver driver) {
         super(driver);
         this.verificationHandler = PageFactory.getVerificationHelper();
-        this.pageComponent = PageFactory.getPageComponent();
+        this.pageComponent = new PageFactory().getPageComponent();
         this.dropDownHandler = PageFactory.getDropDownHandler();
     }
 

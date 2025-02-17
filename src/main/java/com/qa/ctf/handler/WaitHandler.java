@@ -73,7 +73,7 @@ public class WaitHandler {
      * <p>
      * This constructor ensures that the TestContext is not null before assigning
      * it to the instance variable. It also initializes the WebDriverWait instance
-     * for handling explicit waits and sets up the ExtentReportManager for reporting.
+     * for handling explicit waits.
      * </p>
      *
      * @param testContext The TestContext instance to be used for interacting with
@@ -110,10 +110,8 @@ public class WaitHandler {
         try {
             wait.until(ExpectedConditions.visibilityOf(element));
             log.info("Element is visible: '{}'", elementLabel);
-//            extentReportManager.getExtentTest().log(Status.PASS, String.format("Element is visible: '%s'", elementLabel));
         } catch (NoSuchElementException ex) {
             log.error("Element not found: '{}'", elementLabel, ex);
-//            extentReportManager.getExtentTest().log(Status.FAIL, String.format("Element not found: '%s'", elementLabel));
             throw new ExceptionHub.ElementNotFoundException(elementLabel, ex);
         }
     }
@@ -140,10 +138,8 @@ public class WaitHandler {
         try {
             wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
             log.info("Elements are present: '{}'", elementLabel);
-//            extentReportManager.getExtentTest().log(Status.PASS, String.format("Elements are present: '%s'", elementLabel));
         } catch (NoSuchElementException ex) {
             log.error("Elements not found: '{}'", elementLabel, ex);
-//            extentReportManager.getExtentTest().log(Status.FAIL, String.format("Elements not found: '%s'", elementLabel));
             throw new ExceptionHub.ElementNotFoundException(elementLabel, ex);
         }
     }
@@ -170,14 +166,11 @@ public class WaitHandler {
         try {
             wait.until(ExpectedConditions.elementToBeClickable(element));
             log.info("Element is clickable: '{}'", elementLabel);
-//            extentReportManager.getExtentTest().log(Status.PASS, String.format("Element is clickable: '%s'", elementLabel));
         } catch (NoSuchElementException ex) {
             log.error("Element not clickable: '{}'. Element was not found.", elementLabel, ex);
-//            extentReportManager.getExtentTest().log(Status.FAIL, String.format("Element not clickable: '%s'. Element was not found.", elementLabel));
             throw new ExceptionHub.ElementNotFoundException(elementLabel, ex);
         } catch (TimeoutException ex) {
             log.error("Element not clickable within the timeout: '{}'", elementLabel, ex);
-//            extentReportManager.getExtentTest().log(Status.FAIL, String.format("Element not clickable within the timeout: '%s'", elementLabel));
             throw new ExceptionHub.TimeoutException(String.format("Element not clickable within the timeout: %s", elementLabel), ex);
         }
     }
@@ -206,15 +199,12 @@ public class WaitHandler {
             });
             if (isStable) {
                 log.info("DOM has stabilized successfully.");
-//                extentReportManager.getExtentTest().log(Status.PASS, "DOM has stabilized successfully.");
             }
         } catch (TimeoutException ex) {
             log.error("DOM did not stabilize within the timeout period.", ex);
-//            extentReportManager.getExtentTest().log(Status.FAIL, "DOM did not stabilize within the timeout period.");
             throw new ExceptionHub.TimeoutException("DOM did not stabilize within the timeout period.", ex);
         } catch (Exception ex) {
             log.error("An error occurred while waiting for the DOM to stabilize.", ex);
-//            extentReportManager.getExtentTest().log(Status.FAIL, "An error occurred while waiting for the DOM to stabilize.");
             throw new ExceptionHub("An error occurred while waiting for the DOM to stabilize.", ex);
         }
     }
@@ -279,7 +269,6 @@ public class WaitHandler {
     public void waitForPageTitle(String title) {
         wait.until(ExpectedConditions.titleContains(title));
         log.info("Page title contains: '{}'", title);
-//        extentReportManager.getExtentTest().log(Status.PASS, String.format("Page title contains: '%s'", title));
     }
 
     /**

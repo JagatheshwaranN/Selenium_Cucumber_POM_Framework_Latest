@@ -119,7 +119,7 @@ public class DateTimeHandler {
             WebElement monthDetail,
             WebElement yearDetail,
             WebElement monthNavigator,
-            By dayLocator,
+            String dayLocator,
             String day,
             String month,
             String year,
@@ -188,7 +188,7 @@ public class DateTimeHandler {
             WebElement dateDetailSection,
             List<WebElement> monthYearDetailList,
             WebElement monthNavigator,
-            By dayLocator,
+            String dayLocator,
             String day,
             String monthYear,
             String dateDetailSectionLabel) {

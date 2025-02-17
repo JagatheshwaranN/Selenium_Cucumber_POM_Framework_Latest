@@ -32,6 +32,9 @@ public class PageFactory {
 
     private static CheckoutPage checkoutPage;
 
+    public PageFactory() {
+    }
+
     public PageFactory(TestContext testContext) {
         PageFactory.testContext = testContext;
     }
@@ -40,7 +43,7 @@ public class PageFactory {
         return (verificationHelper == null) ? verificationHelper = new VerificationHandler(testContext) : verificationHelper;
     }
 
-    public static PageComponent getPageComponent() {
+    public PageComponent getPageComponent() {
         return (pageComponent == null) ? pageComponent = new PageComponent(testContext, getVerificationHelper()) : pageComponent;
     }
 

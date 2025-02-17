@@ -1,16 +1,13 @@
 package com.qa.ctf.handler;
 
-import java.util.LinkedList;
-import java.util.Set;
-
-import com.aventstack.extentreports.Status;
 import com.qa.ctf.context.TestContext;
-import com.qa.ctf.report.ExtentReportManager;
 import com.qa.ctf.util.ExceptionHub;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import org.openqa.selenium.*;
+
+import java.util.LinkedList;
+import java.util.Set;
 
 /**
  * The BrowserHandler class provides utility methods to interact with
@@ -49,7 +46,7 @@ import org.openqa.selenium.*;
  * </pre>
  *
  * @author Jagatheshwaran N
- * @version 1.1
+ * @version 1.2
  */
 public class BrowserHandler {
 
@@ -59,17 +56,13 @@ public class BrowserHandler {
     // WebDriver instance to interact with web elements on the web pages
     private final WebDriver driver;
 
-    // Instance of ExtentReportManager to manage the extent report
-    private final ExtentReportManager extentReportManager;
-
     /**
      * Constructs a BrowserHandler instance and initializes it with the provided
      * TestContext.
      * <p>
      * This constructor ensures that the TestContext is not null before assigning
      * it to the instance variable. It is used for managing the WebDriver instance
-     * and shared test data across different page objects. Additionally, it initializes
-     * an ExtentReportManager to handle reporting.
+     * and shared test data across different page objects.
      * </p>
      *
      * @param testContext The TestContext instance to be used for interacting with
@@ -81,7 +74,6 @@ public class BrowserHandler {
             throw new IllegalArgumentException("TestContext cannot be null.");
         }
         this.driver = testContext.driver;
-        extentReportManager = ExtentReportManager.getInstance();
     }
 
     /**
@@ -94,7 +86,6 @@ public class BrowserHandler {
     public void navigateBack() {
         driver.navigate().back();
         log.info("Navigated to the previous page in the browser.");
-        extentReportManager.getExtentTest().log(Status.PASS, "Navigated to the previous page in the browser.");
     }
 
     /**
@@ -107,7 +98,6 @@ public class BrowserHandler {
     public void navigateForward() {
         driver.navigate().forward();
         log.info("Navigated to the next page in the browser.");
-        extentReportManager.getExtentTest().log(Status.PASS, "Navigated to the next page in the browser.");
     }
 
     /**
@@ -120,7 +110,6 @@ public class BrowserHandler {
     public void refresh() {
         driver.navigate().refresh();
         log.info("The current page in the browser is refreshed.");
-        extentReportManager.getExtentTest().log(Status.PASS, "The current page in the browser is refreshed.");
     }
 
     /**
@@ -136,7 +125,6 @@ public class BrowserHandler {
     public String getBrowserWindowHandle() {
         String handle = driver.getWindowHandle();
         log.info("Captured browser window handle: '{}'", handle);
-        extentReportManager.getExtentTest().log(Status.PASS, String.format("Captured browser window handle: '%s'", handle));
         return handle;
     }
 
@@ -153,7 +141,6 @@ public class BrowserHandler {
     public Set<String> getBrowserWindowHandles() {
         Set<String> handles = driver.getWindowHandles();
         log.info("Captured '{}' browser window handles :: '{}'", handles.size(), handles);
-        extentReportManager.getExtentTest().log(Status.PASS, String.format("Captured '%s' browser window handles: '%s'", handles.size(), handles));
         return handles;
     }
 
@@ -201,10 +188,8 @@ public class BrowserHandler {
         try {
             driver.switchTo().window(windowsId.get(index));
             log.info("Switched to browser window at index: '{}'", index);
-            extentReportManager.getExtentTest().log(Status.PASS, String.format("Switched to browser window at index: '%s'", index));
         } catch (NoSuchWindowException ex) {
             log.error("Failed to switch to window at index '{}'. Exception: {}", index, ex.getMessage(), ex);
-            extentReportManager.getExtentTest().log(Status.FAIL, String.format("Failed to switch to window at index '%s'", index));
             throw new ExceptionHub.WindowException("Failed to switch to window", ex);
         }
     }
@@ -229,15 +214,12 @@ public class BrowserHandler {
             for (var i = 1; i < windowsId.size(); i++) {
                 var childWindow = windowsId.get(i);
                 log.info("Closing child browser window with handle: '{}'", childWindow);
-                extentReportManager.getExtentTest().log(Status.PASS, String.format("Closing child browser window with handle: '%s'", childWindow));
                 driver.switchTo().window(childWindow).close();
             }
             driver.switchTo().window(windowsId.getFirst());
             log.info("Switched back to the parent browser window with handle: '{}'", windowsId.getFirst());
-            extentReportManager.getExtentTest().log(Status.PASS, String.format("Switched back to the parent browser window with handle: '%s'", windowsId.getFirst()));
         } catch (NoSuchWindowException ex) {
             log.error("Error closing child windows or switching to parent window. Exception: {}", ex.getMessage(), ex);
-            extentReportManager.getExtentTest().log(Status.FAIL, "Error closing child windows or switching to parent window.");
             throw new ExceptionHub.WindowException("Error closing child windows or switching to parent window", ex);
         }
     }
@@ -292,7 +274,6 @@ public class BrowserHandler {
                     }
                     driver.switchTo().frame(frameNameOrId);
                     log.info("The control is switched to the frame using name or ID :: '{}'", frameNameOrId);
-                    extentReportManager.getExtentTest().log(Status.PASS, String.format("The control is switched to the frame using name or ID: '%s'", frameNameOrId));
                 }
                 case Integer frameIndex -> {
                     if (frameIndex < 0) {
@@ -300,23 +281,19 @@ public class BrowserHandler {
                     }
                     driver.switchTo().frame(frameIndex);
                     log.info("The control is switched to the frame using index: '{}'", frameIndex);
-                    extentReportManager.getExtentTest().log(Status.PASS, String.format("The control is switched to the frame using index: '%s'", frameIndex));
                 }
                 case WebElement frameElement -> {
                     driver.switchTo().frame(frameElement);
                     log.info("The control is switched to the frame using WebElement: '{}'", frameElement);
-                    extentReportManager.getExtentTest().log(Status.PASS, String.format("The control is switched to the frame using WebElement: '%s'", frameElement));
                 }
                 default ->
                         throw new IllegalArgumentException("Unsupported frame identifier type: " + frameIdentifier.getClass().getName());
             }
         } catch (StaleElementReferenceException ex) {
             log.error("Failed to switch to frame due to stale element reference. Exception: {}", ex.getMessage(), ex);
-            extentReportManager.getExtentTest().log(Status.FAIL, "Failed to switch to frame due to stale element reference.");
             throw new ExceptionHub.FrameException("Error switching to frame due to stale element reference", ex);
         } catch (NoSuchFrameException ex) {
             log.error("Failed to switch to frame. Exception: {}", ex.getMessage(), ex);
-            extentReportManager.getExtentTest().log(Status.FAIL, "Failed to switch to frame.");
             throw new ExceptionHub.FrameException("Error switching to frame", ex);
         }
     }

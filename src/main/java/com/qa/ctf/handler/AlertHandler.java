@@ -1,6 +1,5 @@
 package com.qa.ctf.handler;
 
-import com.aventstack.extentreports.Status;
 import com.qa.ctf.context.TestContext;
 import com.qa.ctf.util.ExceptionHub;
 import org.apache.logging.log4j.LogManager;
