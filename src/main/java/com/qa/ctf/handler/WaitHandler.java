@@ -84,7 +84,7 @@ public class WaitHandler {
         if (testContext == null) {
             throw new IllegalArgumentException("TestContext cannot be null.");
         }
-        this.driver = testContext.getDriver();
+        this.driver = testContext.driver;
         this.wait = new WebDriverWait(driver,
                 Duration.ofSeconds(EXPLICIT_WAIT_TIME));
     }

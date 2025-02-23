@@ -13,7 +13,7 @@ public class CartSteps {
     private final CartPage cartPage;
 
     public CartSteps(TestContext testContext) {
-        WebDriver driver = testContext.getDriver();
+        WebDriver driver = testContext.driver;
         cartPage = PageFactory.getCartPage(driver);
     }
 

@@ -14,36 +14,38 @@ import org.openqa.selenium.WebDriver;
  * @author Jagatheshwaran N
  * @version 1.0
  */
-//public class TestContext {
-//
-//    /** WebDriver instance used for interacting with web elements in test execution. */
-//    public WebDriver driver;
-//}
+public class TestContext {
+
+    /** WebDriver instance used for interacting with web elements in test execution. */
+    public WebDriver driver;
+}
 
 /**
  * The TestContext class serves as a context holder for sharing test-related objects
  * across different parts of the test framework, ensuring proper dependency injection.
  */
-public class TestContext {
-
-    private final DriverFactory driverFactory;
-
-    /**
-     * Constructor initializes required test dependencies.
-     */
-    public TestContext() {
-        // FileReader.loadPropertyFile();
-        this.driverFactory = DriverFactory.getInstance();
-        //this.driverFactory.initializeDriver();
-    }
-
-    /**
-     * Gets the WebDriver instance from DriverFactory.
-     *
-     * @return WebDriver instance for the current thread.
-     */
-    public WebDriver getDriver() {
-        return driverFactory.getDriver();
-    }
-}
-
+//public class TestContext {
+//
+//    /**
+//     * Constructor initializes required test dependencies.
+//     */
+//    public TestContext() {
+//        // FileReader.loadPropertyFile();
+//        System.out.println("INSIDE TEST CONTEXT CONS");
+//       // this.driverFactory = DriverFactory.getInstance();
+//        //this.driverFactory.initializeDriver();
+//    }
+//
+//    public void setDriver(WebDriver driver) {
+//
+//    }
+//    /**
+//     * Gets the WebDriver instance from DriverFactory.
+//     *
+//     * @return WebDriver instance for the current thread.
+//     */
+//    public WebDriver getDriver() {
+//        return DriverFactory.getInstance().getDriver();
+//    }
+//}
+//

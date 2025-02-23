@@ -72,7 +72,7 @@ public class AlertHandler {
         if (testContext == null) {
             throw new IllegalArgumentException("TestContext cannot be null.");
         }
-        this.driver = testContext.getDriver();
+        this.driver = testContext.driver;
     }
 
     /**

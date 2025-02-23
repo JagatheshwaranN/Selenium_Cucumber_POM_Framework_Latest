@@ -93,7 +93,7 @@ public class InteractionHandler implements ElementActions {
         if (testContext == null) {
             throw new IllegalArgumentException("TestContext cannot be null.");
         }
-        this.driver = testContext.getDriver();
+        this.driver = testContext.driver;
         this.builder = new Actions(driver);
         this.verificationHandler = verificationHandler;
     }

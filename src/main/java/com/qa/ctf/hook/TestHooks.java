@@ -67,7 +67,7 @@ public class TestHooks {
     private WebDriver driver;
 
     // TestContext instance to manage shared test data and dependencies
-    private final TestContext testContext;
+    public TestContext testContext;
 
     /**
      * Constructs a TestHooks instance and initializes it with the provided TestContext.
@@ -102,7 +102,15 @@ public class TestHooks {
             // FileUtils.cleanDirectory(new File(SCREENSHOT_PATH));
             FileReader.loadPropertyFile();
             DriverFactory.getInstance().initializeDriver();
-            driver = testContext.getDriver();
+            log.info("DRIVER : {}",DriverFactory.getInstance().getDriver());
+            this.driver = DriverFactory.getInstance().getDriver();
+            log.info("DRIVER IN : {}",this.driver);
+            testContext.driver = this.driver;
+            log.info("DRIVER TestContext : {}",testContext.driver);
+//            if(testContext.getDriver() == null) {
+//                log.info("INSIDE DRIVER METHOD.....");
+//                DriverFactory.getInstance().initializeDriver();
+//            }
         } catch (Exception ex) {
             log.error("Error initializing WebDriver: {}", ex.getMessage(), ex);
             throw new ExceptionHub("WebDriver initialization failed", ex);
@@ -134,6 +142,7 @@ public class TestHooks {
         } finally {
             if(driver != null) {
                 driver.quit();
+                DriverFactory.getInstance().remove();
                 log.info("WebDriver instance closed successfully.");
             }
         }

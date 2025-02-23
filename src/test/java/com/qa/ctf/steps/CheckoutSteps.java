@@ -17,7 +17,7 @@ public class CheckoutSteps {
     private final CheckoutPage checkoutPage;
 
     public CheckoutSteps(AppContext appContext, TestContext testContext) {
-        WebDriver driver = testContext.getDriver();
+        WebDriver driver = testContext.driver;
         this.appContext = appContext;
         checkoutPage = PageFactory.getCheckoutPage(driver);
     }

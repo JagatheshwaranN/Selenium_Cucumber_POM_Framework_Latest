@@ -152,6 +152,10 @@ public class DriverFactory extends BrowserFactory {
         return driverLocal.get();
     }
 
+    public void remove() {
+        driverLocal.remove();
+    }
+
     /**
      * Initializes and returns a WebDriver instance.
      * <p>
@@ -159,13 +163,10 @@ public class DriverFactory extends BrowserFactory {
      * sets it using the {@link #setDriver(WebDriver)} method, and then returns the initialized
      * WebDriver instance for use in test components.
      * </p>
-     *
-     * @return The newly initialized WebDriver instance.
      */
-    public WebDriver initializeDriver() {
+    public void initializeDriver() {
         WebDriver driver = createDriver();
         setDriver(driver);
-        return driver;
     }
 
     /**

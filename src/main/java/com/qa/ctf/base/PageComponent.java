@@ -111,7 +111,7 @@ public class PageComponent extends Page implements ElementActions {
             throw new IllegalArgumentException("TestContext cannot be null.");
         }
         this.testContext = testContext;
-        this.driver = testContext.getDriver();
+        this.driver = testContext.driver;
         this.verificationHandler = verificationHandler;
     }
 

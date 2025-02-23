@@ -24,6 +24,7 @@ public class BasePage {
     }
 
     public void load(String endpoint) {
+        System.out.println("BASE DRIVER : "+driver);
         driver.get(FileReader.fetchDataFromPropFile("BaseURL") +endpoint);
     }
 
@@ -37,8 +38,5 @@ public class BasePage {
             System.out.println("OVERLAYS NOT FOUND");
         }
     }
-
-
-
 
 }

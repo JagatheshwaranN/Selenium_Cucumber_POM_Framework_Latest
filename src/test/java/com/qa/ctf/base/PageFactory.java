@@ -26,11 +26,11 @@ public class PageFactory {
 
     private static final ThreadLocal<EncryptionManager> encryptionManagerThreadLocal = ThreadLocal.withInitial(EncryptionManager::new);
 
-    private static final ThreadLocal<StorePage> storePageThreadLocal = ThreadLocal.withInitial(() -> new StorePage(testContext.getDriver()));
+    private static final ThreadLocal<StorePage> storePageThreadLocal = ThreadLocal.withInitial(() -> new StorePage(testContext.driver));
 
-    private static final ThreadLocal<CartPage> cartPageThreadLocal = ThreadLocal.withInitial(() -> new CartPage(testContext.getDriver()));
+    private static final ThreadLocal<CartPage> cartPageThreadLocal = ThreadLocal.withInitial(() -> new CartPage(testContext.driver));
 
-    private static final ThreadLocal<CheckoutPage> checkoutPageThreadLocal = ThreadLocal.withInitial(() -> new CheckoutPage(testContext.getDriver()));
+    private static final ThreadLocal<CheckoutPage> checkoutPageThreadLocal = ThreadLocal.withInitial(() -> new CheckoutPage(testContext.driver));
 
 //    private static PageComponent pageComponent;
 //
@@ -52,11 +52,12 @@ public class PageFactory {
 //
 //    private static CheckoutPage checkoutPage;
 
-    public PageFactory() {
-    }
+//    public PageFactory() {
+//    }
 
     public PageFactory(TestContext testContext) {
         PageFactory.testContext = testContext;
+        new BasePage(testContext.driver);
     }
 
     public static VerificationHandler getVerificationHelper() {
@@ -95,7 +96,7 @@ public class PageFactory {
         return encryptionManagerThreadLocal.get();
     }
 
-    public static StorePage getStorePage(WebDriver driver) {
+    public static StorePage getStorePage() {
         //return storePage == null ? new StorePage(driver) : storePage;
         return storePageThreadLocal.get();
     }

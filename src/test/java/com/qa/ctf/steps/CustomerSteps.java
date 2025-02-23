@@ -15,10 +15,10 @@ public class CustomerSteps {
     private final StorePage storePage;
 
     public CustomerSteps(AppContext appContext, TestContext testContext) {
-        WebDriver driver = testContext.getDriver();
+        System.out.println("CUSTOMER STEP : "+testContext.driver);
         this.appContext = appContext;
         new PageFactory(testContext);
-        storePage = PageFactory.getStorePage(driver);
+        storePage = PageFactory.getStorePage();
     }
 
     @Given("I'm a guest user")
