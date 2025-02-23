@@ -17,7 +17,7 @@ public class CheckoutSteps {
     private final CheckoutPage checkoutPage;
 
     public CheckoutSteps(AppContext appContext, TestContext testContext) {
-        WebDriver driver = testContext.driver;
+        WebDriver driver = testContext.getDriver();
         this.appContext = appContext;
         checkoutPage = PageFactory.getCheckoutPage(driver);
     }
@@ -39,7 +39,7 @@ public class CheckoutSteps {
 
     @Then("the order should be placed successfully")
     public void the_order_should_be_placed_successfully() {
-        Assert.assertEquals("Thank you. Your order has been received...",
+        Assert.assertEquals("Thank you. Your order has been received.",
                 checkoutPage.getNotice());
     }
 

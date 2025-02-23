@@ -101,8 +101,8 @@ public class TestHooks {
         try {
             // FileUtils.cleanDirectory(new File(SCREENSHOT_PATH));
             FileReader.loadPropertyFile();
-            driver = DriverFactory.getInstance().initializeDriver();
-            this.testContext.driver = driver;
+            DriverFactory.getInstance().initializeDriver();
+            driver = testContext.getDriver();
         } catch (Exception ex) {
             log.error("Error initializing WebDriver: {}", ex.getMessage(), ex);
             throw new ExceptionHub("WebDriver initialization failed", ex);

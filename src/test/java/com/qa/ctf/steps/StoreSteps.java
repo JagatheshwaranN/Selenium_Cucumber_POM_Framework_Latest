@@ -19,7 +19,10 @@ public class StoreSteps {
 
     public StoreSteps(AppContext appContext, TestContext testContext) {
         this.appContext = appContext;
-        driver = testContext.driver;
+        if (testContext.getDriver() == null) {
+            throw new NullPointerException("Driver is not initialized");
+        }
+        driver = testContext.getDriver();
         new PageFactory(testContext);
         storePage = PageFactory.getStorePage(driver);
     }

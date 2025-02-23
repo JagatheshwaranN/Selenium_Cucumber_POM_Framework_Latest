@@ -15,7 +15,7 @@ public class CustomerSteps {
     private final StorePage storePage;
 
     public CustomerSteps(AppContext appContext, TestContext testContext) {
-        WebDriver driver = testContext.driver;
+        WebDriver driver = testContext.getDriver();
         this.appContext = appContext;
         new PageFactory(testContext);
         storePage = PageFactory.getStorePage(driver);

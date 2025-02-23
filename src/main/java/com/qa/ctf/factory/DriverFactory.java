@@ -83,6 +83,9 @@ public class DriverFactory extends BrowserFactory {
     // Static instance of ExcelReader to read data from Excel files for test execution
     //public static ExcelReader excelReader;
 
+    // ThreadLocal variable to store WebDriver instance specific to the current thread (for multithreaded execution)
+    private static final ThreadLocal<WebDriver> driverLocal = new ThreadLocal<>();
+
     /**
      * Constructs a DriverFactory instance and initializes the RunFactory
      * and ExcelReader.
@@ -133,7 +136,7 @@ public class DriverFactory extends BrowserFactory {
      * @param driver The WebDriver instance to be set.
      */
     public void setDriver(WebDriver driver) {
-        this.driver = driver;
+        driverLocal.set(driver);
     }
 
     /**
@@ -146,7 +149,7 @@ public class DriverFactory extends BrowserFactory {
      * @return The WebDriver instance currently being used.
      */
     public WebDriver getDriver() {
-        return driver;
+        return driverLocal.get();
     }
 
     /**

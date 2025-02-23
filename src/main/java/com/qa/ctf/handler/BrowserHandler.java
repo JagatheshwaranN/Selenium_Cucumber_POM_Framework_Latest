@@ -73,7 +73,7 @@ public class BrowserHandler {
         if (testContext == null) {
             throw new IllegalArgumentException("TestContext cannot be null.");
         }
-        this.driver = testContext.driver;
+        this.driver = testContext.getDriver();
     }
 
     /**
