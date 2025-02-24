@@ -102,15 +102,11 @@ public class TestHooks {
             // FileUtils.cleanDirectory(new File(SCREENSHOT_PATH));
             FileReader.loadPropertyFile();
             DriverFactory.getInstance().initializeDriver();
-            log.info("DRIVER : {}",DriverFactory.getInstance().getDriver());
+            log.info("DRIVER FROM FACTORY: {}",DriverFactory.getInstance().getDriver());
             this.driver = DriverFactory.getInstance().getDriver();
-            log.info("DRIVER IN : {}",this.driver);
-            testContext.driver = this.driver;
-            log.info("DRIVER TestContext : {}",testContext.driver);
-//            if(testContext.getDriver() == null) {
-//                log.info("INSIDE DRIVER METHOD.....");
-//                DriverFactory.getInstance().initializeDriver();
-//            }
+            log.info("DRIVER IN HOOK: {}",this.driver);
+            testContext.setDriver(this.driver);
+            log.info("TestContext DRIVER: {}",testContext.getDriver());
         } catch (Exception ex) {
             log.error("Error initializing WebDriver: {}", ex.getMessage(), ex);
             throw new ExceptionHub("WebDriver initialization failed", ex);
@@ -140,11 +136,7 @@ public class TestHooks {
         } catch (Exception ex) {
             log.warn("Error while capturing screenshot: {}", ex.getMessage(), ex);
         } finally {
-            if(driver != null) {
-                driver.quit();
-                DriverFactory.getInstance().remove();
-                log.info("WebDriver instance closed successfully.");
-            }
+            DriverFactory.quitDriver();
         }
     }
 

@@ -152,10 +152,6 @@ public class DriverFactory extends BrowserFactory {
         return driverLocal.get();
     }
 
-    public void remove() {
-        driverLocal.remove();
-    }
-
     /**
      * Initializes and returns a WebDriver instance.
      * <p>
@@ -165,8 +161,9 @@ public class DriverFactory extends BrowserFactory {
      * </p>
      */
     public void initializeDriver() {
-        WebDriver driver = createDriver();
-        setDriver(driver);
+        if(driverLocal.get() == null) {
+            setDriver(createDriver());
+        }
     }
 
     /**
@@ -187,6 +184,13 @@ public class DriverFactory extends BrowserFactory {
             case REMOTE -> createRemoteDriver();
             default -> throw new ExceptionHub.InvalidDataException(runFactory.getRunType());
         };
+    }
+
+    public static void quitDriver() {
+        if (driverLocal.get() != null) {
+            driverLocal.get().quit();
+            driverLocal.remove();
+        }
     }
 
     /**
