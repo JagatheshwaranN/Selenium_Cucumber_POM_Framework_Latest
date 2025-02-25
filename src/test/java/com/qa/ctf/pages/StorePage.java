@@ -17,6 +17,7 @@ public class StorePage extends StorePageObject {
 
     public StorePage(WebDriver driver) {
         super(driver);
+        System.out.println("Initializing StorePage with driver: " + driver);
         this.driver = driver;
         this.verificationHandler = PageFactory.getVerificationHelper();
         this.pageComponent = PageFactory.getPageComponent();

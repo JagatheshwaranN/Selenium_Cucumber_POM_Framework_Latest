@@ -18,8 +18,11 @@ public class BasePage {
     protected WebDriverWait wait;
 
     public BasePage(WebDriver driver) {
+        System.out.println("Initializing BasePage with driver: " + driver);
+        if (driver == null) {
+            throw new IllegalStateException("Driver is not initialized in TestContext.");
+        }
         this.driver = driver;
-        System.out.println("BASE PAGE DRIVER: " + this.driver);
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         PageFactory.initElements(driver, this);
     }

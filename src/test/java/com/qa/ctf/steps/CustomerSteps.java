@@ -24,7 +24,7 @@ public class CustomerSteps extends BaseSteps {
         }
 
         this.driver = testContext.getDriver();
-        this.storePage = PageFactory.getStorePage(); // Fetch StorePage via PageFactory
+        this.storePage = PageFactory.getStorePage(this.driver); // Fetch StorePage via PageFactory
     }
 
     @Given("I'm a guest user")

@@ -100,18 +100,29 @@ public class PageFactory {
 //        return storePageThreadLocal.get();
 //    }
 
-    public static StorePage getStorePage() {
-        if (storePageThreadLocal.get() == null) {
-            WebDriver driver = getDriver();
-            if (driver != null) {
-                storePageThreadLocal.set(new StorePage(driver)); // Ensure fresh driver
-            } else {
-                throw new NullPointerException("Driver is not available in TestContext.");
-            }
+//    public static StorePage getStorePage() {
+//        if (storePageThreadLocal.get() == null) {
+//            WebDriver driver = getDriver();
+//            if (driver != null) {
+//                storePageThreadLocal.set(new StorePage(driver)); // Ensure fresh driver
+//            } else {
+//                throw new NullPointerException("Driver is not available in TestContext.");
+//            }
+//        }
+//        return storePageThreadLocal.get();
+//    }
+
+    public static StorePage getStorePage(WebDriver driver) {
+        //WebDriver driver = getDriver();
+        if (driver == null) {
+            throw new IllegalStateException("Driver is not initialized.");
         }
+
+        //if (storePageThreadLocal.get() == null) {
+            storePageThreadLocal.set(new StorePage(driver)); // Ensure fresh driver per thread
+        //}
         return storePageThreadLocal.get();
     }
-
 
     public static CartPage getCartPage() {
         return cartPageThreadLocal.get();

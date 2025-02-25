@@ -25,7 +25,7 @@ public class StoreSteps extends BaseSteps {
         }
         this.driver = testContext.getDriver();
         System.out.println("STORE STEPS DRIVER: " + this.driver);
-        this.storePage = PageFactory.getStorePage();
+        this.storePage = PageFactory.getStorePage(this.driver);
     }
 
     @Given("I'm on the Store page")
