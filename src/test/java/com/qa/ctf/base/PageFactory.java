@@ -112,15 +112,29 @@ public class PageFactory {
 //        return storePageThreadLocal.get();
 //    }
 
+    // Working code.
+//    public static StorePage getStorePage(WebDriver driver) {
+//        //WebDriver driver = getDriver();
+//        if (driver == null) {
+//            throw new IllegalStateException("Driver is not initialized.");
+//        }
+//        storePageThreadLocal.set(new StorePage(driver)); // Ensure fresh driver per thread
+//        return storePageThreadLocal.get();
+//    }
+
+    private static WebDriver lastUsedDriver = null;
+
     public static StorePage getStorePage(WebDriver driver) {
-        //WebDriver driver = getDriver();
         if (driver == null) {
             throw new IllegalStateException("Driver is not initialized.");
         }
 
-        //if (storePageThreadLocal.get() == null) {
-            storePageThreadLocal.set(new StorePage(driver)); // Ensure fresh driver per thread
-        //}
+        // Reset StorePage if the driver has changed
+        if (storePageThreadLocal.get() == null || driver != lastUsedDriver) {
+            storePageThreadLocal.set(new StorePage(driver));
+            lastUsedDriver = driver; // Track the latest driver
+        }
+
         return storePageThreadLocal.get();
     }
 
@@ -131,4 +145,9 @@ public class PageFactory {
     public static CheckoutPage getCheckoutPage() {
         return checkoutPageThreadLocal.get();
     }
+
+    public static void resetThreadLocal() {
+        storePageThreadLocal.remove();
+    }
+
 }
